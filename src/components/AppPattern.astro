@@ -1,0 +1,274 @@
+---
+// AppPattern.astro
+import ProductCustomizer from './ProductCustomizer.jsx';
+---
+
+<div class="app-pattern-container">
+  
+  <!-- SCREENS -->
+  <div class="p-screens">
+    
+    <!-- HOME SCREEN -->
+    <div class="p-screen active" id="p-screen-home">
+      <div class="p-home-header">
+        <h1>PatternApp</h1>
+        <p>Premium 3D Customizer</p>
+      </div>
+      
+      <div class="p-preview-card">
+        <img src="https://placehold.co/300x300/10b981/ffffff?text=3D+Model+Preview" alt="Preview" class="p-preview-img" />
+        <div class="p-preview-info">
+          <h3>250ml Round Tub</h3>
+          <p>Cosmetics Packaging</p>
+        </div>
+      </div>
+      
+      <button class="p-btn-primary" id="p-start-btn">
+        Start Customizing
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </button>
+    </div>
+
+    <!-- 3D VIEWER SCREEN (REACT COMPONENT) -->
+    <div class="p-screen p-screen-viewer" id="p-screen-viewer">
+      <!-- We load the React component here -->
+      <ProductCustomizer client:only="react" />
+    </div>
+
+    <!-- PROFILE SCREEN -->
+    <div class="p-screen" id="p-screen-profile">
+      <div class="p-profile-header">
+        <div class="p-avatar">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h2>Creative Designer</h2>
+        <p>Pro Member</p>
+      </div>
+      
+      <div class="p-stats-row">
+        <div class="p-stat">
+          <h4>12</h4>
+          <span>Saved</span>
+        </div>
+        <div class="p-stat">
+          <h4>4</h4>
+          <span>Collections</span>
+        </div>
+      </div>
+
+      <h3 class="p-section-title">Recent Designs</h3>
+      <div class="p-recent-grid">
+        <div class="p-recent-item bg-1"></div>
+        <div class="p-recent-item bg-2"></div>
+        <div class="p-recent-item bg-3"></div>
+        <div class="p-recent-item bg-4"></div>
+      </div>
+
+      <div class="p-menu">
+        <div class="p-menu-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download History
+        </div>
+        <div class="p-menu-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Account Settings
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM NAV -->
+  <div class="p-nav">
+    <button class="p-nav-item active" data-target="home">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    </button>
+    <button class="p-nav-item" data-target="viewer" id="p-nav-viewer-btn">
+      <div class="p-nav-fab">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+      </div>
+    </button>
+    <button class="p-nav-item" data-target="profile">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    </button>
+  </div>
+
+</div>
+
+<style>
+.app-pattern-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background: #0f172a; /* Dark minimal base */
+  color: #fff;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.p-screens {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.p-screen {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  scrollbar-width: none;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.p-screen::-webkit-scrollbar { display: none; }
+.p-screen.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Home */
+#p-screen-home { padding: 40px 20px 20px; display: flex; flex-direction: column; align-items: center; }
+.p-home-header { text-align: center; margin-bottom: 30px; }
+.p-home-header h1 { font-size: 2rem; font-weight: 800; margin: 0; background: linear-gradient(90deg, #10b981, #34d399); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.p-home-header p { color: #94a3b8; margin: 5px 0 0; }
+
+.p-preview-card {
+  width: 100%;
+  background: #1e293b;
+  border-radius: 24px;
+  overflow: hidden;
+  margin-bottom: 30px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+.p-preview-img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+.p-preview-info { padding: 20px; text-align: center; }
+.p-preview-info h3 { margin: 0; font-size: 1.2rem; }
+.p-preview-info p { margin: 4px 0 0; color: #10b981; font-size: 0.9rem; }
+
+.p-btn-primary {
+  width: 100%;
+  padding: 16px;
+  border-radius: 16px;
+  background: linear-gradient(90deg, #10b981, #059669);
+  color: #fff;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  box-shadow: 0 8px 16px rgba(16, 185, 129, 0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.p-btn-primary:active { transform: scale(0.95); }
+
+/* Viewer */
+.p-screen-viewer { padding: 0 !important; } /* React takes full height */
+
+/* Profile */
+#p-screen-profile { padding: 40px 20px 20px; }
+.p-profile-header { display: flex; flex-direction: column; align-items: center; margin-bottom: 24px; }
+.p-avatar { width: 70px; height: 70px; background: rgba(16, 185, 129, 0.1); border: 2px solid #10b981; border-radius: 20px; display: flex; justify-content: center; align-items: center; color: #10b981; margin-bottom: 12px; }
+.p-profile-header h2 { margin: 0; font-size: 1.4rem; }
+.p-profile-header p { margin: 4px 0 0; color: #94a3b8; }
+
+.p-stats-row { display: flex; justify-content: center; gap: 40px; margin-bottom: 30px; }
+.p-stat { text-align: center; }
+.p-stat h4 { margin: 0; font-size: 1.5rem; color: #fff; }
+.p-stat span { color: #94a3b8; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+
+.p-section-title { font-size: 0.9rem; color: #94a3b8; margin: 0 0 12px; }
+.p-recent-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 30px; }
+.p-recent-item { aspect-ratio: 1; border-radius: 16px; }
+.bg-1 { background: linear-gradient(135deg, #10b981, #064e3b); }
+.bg-2 { background: linear-gradient(135deg, #3b82f6, #1e3a8a); }
+.bg-3 { background: linear-gradient(135deg, #f59e0b, #78350f); }
+.bg-4 { background: linear-gradient(135deg, #8b5cf6, #4c1d95); }
+
+.p-menu { display: flex; flex-direction: column; gap: 8px; }
+.p-menu-item { background: #1e293b; padding: 16px; border-radius: 12px; display: flex; align-items: center; gap: 12px; font-weight: 500; cursor: pointer; }
+
+/* Bottom Nav */
+.p-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 20px 20px;
+  background: #0f172a;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  z-index: 20;
+}
+.p-nav-item {
+  background: none;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  transition: color 0.3s;
+  padding: 10px;
+}
+.p-nav-item.active { color: #10b981; }
+.p-nav-fab {
+  width: 50px;
+  height: 50px;
+  background: #10b981;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+  transform: translateY(-15px);
+  transition: transform 0.2s;
+}
+.p-nav-item.active .p-nav-fab {
+  transform: translateY(-15px) scale(1.1);
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.6);
+}
+</style>
+
+<script>
+// Scoped script for AppPattern
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.querySelector('.app-pattern-container');
+  if(!container) return;
+
+  const navItems = container.querySelectorAll('.p-nav-item');
+  const screens = container.querySelectorAll('.p-screen');
+  const startBtn = container.querySelector('#p-start-btn');
+  const navViewerBtn = container.querySelector('#p-nav-viewer-btn');
+
+  const switchScreen = (target: string) => {
+    navItems.forEach(n => n.classList.remove('active'));
+    
+    // Find the nav item that corresponds to the target and make it active
+    const activeNav = Array.from(navItems).find(n => n.getAttribute('data-target') === target);
+    if(activeNav) activeNav.classList.add('active');
+
+    screens.forEach(screen => {
+      if(screen.id === `p-screen-${target}`) {
+        screen.classList.add('active');
+      } else {
+        screen.classList.remove('active');
+      }
+    });
+  };
+
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const target = item.getAttribute('data-target');
+      if(target) switchScreen(target);
+    });
+  });
+
+  if(startBtn && navViewerBtn) {
+    startBtn.addEventListener('click', () => {
+      switchScreen('viewer');
+    });
+  }
+});
+</script>

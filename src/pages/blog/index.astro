@@ -1,0 +1,74 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Blog"
+  description="Learn more about our company, team, and mission."
+  image="/images/blog/about-og.jpg"
+  current="blog"
+  additionalStyles=""
+>
+  <Fragment slot="headContent">
+    <link rel="stylesheet" href="/css/blog.css" />
+  </Fragment>
+
+  <section>
+    <div class="container">
+      <h1 class="animate-item from-top">Fisto Tech Blog: Ideas, Trends & Solutions in Creative Technology</h1>
+      <p class="animate-item from-top">
+        Explore expert blogs on AR/VR, app development, web design, animation,
+        and digital tech. Stay ahead with insights, trends, and solutions from
+        Fisto Tech Pvt Ltd.
+      </p>
+      <br />
+
+      <div class="blog-row">
+        <!--  ******************* blog1 ******************************-->
+        <div class="blog animate-item from-left">
+          <div class="blog-image">
+            <img
+              src="/images/blog/3d-ar-vr-transforming-industries.jpg"
+              alt="Fisotech blog 1"
+            />
+            <!-- <div class="date">June 10, 2024</div> -->
+          </div>
+          <div class="blog-content">
+            <h2>
+              Revolutionizing Digital Experiences: How 3D Animation, AR and VR
+              Are Transforming Industries
+            </h2>
+            <p>
+              Transform your brand experience with immersive 3D animation, AR
+              and VR solutions by Fisto. Engage, excite, and innovate in every
+              virtual dimension.
+            </p>
+            <a href="/blog/3d-ar-vr-transforming-industries.html" 
+              >Read More</a
+            >
+          </div>
+        </div>
+
+        <!--  ******************* blog2 ******************************-->
+        <div class="blog animate-item from-right">
+          <div class="blog-image">
+            <img
+              src="/images/blog/boost-business-with-ar-vr.jpg"
+              alt="Fisotech blog 2"
+            />
+            <!-- <div class="date">June 11, 2024</div> -->
+          </div>
+          <div class="blog-content">
+            <h2>How 2D/3D Animation & AR/VR Boost Business Growth</h2>
+            <p>
+              Discover how 2D/3D animation, AR/VR solutions, and interactive
+              digital catalogues transform customer engagement and boost
+              business success in 2025.
+            </p>
+            <a href="/blog/boost-business-with-ar-vr.html" >Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

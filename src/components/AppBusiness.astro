@@ -1,0 +1,413 @@
+---
+// AppBusiness.astro
+---
+
+<div class="app-business-container">
+  
+  <!-- APP HEADER -->
+  <div class="b-header">
+    <div class="b-header__title" id="bHeaderTitle">Dashboard</div>
+    <div class="b-header__actions">
+      <!-- Bell Icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+    </div>
+  </div>
+
+  <!-- SCREENS -->
+  <div class="b-screens">
+    
+    <!-- DASHBOARD -->
+    <div class="b-screen active" id="b-screen-dashboard">
+      <div class="b-content">
+        <!-- Welcome Card -->
+        <div class="b-welcome-card glass-panel">
+          <div class="b-welcome-text">
+            <h3>Welcome back,</h3>
+            <h2>Alex Developer</h2>
+          </div>
+          <div class="b-welcome-avatar"></div>
+        </div>
+
+        <h3 class="b-section-title mt-4">Overview</h3>
+        <div class="b-metrics-grid">
+          <div class="b-metric-box glass-panel">
+            <span class="b-metric-label">Customers</span>
+            <span class="b-metric-value">1,254</span>
+          </div>
+          <div class="b-metric-box glass-panel">
+            <span class="b-metric-label">Orders</span>
+            <span class="b-metric-value">856</span>
+          </div>
+          <div class="b-metric-box glass-panel">
+            <span class="b-metric-label">Revenue</span>
+            <span class="b-metric-value">$45,280</span>
+          </div>
+          <div class="b-metric-box glass-panel">
+            <span class="b-metric-label">Active Users</span>
+            <span class="b-metric-value">328</span>
+          </div>
+        </div>
+
+        <h3 class="b-section-title mt-4">Quick Actions</h3>
+        <div class="b-actions-row">
+          <button class="b-action-btn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+          <button class="b-action-btn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></button>
+          <button class="b-action-btn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ANALYTICS -->
+    <div class="b-screen" id="b-screen-analytics">
+      <div class="b-content">
+        <h3 class="b-section-title">Revenue Growth</h3>
+        <div class="b-chart glass-panel">
+          <div class="b-bar-chart">
+            <div class="b-bar" style="height: 40%"></div>
+            <div class="b-bar" style="height: 60%"></div>
+            <div class="b-bar" style="height: 35%"></div>
+            <div class="b-bar" style="height: 80%"></div>
+            <div class="b-bar" style="height: 100%"></div>
+            <div class="b-bar" style="height: 70%"></div>
+          </div>
+        </div>
+
+        <h3 class="b-section-title mt-4">Statistics</h3>
+        <div class="b-stats-list">
+          <div class="b-stat-item glass-panel">
+            <div class="b-stat-info">
+              <h4>Weekly Sales</h4>
+              <p>+12.5% from last week</p>
+            </div>
+            <div class="b-stat-num">$12,450</div>
+          </div>
+          <div class="b-stat-item glass-panel">
+            <div class="b-stat-info">
+              <h4>User Growth</h4>
+              <p>+5.2% from last week</p>
+            </div>
+            <div class="b-stat-num">3,492</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ORDERS -->
+    <div class="b-screen" id="b-screen-orders">
+      <div class="b-content">
+        <div class="b-search glass-panel">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <span>Search orders...</span>
+        </div>
+
+        <div class="b-order-list mt-4">
+          <div class="b-order-card glass-panel">
+            <div class="b-order-header">
+              <span class="b-order-id">#ORD-4092</span>
+              <span class="b-chip success">Delivered</span>
+            </div>
+            <p class="b-order-desc">Premium Enterprise License</p>
+          </div>
+          <div class="b-order-card glass-panel">
+            <div class="b-order-header">
+              <span class="b-order-id">#ORD-4091</span>
+              <span class="b-chip warning">Processing</span>
+            </div>
+            <p class="b-order-desc">API Integration Setup</p>
+          </div>
+          <div class="b-order-card glass-panel">
+            <div class="b-order-header">
+              <span class="b-order-id">#ORD-4090</span>
+              <span class="b-chip success">Delivered</span>
+            </div>
+            <p class="b-order-desc">Cloud Storage Expansion</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROFILE -->
+    <div class="b-screen" id="b-screen-profile">
+      <div class="b-content b-center">
+        <div class="b-profile-avatar"></div>
+        <h2 class="b-profile-name">Alex Developer</h2>
+        <p class="b-profile-role">Corporate Admin</p>
+
+        <div class="b-achievements mt-4">
+          <div class="b-achievement glass-panel">
+            <h3>Top Seller</h3>
+            <p>2026 Award</p>
+          </div>
+          <div class="b-achievement glass-panel">
+            <h3>5 Years</h3>
+            <p>Anniversary</p>
+          </div>
+        </div>
+
+        <div class="b-menu mt-4">
+          <div class="b-menu-item glass-panel">Edit Profile</div>
+          <div class="b-menu-item glass-panel">Company Details</div>
+          <div class="b-menu-item glass-panel b-text-red">Logout</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SETTINGS -->
+    <div class="b-screen" id="b-screen-settings">
+      <div class="b-content">
+        <h3 class="b-section-title">Preferences</h3>
+        <div class="b-menu">
+          <div class="b-menu-item glass-panel flex-between">
+            <span>Dark Theme</span>
+            <div class="b-toggle active"></div>
+          </div>
+          <div class="b-menu-item glass-panel flex-between">
+            <span>Notifications</span>
+            <div class="b-toggle active"></div>
+          </div>
+          <div class="b-menu-item glass-panel flex-between">
+            <span>Language</span>
+            <span class="b-text-muted">English</span>
+          </div>
+        </div>
+        
+        <h3 class="b-section-title mt-4">Security</h3>
+        <div class="b-menu">
+          <div class="b-menu-item glass-panel">Privacy Policy</div>
+          <div class="b-menu-item glass-panel">Change Password</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM NAV -->
+  <div class="b-nav">
+    <button class="b-nav-item active" data-target="dashboard">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+      <span>Dash</span>
+    </button>
+    <button class="b-nav-item" data-target="analytics">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      <span>Stats</span>
+    </button>
+    <button class="b-nav-item" data-target="orders">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+      <span>Orders</span>
+    </button>
+    <button class="b-nav-item" data-target="profile">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span>Profile</span>
+    </button>
+    <button class="b-nav-item" data-target="settings">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      <span>Settings</span>
+    </button>
+  </div>
+
+</div>
+
+<style>
+.app-business-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(180deg, #0f172a 0%, #020617 100%);
+  color: #f8fafc;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+/* Header */
+.b-header {
+  padding: 40px 20px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+.b-header__title { font-size: 1.25rem; font-weight: 600; }
+.b-header__actions { color: #94a3b8; }
+
+/* Screens Area */
+.b-screens {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+.b-screen {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  scrollbar-width: none;
+  padding: 0 20px 20px;
+  opacity: 0;
+  transform: translateX(20px);
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.b-screen::-webkit-scrollbar { display: none; }
+.b-screen.active {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+.b-content { padding-bottom: 20px; }
+
+/* Dashboard */
+.b-welcome-card { display: flex; justify-content: space-between; align-items: center; background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(14, 165, 233, 0.05)); border-color: rgba(59, 130, 246, 0.2); }
+.b-welcome-text h3 { font-size: 0.9rem; color: #94a3b8; font-weight: 400; margin:0; }
+.b-welcome-text h2 { font-size: 1.4rem; font-weight: 600; margin: 4px 0 0; color: #fff; }
+.b-welcome-avatar { width: 48px; height: 48px; border-radius: 50%; background: #3b82f6; border: 2px solid #60a5fa; }
+
+.b-section-title { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: #64748b; margin: 0 0 12px; }
+.mt-4 { margin-top: 24px; }
+
+.b-metrics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.b-metric-box { display: flex; flex-direction: column; gap: 6px; }
+.b-metric-label { font-size: 0.8rem; color: #94a3b8; }
+.b-metric-value { font-size: 1.3rem; font-weight: 700; color: #fff; }
+
+.b-actions-row { display: flex; gap: 12px; }
+.b-action-btn { flex: 1; aspect-ratio: 1; border-radius: 16px; background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.2); color: #60a5fa; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.3s; }
+.b-action-btn:active { background: rgba(59, 130, 246, 0.2); transform: scale(0.95); }
+
+/* Analytics */
+.b-chart { height: 160px; display: flex; align-items: flex-end; justify-content: space-between; gap: 8px; padding-top: 30px; }
+.b-bar-chart { width: 100%; height: 100%; display: flex; align-items: flex-end; justify-content: space-between; gap: 8px; }
+.b-bar { flex: 1; background: linear-gradient(0deg, #3b82f6, #60a5fa); border-radius: 4px 4px 0 0; animation: growUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; transform-origin: bottom; }
+@keyframes growUp { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+
+.b-stats-list { display: flex; flex-direction: column; gap: 12px; }
+.b-stat-item { display: flex; justify-content: space-between; align-items: center; }
+.b-stat-info h4 { margin: 0 0 4px; font-weight: 500; font-size: 1rem; }
+.b-stat-info p { margin: 0; font-size: 0.8rem; color: #10b981; }
+.b-stat-num { font-size: 1.2rem; font-weight: 600; }
+
+/* Orders */
+.b-search { display: flex; align-items: center; gap: 10px; color: #94a3b8; padding: 12px 16px; }
+.b-search span { font-size: 0.9rem; }
+.b-order-list { display: flex; flex-direction: column; gap: 12px; }
+.b-order-card { padding: 16px; }
+.b-order-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.b-order-id { font-weight: 600; font-size: 0.9rem; }
+.b-chip { padding: 4px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; }
+.b-chip.success { background: rgba(16, 185, 129, 0.1); color: #34d399; }
+.b-chip.warning { background: rgba(245, 158, 11, 0.1); color: #fbbf24; }
+.b-order-desc { margin: 0; font-size: 0.85rem; color: #94a3b8; }
+
+/* Profile & Settings */
+.b-center { text-align: center; display: flex; flex-direction: column; align-items: center; }
+.b-profile-avatar { width: 80px; height: 80px; border-radius: 50%; background: #3b82f6; margin-bottom: 16px; }
+.b-profile-name { margin: 0 0 4px; font-size: 1.3rem; }
+.b-profile-role { margin: 0; font-size: 0.9rem; color: #94a3b8; }
+.b-achievements { display: flex; gap: 12px; width: 100%; }
+.b-achievement { flex: 1; padding: 16px 10px; }
+.b-achievement h3 { margin: 0 0 4px; font-size: 0.9rem; color: #3b82f6; }
+.b-achievement p { margin: 0; font-size: 0.8rem; color: #94a3b8; }
+.b-menu { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+.b-menu-item { padding: 16px; text-align: left; font-size: 0.95rem; cursor: pointer; }
+.b-menu-item:active { background: rgba(255,255,255,0.08); }
+.b-text-red { color: #f87171; }
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
+.b-text-muted { color: #94a3b8; font-size: 0.9rem; }
+.b-toggle { width: 44px; height: 24px; border-radius: 12px; background: #334155; position: relative; transition: background 0.3s; }
+.b-toggle::after { content: ''; position: absolute; top: 2px; left: 2px; width: 20px; height: 20px; background: #fff; border-radius: 50%; transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+.b-toggle.active { background: #3b82f6; }
+.b-toggle.active::after { transform: translateX(20px); }
+
+/* Bottom Nav */
+.b-nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 10px 24px;
+  background: rgba(2, 6, 23, 0.8);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  z-index: 20;
+}
+.b-nav-item {
+  background: none;
+  border: none;
+  color: #64748b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.b-nav-item svg { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.b-nav-item.active { color: #3b82f6; }
+.b-nav-item.active svg { transform: translateY(-4px) scale(1.15); }
+</style>
+
+<script>
+// Scoped script for AppBusiness
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.querySelector('.app-business-container');
+  if(!container) return;
+
+  const navItems = container.querySelectorAll('.b-nav-item');
+  const screens = container.querySelectorAll('.b-screen');
+  const headerTitle = container.querySelector('#bHeaderTitle') as HTMLElement;
+  const toggles = container.querySelectorAll('.b-toggle');
+
+  const titles = {
+    'dashboard': 'Dashboard',
+    'analytics': 'Analytics',
+    'orders': 'Orders',
+    'profile': 'My Profile',
+    'settings': 'Settings'
+  };
+
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      // Nav active state
+      navItems.forEach(n => n.classList.remove('active'));
+      item.classList.add('active');
+
+      const target = item.getAttribute('data-target');
+
+      // Screens
+      screens.forEach(screen => {
+        if(screen.id === `b-screen-${target}`) {
+          screen.classList.add('active');
+          // re-trigger animations
+          const bars = screen.querySelectorAll('.b-bar');
+          bars.forEach((bar: any) => {
+            bar.style.animation = 'none';
+            bar.offsetHeight;
+            bar.style.animation = null;
+          });
+        } else {
+          screen.classList.remove('active');
+        }
+      });
+
+      // Header
+      if(headerTitle && target) {
+        headerTitle.style.opacity = '0';
+        setTimeout(() => {
+          headerTitle.textContent = titles[target] || 'App';
+          headerTitle.style.opacity = '1';
+        }, 150);
+      }
+    });
+  });
+
+  toggles.forEach(toggle => {
+    toggle.addEventListener('click', () => toggle.classList.toggle('active'));
+  });
+});
+</script>

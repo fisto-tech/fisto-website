@@ -1,0 +1,426 @@
+---
+// AppEvent.astro
+---
+
+<div class="app-event-container">
+  
+  <div class="e-header">
+    <div class="e-header__title" id="eHeaderTitle">Dashboard</div>
+    <div class="e-header__actions">
+      <!-- QR Icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><path d="M7 7h1v1H7z"/><path d="M16 7h1v1h-1z"/><path d="M7 16h1v1H7z"/><path d="M11 7h2v2h-2z"/><path d="M11 15h2v2h-2z"/></svg>
+    </div>
+  </div>
+
+  <div class="e-screens">
+    
+    <!-- DASHBOARD -->
+    <div class="e-screen active" id="e-screen-dashboard">
+      <div class="e-content">
+        <!-- Event Summary Cards -->
+        <div class="e-summary-grid">
+          <div class="e-card e-card-primary">
+            <h4>Registrations</h4>
+            <h2>842</h2>
+            <p>+12 Today</p>
+          </div>
+          <div class="e-card">
+            <h4>Visitors Today</h4>
+            <h2>124</h2>
+          </div>
+          <div class="e-card">
+            <h4>Checked In</h4>
+            <h2>612</h2>
+          </div>
+          <div class="e-card">
+            <h4>Pending</h4>
+            <h2>230</h2>
+          </div>
+        </div>
+
+        <h3 class="e-section-title mt-4">Upcoming Events</h3>
+        <div class="e-event-list">
+          <div class="e-list-item">
+            <div class="e-date-box">
+              <span class="e-month">NOV</span>
+              <span class="e-day">14</span>
+            </div>
+            <div class="e-list-info">
+              <h4>Tech Innovators Summit</h4>
+              <p>Main Hall, 10:00 AM</p>
+            </div>
+          </div>
+          <div class="e-list-item">
+            <div class="e-date-box">
+              <span class="e-month">NOV</span>
+              <span class="e-day">21</span>
+            </div>
+            <div class="e-list-info">
+              <h4>Design Workshops</h4>
+              <p>Room 304, 2:00 PM</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- REGISTER -->
+    <div class="e-screen" id="e-screen-register">
+      <div class="e-content">
+        <h3 class="e-section-title">New Customer</h3>
+        <form class="e-form" id="eRegisterForm">
+          <div class="e-input-group">
+            <label>Full Name</label>
+            <input type="text" id="r_name" placeholder="John Doe" required />
+          </div>
+          <div class="e-input-group">
+            <label>Company</label>
+            <input type="text" id="r_company" placeholder="Acme Corp" required />
+          </div>
+          <div class="e-input-group">
+            <label>Email</label>
+            <input type="email" id="r_email" placeholder="john@example.com" />
+          </div>
+          <div class="e-input-group">
+            <label>Purpose of Visit</label>
+            <select id="r_purpose">
+              <option>General Inquiry</option>
+              <option>VIP Guest</option>
+              <option>Speaker</option>
+              <option>Exhibitor</option>
+            </select>
+          </div>
+          
+          <button type="submit" class="e-submit-btn">
+            <span>Register Visitor</span>
+            <div class="e-spinner hidden" id="e-spinner"></div>
+          </button>
+        </form>
+
+        <div class="e-success-msg hidden" id="eSuccessMsg">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <h4>Registration Successful!</h4>
+          <p>Customer added to the database.</p>
+          <button class="e-btn-outline" id="e-reset-btn">Add Another</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- LIST (REGISTERED CUSTOMERS) -->
+    <div class="e-screen" id="e-screen-list">
+      <div class="e-content">
+        <div class="e-search-bar">
+          <input type="text" placeholder="Search visitors..." />
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+
+        <div class="e-visitors" id="eVisitorsList">
+          <!-- Dynamic Items will be prepended here -->
+          <div class="e-visitor-card">
+            <div class="e-visitor-header">
+              <h4>Sarah Connor</h4>
+              <span class="e-badge e-badge-vip">VIP Guest</span>
+            </div>
+            <p>Cyberdyne Systems</p>
+            <div class="e-visitor-footer">
+              <span class="e-time">Today, 09:42 AM</span>
+              <button class="e-btn-small">Check In</button>
+            </div>
+          </div>
+          <div class="e-visitor-card">
+            <div class="e-visitor-header">
+              <h4>Michael Scott</h4>
+              <span class="e-badge">Exhibitor</span>
+            </div>
+            <p>Dunder Mifflin</p>
+            <div class="e-visitor-footer">
+              <span class="e-time">Yesterday</span>
+              <button class="e-btn-small" disabled>Checked In</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ANALYTICS -->
+    <div class="e-screen" id="e-screen-analytics">
+      <div class="e-content">
+        <h3 class="e-section-title">Weekly Registrations</h3>
+        <div class="e-chart-card">
+          <div class="e-line-chart">
+            <!-- Simulated line chart using an SVG -->
+            <svg viewBox="0 0 100 50" preserveAspectRatio="none">
+              <path d="M0 45 L20 30 L40 35 L60 15 L80 20 L100 5" fill="none" stroke="#8b5cf6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="e-chart-path" />
+              <path d="M0 45 L20 30 L40 35 L60 15 L80 20 L100 5 L100 50 L0 50 Z" fill="url(#e-gradient)" stroke="none" />
+              <defs>
+                <linearGradient id="e-gradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="rgba(139, 92, 246, 0.4)" />
+                  <stop offset="100%" stop-color="rgba(139, 92, 246, 0)" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROFILE -->
+    <div class="e-screen" id="e-screen-profile">
+      <div class="e-content e-center">
+        <div class="e-qr-badge">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=EventOrganizer123" alt="QR Code" class="e-qr-img" />
+          <div class="e-qr-info">
+            <h3>Event Team</h3>
+            <p>Organizer ID: #984</p>
+          </div>
+        </div>
+        
+        <div class="e-settings-list mt-4">
+          <div class="e-setting-item">Manage Team</div>
+          <div class="e-setting-item">Export Data</div>
+          <div class="e-setting-item">App Settings</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="e-nav">
+    <button class="e-nav-item active" data-target="dashboard">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+      <span>Home</span>
+    </button>
+    <button class="e-nav-item" data-target="register">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+      <span>Register</span>
+    </button>
+    <button class="e-nav-item" data-target="list">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      <span>List</span>
+    </button>
+    <button class="e-nav-item" data-target="analytics">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      <span>Stats</span>
+    </button>
+    <button class="e-nav-item" data-target="profile">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      <span>Profile</span>
+    </button>
+  </div>
+
+</div>
+
+<style>
+.app-event-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background: #fdfcff;
+  color: #1e1b4b; /* Dark purple/indigo text */
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* Header */
+.e-header { padding: 40px 20px 15px; display: flex; justify-content: space-between; align-items: center; background: #fff; border-bottom: 1px solid #f3f4f6; z-index: 10; }
+.e-header__title { font-size: 1.25rem; font-weight: 700; color: #4c1d95; }
+.e-header__actions { color: #8b5cf6; }
+
+/* Screens */
+.e-screens { flex: 1; position: relative; overflow: hidden; }
+.e-screen { position: absolute; inset: 0; overflow-y: auto; scrollbar-width: none; padding: 20px; opacity: 0; transform: scale(0.95); pointer-events: none; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.e-screen::-webkit-scrollbar { display: none; }
+.e-screen.active { opacity: 1; transform: scale(1); pointer-events: auto; }
+
+/* Dashboard */
+.e-summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.e-card { background: #fff; border-radius: 16px; padding: 16px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); border: 1px solid #f3f4f6; }
+.e-card-primary { background: linear-gradient(135deg, #8b5cf6, #6d28d9); color: #fff; border: none; }
+.e-card-primary h4, .e-card-primary p { color: rgba(255,255,255,0.8); }
+.e-card h4 { margin: 0; font-size: 0.8rem; font-weight: 500; color: #6b7280; }
+.e-card h2 { margin: 8px 0 0; font-size: 1.5rem; font-weight: 800; }
+.e-card p { margin: 4px 0 0; font-size: 0.75rem; color: #10b981; }
+
+.e-section-title { font-size: 1rem; font-weight: 600; color: #312e81; margin: 0 0 16px; }
+.mt-4 { margin-top: 24px; }
+
+.e-event-list { display: flex; flex-direction: column; gap: 12px; }
+.e-list-item { background: #fff; border-radius: 16px; padding: 12px; display: flex; gap: 16px; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.02); border: 1px solid #f3f4f6; }
+.e-date-box { background: #f5f3ff; border-radius: 12px; width: 50px; height: 50px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #7c3aed; }
+.e-month { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; }
+.e-day { font-size: 1.2rem; font-weight: 800; line-height: 1; }
+.e-list-info h4 { margin: 0 0 4px; font-size: 0.9rem; color: #1e1b4b; }
+.e-list-info p { margin: 0; font-size: 0.8rem; color: #6b7280; }
+
+/* Register */
+.e-form { display: flex; flex-direction: column; gap: 16px; }
+.e-input-group { display: flex; flex-direction: column; gap: 6px; }
+.e-input-group label { font-size: 0.8rem; font-weight: 600; color: #4b5563; }
+.e-input-group input, .e-input-group select { padding: 12px 16px; border-radius: 12px; border: 1px solid #e5e7eb; background: #fff; font-size: 0.95rem; outline: none; transition: border-color 0.2s; }
+.e-input-group input:focus, .e-input-group select:focus { border-color: #8b5cf6; }
+
+.e-submit-btn { background: #8b5cf6; color: #fff; border: none; padding: 14px; border-radius: 12px; font-weight: 600; font-size: 1rem; margin-top: 10px; cursor: pointer; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3); transition: transform 0.2s; }
+.e-submit-btn:active { transform: scale(0.98); }
+.hidden { display: none !important; }
+.e-spinner { width: 20px; height: 20px; border: 3px solid rgba(255,255,255,0.3); border-top-color: #fff; border-radius: 50%; animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.e-success-msg { text-align: center; padding: 40px 20px; background: #fff; border-radius: 16px; border: 1px solid #f3f4f6; }
+.e-success-msg h4 { margin: 16px 0 8px; font-size: 1.2rem; color: #1e1b4b; }
+.e-success-msg p { margin: 0 0 20px; color: #6b7280; }
+.e-btn-outline { background: transparent; border: 1px solid #8b5cf6; color: #8b5cf6; padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; }
+
+/* List */
+.e-search-bar { display: flex; align-items: center; justify-content: space-between; background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 10px 16px; margin-bottom: 16px; }
+.e-search-bar input { border: none; outline: none; background: transparent; width: 100%; font-size: 0.95rem; }
+.e-search-bar svg { color: #9ca3af; }
+
+.e-visitors { display: flex; flex-direction: column; gap: 12px; }
+.e-visitor-card { background: #fff; border-radius: 16px; padding: 16px; border: 1px solid #f3f4f6; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+.e-visitor-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+.e-visitor-header h4 { margin: 0; font-size: 1rem; color: #1e1b4b; }
+.e-visitor-card p { margin: 0 0 12px; font-size: 0.85rem; color: #6b7280; }
+.e-badge { padding: 4px 8px; background: #f3f4f6; border-radius: 12px; font-size: 0.7rem; font-weight: 600; color: #4b5563; text-transform: uppercase; }
+.e-badge-vip { background: #fdf4ff; color: #c026d3; }
+.e-visitor-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #f3f4f6; padding-top: 12px; }
+.e-time { font-size: 0.75rem; color: #9ca3af; }
+.e-btn-small { background: #ede9fe; color: #7c3aed; border: none; padding: 6px 12px; border-radius: 8px; font-weight: 600; font-size: 0.75rem; cursor: pointer; }
+.e-btn-small[disabled] { background: #f3f4f6; color: #9ca3af; }
+
+/* Analytics */
+.e-chart-card { background: #fff; padding: 20px; border-radius: 16px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); border: 1px solid #f3f4f6; }
+.e-line-chart { width: 100%; height: 150px; }
+.e-line-chart svg { width: 100%; height: 100%; overflow: visible; }
+.e-chart-path { stroke-dasharray: 200; stroke-dashoffset: 200; animation: drawLine 2s ease-out forwards; }
+@keyframes drawLine { to { stroke-dashoffset: 0; } }
+
+/* Profile */
+.e-center { text-align: center; display: flex; flex-direction: column; align-items: center; }
+.e-qr-badge { background: #fff; padding: 20px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); width: 100%; max-width: 240px; }
+.e-qr-img { width: 100%; aspect-ratio: 1; border-radius: 12px; }
+.e-qr-info { margin-top: 16px; }
+.e-qr-info h3 { margin: 0; font-size: 1.2rem; color: #1e1b4b; }
+.e-qr-info p { margin: 4px 0 0; font-size: 0.85rem; color: #6b7280; }
+
+.e-settings-list { width: 100%; display: flex; flex-direction: column; gap: 8px; }
+.e-setting-item { background: #fff; padding: 16px; border-radius: 12px; border: 1px solid #f3f4f6; font-weight: 500; color: #4b5563; text-align: left; cursor: pointer; }
+
+/* Nav */
+.e-nav { display: flex; justify-content: space-around; padding: 12px 10px 24px; background: #fff; border-top: 1px solid #f3f4f6; z-index: 20; box-shadow: 0 -4px 12px rgba(0,0,0,0.02); }
+.e-nav-item { background: none; border: none; color: #9ca3af; display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 0.7rem; font-weight: 600; cursor: pointer; transition: color 0.3s; }
+.e-nav-item svg { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.e-nav-item.active { color: #8b5cf6; }
+.e-nav-item.active svg { transform: translateY(-4px) scale(1.15); }
+</style>
+
+<script>
+// Scoped script for AppEvent
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.querySelector('.app-event-container');
+  if(!container) return;
+
+  const navItems = container.querySelectorAll('.e-nav-item');
+  const screens = container.querySelectorAll('.e-screen');
+  const headerTitle = container.querySelector('#eHeaderTitle') as HTMLElement;
+
+  const titles = {
+    'dashboard': 'Event Dashboard',
+    'register': 'New Registration',
+    'list': 'Attendees',
+    'analytics': 'Statistics',
+    'profile': 'Organizer'
+  };
+
+  const switchScreen = (target: string) => {
+    navItems.forEach(n => n.classList.remove('active'));
+    const activeNav = Array.from(navItems).find(n => n.getAttribute('data-target') === target);
+    if(activeNav) activeNav.classList.add('active');
+
+    screens.forEach(screen => {
+      if(screen.id === `e-screen-${target}`) {
+        screen.classList.add('active');
+        // trigger animation
+        const paths = screen.querySelectorAll('.e-chart-path');
+        paths.forEach((path: any) => {
+          path.style.animation = 'none';
+          path.offsetHeight;
+          path.style.animation = null;
+        });
+      } else {
+        screen.classList.remove('active');
+      }
+    });
+
+    if(headerTitle && target) {
+      headerTitle.style.opacity = '0';
+      setTimeout(() => {
+        headerTitle.textContent = titles[target] || 'App';
+        headerTitle.style.opacity = '1';
+      }, 150);
+    }
+  };
+
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const target = item.getAttribute('data-target');
+      if(target) switchScreen(target);
+    });
+  });
+
+  // Form Logic
+  const form = container.querySelector('#eRegisterForm');
+  const submitBtn = container.querySelector('.e-submit-btn span') as HTMLElement;
+  const spinner = container.querySelector('#e-spinner');
+  const successMsg = container.querySelector('#eSuccessMsg');
+  const resetBtn = container.querySelector('#e-reset-btn');
+  const visitorsList = container.querySelector('#eVisitorsList');
+
+  if(form && submitBtn && spinner && successMsg) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // Get values
+      const name = (container.querySelector('#r_name') as HTMLInputElement).value;
+      const company = (container.querySelector('#r_company') as HTMLInputElement).value;
+      const purpose = (container.querySelector('#r_purpose') as HTMLSelectElement).value;
+
+      submitBtn.classList.add('hidden');
+      spinner.classList.remove('hidden');
+
+      setTimeout(() => {
+        spinner.classList.add('hidden');
+        form.classList.add('hidden');
+        successMsg.classList.remove('hidden');
+
+        // Add to list
+        if(visitorsList) {
+          const newCard = document.createElement('div');
+          newCard.className = 'e-visitor-card';
+          newCard.innerHTML = `
+            <div class="e-visitor-header">
+              <h4>${name}</h4>
+              <span class="e-badge e-badge-vip">${purpose}</span>
+            </div>
+            <p>${company}</p>
+            <div class="e-visitor-footer">
+              <span class="e-time">Just Now</span>
+              <button class="e-btn-small">Check In</button>
+            </div>
+          `;
+          visitorsList.insertBefore(newCard, visitorsList.firstChild);
+        }
+
+      }, 1500);
+    });
+  }
+
+  if(resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      successMsg.classList.add('hidden');
+      form.classList.remove('hidden');
+      submitBtn.classList.remove('hidden');
+      (form as HTMLFormElement).reset();
+    });
+  }
+});
+</script>

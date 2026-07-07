@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Works" current="services">
+     <Fragment slot="headContent">
+
+    <link rel="stylesheet" href="/css/works.css" />
+    
+  </Fragment>
+    <div class="works-header">
+        <h1>Experience over explanation</h1>
+        <h2>Custom-built immersive software shaping industries worldwide</h2>
+    </div>
+
+    <section class="works-content">
+        <div class="flex-1">
+            <h2>AR/ VR/ MR</h2>
+            <ul>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, minima?</li>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, minima?</li>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, minima?</li>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, minima?</li>
+            </ul>
+        </div>
+        <div class="flex-2">
+            <div class="video-grid">
+                <video src="/videos/video_1.mp4" autoplay loop muted></video>
+                <video src="/videos/video_1.mp4" autoplay loop muted></video>
+                <video src="/videos/video_1.mp4" autoplay loop muted></video>
+                <video src="/videos/video_1.mp4" autoplay loop muted></video>
+            </div>
+        </div>
+    </section>
+
+</BaseLayout>

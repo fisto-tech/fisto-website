@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ImageReveal from '../components/ImageReveal.astro';
+import IndustriesSection from '../components/IndustriesSection.astro';
+import '../styles/service1.css';
+---
+
+<BaseLayout
+  title="AR/ VR/ MR Development"
+  description="AR/ VR/ MR Development"
+  image="/images/about-og.jpg"
+  current="about"
+   additionalStyles="/css/services.css"
+>
+<!-- Optional header if you want to keep the title spacing, but the prompt asked for full-screen immersive. I'll wrap it nicely. -->
+<!-- <div class="center-spacer">
+    <h1 class="new-pg-title">AR/ VR/ MR Development</h1>
+</div> -->
+
+<ImageReveal 
+  imageBefore="/images/services/AR-VR/normal-world-img.webp" 
+  imageAfter="/images/services/AR-VR/AR-world-img.webp" 
+/>
+
+<IndustriesSection />
+
+</BaseLayout>

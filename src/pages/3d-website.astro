@@ -1,0 +1,372 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GalleryModal from '../components/GalleryModal.astro';
+import '../styles/service1.css';
+
+// Placeholder data for the gallery modal
+const galleryItems = [
+  { title: "Manufacturing 3D Hub", image: "https://placehold.co/600x400/1a1a1a/ffffff?text=Manufacturing", video: "https://www.w3schools.com/html/mov_bbb.mp4" },
+  { title: "Healthcare Virtual Tour", image: "https://placehold.co/600x400/1a1a1a/ffffff?text=Healthcare", video: "https://www.w3schools.com/html/mov_bbb.mp4" },
+  { title: "Real Estate Walkthrough", image: "https://placehold.co/600x400/1a1a1a/ffffff?text=Real+Estate", video: "https://www.w3schools.com/html/mov_bbb.mp4" },
+  { title: "Retail 3D Store", image: "https://placehold.co/600x400/1a1a1a/ffffff?text=Retail", video: "https://www.w3schools.com/html/mov_bbb.mp4" },
+  { title: "Education Metaverse", image: "https://placehold.co/600x400/1a1a1a/ffffff?text=Education", video: "https://www.w3schools.com/html/mov_bbb.mp4" }
+];
+
+const tabs = [
+  { id: "manufacturing", label: "Manufacturing", url: "https://example.com/3d/manufacturing" },
+  { id: "healthcare", label: "Healthcare", url: "https://example.com/3d/healthcare" },
+  { id: "real-estate", label: "Real Estate", url: "https://example.com/3d/realestate" },
+  { id: "retail", label: "Retail", url: "https://example.com/3d/retail" },
+  { id: "education", label: "Education", url: "https://example.com/3d/education" }
+];
+---
+
+<BaseLayout
+  title="3D Website Development"
+  description="Immersive 3D Website Development"
+  image="/images/about-og.jpg"
+  current="about"
+  additionalStyles="/css/services.css"
+>
+
+  <!-- Hero Section -->
+  <section class="hero-3d">
+    <div class="hero-3d__content">
+      <h1 class="hero-3d__title">Immersive 3D <br/> <span class="highlight">Web Experiences</span></h1>
+      <p class="hero-3d__desc">
+        Step into the future of the web. We build high-performance, interactive 3D environments 
+        tailored for your industry to engage your audience like never before.
+      </p>
+    </div>
+    <div class="hero-3d__graphic">
+      <!-- Placeholder for a stunning 3D graphic or video -->
+      <img src="https://placehold.co/800x600/0c2025/22d3ee?text=3D+Hero+Graphic" alt="3D Experience Graphic" class="hero-3d__image" />
+    </div>
+  </section>
+
+  <!-- Interactive Demo Section -->
+  <section class="demo-section">
+    
+    <!-- Tabs Header -->
+    <div class="demo-tabs__header">
+      <div class="demo-tabs__list" role="tablist">
+        {tabs.map((tab, idx) => (
+          <button 
+            class={`demo-tab__btn ${idx === 0 ? 'active' : ''}`} 
+            role="tab" 
+            data-target={tab.id}
+            data-url={tab.url}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
+      
+      <button class="demo-tabs__view-more" onclick="window.openGalleryModal()">
+        View More Demos
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+      </button>
+    </div>
+
+    <!-- Animated Reveal Container -->
+    <div class="demo-viewer-wrapper">
+      <div class="demo-viewer__loader" id="demoLoader">
+        <div class="spinner"></div>
+        <p>Loading 3D Experience...</p>
+      </div>
+      
+      <div class="demo-viewer" id="demoViewer">
+        <!-- The iframe source will be swapped via Javascript -->
+        <iframe 
+          id="demoIframe"
+          src={tabs[0].url} 
+          title="3D Website Demo" 
+          frameborder="0" 
+          allow="autoplay; fullscreen; vr" 
+          class="demo-iframe"
+        ></iframe>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Gallery Popup Modal -->
+  <GalleryModal items={galleryItems} />
+
+</BaseLayout>
+
+<style>
+/* --- Hero Section --- */
+.hero-3d {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  padding: 6rem 5% 4rem;
+  background: linear-gradient(135deg, #071518 0%, #0c2025 100%);
+  min-height: 70vh;
+}
+
+@media (min-width: 1024px) {
+  .hero-3d {
+    flex-direction: row;
+    justify-content: space-between;
+    min-height: 100vh;
+    height: 100vh;
+  }
+}
+
+.hero-3d__content {
+  flex: 1;
+  max-width: 600px;
+  color: #fff;
+  z-index: 2;
+  margin-top: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .hero-3d__content {
+    margin-top: 0;
+    padding-right: 4rem;
+  }
+}
+
+.hero-3d__title {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+.highlight {
+  color: #22d3ee;
+  background: -webkit-linear-gradient(0deg, #22d3ee, #e8a817);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-3d__desc {
+  font-size: 1.25rem;
+  color: #a3b8bc;
+  line-height: 1.6;
+}
+
+.hero-3d__graphic {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-3d__image {
+  width: 100%;
+  max-width: 700px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+/* --- Interactive Demo Section --- */
+.demo-section {
+  padding: 4rem 5%;
+  background-color: #040e1b; /* Matches the dark theme */
+  min-height: auto;
+}
+
+@media (min-width: 1024px) {
+  .demo-section {
+    min-height: 100vh;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.demo-tabs__header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .demo-tabs__header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.demo-tabs__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.demo-tab__btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #a3b8bc;
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.demo-tab__btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+}
+
+.demo-tab__btn.active {
+  background: #22d3ee;
+  border-color: #22d3ee;
+  color: #040e1b;
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
+}
+
+.demo-tabs__view-more {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(90deg, #e8a817, #d97706);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.demo-tabs__view-more:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(232, 168, 23, 0.3);
+}
+
+/* --- Animated Reveal Container --- */
+.demo-viewer-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 800px;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: #0c2025;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+}
+
+.demo-viewer {
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.demo-viewer.is-animating {
+  opacity: 0;
+  transform: scale(0.95);
+  pointer-events: none; /* Disable interaction during transition */
+}
+
+.demo-iframe {
+  width: 100%;
+  height: 100%;
+  background: #fff; /* Placeholder background */
+}
+
+/* Loader */
+.demo-viewer__loader {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  color: #22d3ee;
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.demo-viewer__loader.active {
+  opacity: 1;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(34, 211, 238, 0.2);
+  border-top-color: #22d3ee;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.demo-tab__btn');
+  const viewer = document.getElementById('demoViewer');
+  const iframe = document.getElementById('demoIframe') as HTMLIFrameElement;
+  const loader = document.getElementById('demoLoader');
+
+  if (!viewer || !iframe || !tabs.length) return;
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Don't do anything if clicking the already active tab
+      if (tab.classList.contains('active')) return;
+
+      // Update Active Tab Styling
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      const targetUrl = tab.getAttribute('data-url');
+
+      // Trigger closing animation
+      viewer.classList.add('is-animating');
+      if(loader) loader.classList.add('active');
+
+      // Wait for the closing animation to finish (0.5s matches CSS transition)
+      setTimeout(() => {
+        // Swap iframe source
+        if(targetUrl) iframe.src = targetUrl;
+        
+        // When iframe loads, trigger opening animation
+        iframe.onload = () => {
+          if(loader) loader.classList.remove('active');
+          viewer.classList.remove('is-animating');
+        };
+        
+        // Fallback just in case load event fails or takes too long
+        setTimeout(() => {
+          if (viewer.classList.contains('is-animating')) {
+            if(loader) loader.classList.remove('active');
+            viewer.classList.remove('is-animating');
+          }
+        }, 1500);
+
+      }, 500);
+    });
+  });
+});
+</script>

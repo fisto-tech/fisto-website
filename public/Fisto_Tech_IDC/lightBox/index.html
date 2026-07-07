@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <!-- <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.1/css/font-awesome.min.css'> -->
+  <link rel="icon" href="../logo.svg">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Arial">
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+  <!-- Tailwind Css  -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <title>FISTO TECH IDC</title>
+  <style>
+    .colorpick-eyedropper-input-trigger {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <!--******************************** 3D Models ***************************************************-->
+  <!--******************* model start*************************-->
+
+
+  <!-- ==============================100ml-round-container start======================= -->
+
+  <div class="lightbox-target" id="100ml-round-container">
+    <div class="position-relative bg-[#dfd9d9] background_color1">
+
+      <model-viewer src="./assets/models/100ml-round-container.glb" ar-modes="webxr scene-viewer quick-look"
+        camera-controls field-of-view="30deg"
+         shadow-intensity="1" disable-pan disable-tap></model-viewer>
+      <div class="progress-bar hide" slot="progress-bar">
+        <div class="update-bar"></div>
+      </div>
+
+      </model-viewer>
+    </div>
+
+    <a class="lightbox-close" href="#" onclick="javascript:window.close()"></a>
+    <div class="deg">
+      <img src="./assets/images/360-degrees.webp" alt="">
+    </div>
+
+
+
+  </div>
+
+  <!-- ==============================100ml-round-container end======================= -->
+
+  <!-- ==============================flow-meter start======================= -->
+
+  <div class="lightbox-target" id="flow-meter">
+    <div class="position-relative bg-[#e2e2e2] background_color2">
+
+      <model-viewer src="./assets/models/flow-meter.glb" ar-modes="webxr scene-viewer quick-look" camera-controls tone-mapping="neutral" poster="poster.webp" shadow-intensity="1" camera-orbit="-124.1deg 56.43deg 0.7205m" field-of-view="30deg"></model-viewer>
+      <div class="progress-bar hide" slot="progress-bar">
+        <div class="update-bar"></div>
+      </div>
+
+      </model-viewer>
+    </div>
+
+    <a class="lightbox-close" href="#" onclick="javascript:window.close()"></a>
+    <div class="deg">
+      <img src="./assets/images/360-degrees.webp" alt="">
+    </div>
+
+
+
+  </div>
+
+  <!-- ==============================flow-meter end======================= -->
+
+
+
+
+
+
+
+
+  <!--******************* model end*************************-->
+
+
+
+  <!-- *************************Background color************************ -->
+
+
+  <script src='./js/jquery-2.0.3.min.js'></script>
+  <script src='./js/underscore-min.js'></script>
+  <script src='./js/backbone-min.js'></script>
+  <!-- <script src="./script.js"></script> -->
+
+  <!-- <script type="module" src="./js/model-viewer.min.js"></script> -->
+  <link rel="stylesheet" href="./css/font-awesome.min.css">
+  <script src="./js/three.min.js"></script>
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+</body>
+
+</html>

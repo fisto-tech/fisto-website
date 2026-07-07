@@ -1,0 +1,262 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Home" current="home">
+  <Fragment slot="headContent">
+    <link rel="stylesheet" href="/css/home.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+    integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://public.codepenassets.com/css/normalize-5.0.0.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css"
+    />
+  </Fragment>
+
+  <!-- <section class="hero">
+    <h1>HOME PAGE</h1>
+  </section> -->
+  <section class="home-slider-section">
+    <div class="swiper-container slideshow">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide slide">
+          <div class="slide-image" style="background-color: black;"></div>
+          <div class="slide-left-position">
+            <span class="slide-title">AR/ VR/ MR</span>
+            <p class="slide-para">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Cupiditate sequi reiciendis blanditiis ut autem? Voluptatum.
+            </p>
+          </div>
+          <div class="slide-img">
+            <img src="/images/home/av_vr_final.png" alt="ar vr image" />
+          </div>
+        </div>
+
+        <div class="swiper-slide slide">
+          <div class="slide-image" style="background-color: black;"></div>
+          <div class="slide-left-position">
+            <span class="slide-title">3D/ 2D Animation</span>
+            <p class="slide-para">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Cupiditate sequi reiciendis blanditiis ut autem? Voluptatum.
+            </p>
+          </div>
+          <div class="slide-img">
+            <img src="/images/home/av_vr_final.png" alt="ar vr image" />
+          </div>
+        </div>
+
+        <div class="swiper-slide slide">
+          <div class="slide-image" style="background-color: black;"></div>
+          <div class="slide-left-position">
+            <span class="slide-title">App Development</span>
+            <p class="slide-para">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Cupiditate sequi reiciendis blanditiis ut autem? Voluptatum.
+            </p>
+          </div>
+          <div class="slide-img">
+            <img src="/images/home/av_vr_final.png" alt="ar vr image" />
+          </div>
+        </div>
+
+        <div class="swiper-slide slide">
+          <div class="slide-image" style="background-color: black;"></div>
+          <div class="slide-left-position">
+            <span class="slide-title">Website Design</span>
+            <p class="slide-para">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Cupiditate sequi reiciendis blanditiis ut autem? Voluptatum.
+            </p>
+          </div>
+          <div class="slide-img">
+            <img src="/images/home/av_vr_final.png" alt="ar vr image" />
+          </div>
+        </div>
+
+        <div class="swiper-slide slide">
+          <div class="slide-image" style="background-color: black;"></div>
+          <div class="slide-left-position">
+            <span class="slide-title">Interactive Digital <br />Catalogue</span>
+            <p class="slide-para">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Cupiditate sequi reiciendis blanditiis ut autem? Voluptatum.
+            </p>
+          </div>
+          <div class="slide-img">
+            <img src="/images/home/av_vr_final.png" alt="ar vr image" />
+          </div>
+        </div>
+      </div>
+
+      <div class="slideshow-pagination"></div>
+
+      <div class="slideshow-navigation">
+        <div class="slideshow-navigation-button prev">
+          <span class="fas fa-chevron-left"></span>
+        </div>
+        <div class="slideshow-navigation-button next">
+          <span class="fas fa-chevron-right"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="video-wrapper animate-item from-bottom">
+    <video src="/videos/banyaVideo.mp4" muted loop autoplay></video>
+  </section>
+
+  <section class="about-section">
+    <div class="about-container">
+      <div class="about-text animate-item from-top">
+        <h2>Fisto Tech Private Limited</h2>
+        <h3>Your Go-To Motion Design &<br />Animation Studio</h3>
+      </div>
+
+      <div class="about-description">
+        <div class="about-image">
+          <img
+            src="/images/home/about_image.jpg"
+        title="Geometric visual representing creativity"
+            class="animate-item from-left"
+          />
+        </div>
+        <p class="animate-item from-right">
+          <strong>Partner with motion and tech pros who get it.</strong> We craft
+          eye-catching videos, immersive AR/VR experiences, and smart software that
+          tell your story, grab attention, and stay budget-friendly. From slick explainers
+          to bold creative concepts, we deliver fast, fresh, and fuss-free results—every
+          time.
+        </p>
+      </div>
+    </div>
+
+    <!-- Bottom Graphic Image -->
+  </section>
+
+  <section class="our-clients">
+    <h2 class="animate-item from-bottom">Helping Everyone—from Tiny Startups to Big Names</h2>
+    <div class="marquee animate-item from-bottom">
+      <div class="marquee-content">
+        <img src="/images/home/clients/client1.png" alt="Trident Pneumatic logo" title="Trident Pneumatic logo" />
+        <img src="/images/home/clients/client3.png" alt="Airlock logo" title="Airlock logo" />
+        <img src="/images/home/clients/client4.png" alt="Aquioon logo" title="Aquioon logo" />
+        <img src="/images/home/clients/client5.png" alt="DevDen logo" title="DevDen logo" />
+        <img src="/images/home/clients/client6.png" alt="Akira controls logo" title="Akira controls logo" />
+        <img src="/images/home/clients/client7.png" alt="Mindox logo" title="Mindox logo" />
+        <img src="/images/home/clients/Client8.png" alt="Niagara logo" title="Niagara logo" />
+        <img src="/images/home/clients/client9.png" alt="Smart logo" title="Smart logo" />
+        <img src="/images/home/clients/client10.png" alt="NextGen logo" title="NextGen logo" />
+        <img src="/images/home/clients/client11.png" alt="Telco logo" title="Telco logo" />
+        <img src="/images/home/clients/client12.png" alt="NN Engineering Controls" title="NN Engineering Controls" />
+        <img src="/images/home/clients/client13.png" alt="Axis logo" title="Axis logo" />
+        <img src="/images/home/clients/client14.png" alt="Banya group" title="Banya group" />
+        <img src="/images/home/clients/client15.png" alt="Terra Tech packs logo" title="Terra Tech packs logo" />
+        <img src="/images/home/clients/client16.png" alt="Instrumentation logo" title="Instrumentation logo" />
+        <img src="/images/home/clients/client17.png" alt="Evolve logo" title="Evolve logo" />
+        <img src="/images/home/clients/client18.png" alt="Summit logo" title="Summit logo" />
+        <img src="/images/home/clients/client19.png" alt="Visual Birds logo" title="Visual Birds logo" />
+        <img src="/images/home/clients/client20.png" alt="TerraTechBags logo" title="TerraTechBags logo" />
+        <img src="/images/home/clients/client21.png" alt="Flow Tite logo" title="Flow Tite logo" />
+        <img src="/images/home/clients/client22.png" alt="Sayatva logo" title="Sayatva logo" />
+        <img src="/images/home/clients/client23.png" alt="Susin" title="Susin" />
+        <img src="/images/home/clients/client24.png" alt="Picto Design Studio" title="Picto Design Studio" />
+        <img src="/images/home/clients/client27.png" alt="Anubhuthi AI Studio" title="Anubhuthi AI Studio" />
+        <img src="/images/home/clients/client28.png" alt="UTFI" title="UTFI" />
+        <img src="/images/home/clients/client29.png" alt="OODA" title="OODA" />
+        <img src="/images/home/clients/client30.png" alt="RAP" title="RAP" />
+        <img src="/images/home/clients/salzer.png" alt="Salzer" title="Salzer" />
+        <img src="/images/home/clients/4m_packs.png" alt="4M Packs" title="4M Packs" />
+        <img src="/images/home/clients/bestomech_logo.png" alt="Bestomech" title="Bestomech" />
+      </div>
+    </div>
+  </section>
+
+  <section class="sec-1">
+    <h2>Where Technology and Imagination
+     <img src="/images/home/ar_vr_icon.png" alt="ar vr icon" style="max-height: 7vh; vertical-align: middle;"> Create Worlds that Inspire.</h2>
+  </section>
+
+  <section class="our-works">
+    <h2 class="scale-item">Our Works</h2>
+    <div class="works-grid-container">
+      <div class="our-works-card animate-item from-left">
+        <video
+          src="/videos/video_1.mp4"
+          class="our-works-video"
+          autoplay
+          muted
+          loop></video>
+        <p class="our-works-title">AR/ VR/ MR</p>
+        <p class="our-works-con">
+          Transform your imagination into immersive reality with India’s leading
+          AR/VR/MR development experts.
+        </p>
+      </div>
+      <div class="our-works-card animate-item from-right">
+        <video
+          src="/videos/video_1.mp4"
+          class="our-works-video"
+          autoplay
+          muted
+          loop></video>
+        <p class="our-works-title">3D/ 2D Animation</p>
+        <p class="our-works-con">
+          Bring your ideas to life with stunning 2D and 3D animation crafted by
+          creative experts in Coimbatore.
+        </p>
+      </div>
+      <div class="our-works-card animate-item from-left">
+        <video
+          src="/videos/video_1.mp4"
+          class="our-works-video"
+          autoplay
+          muted
+          loop></video>
+        <p class="our-works-title">App Development</p>
+        <p class="our-works-con">
+          Build future-ready Android apps designed for performance, scalability,
+          and user delight.
+        </p>
+      </div>
+      <div class="our-works-card animate-item from-right">
+        <video
+          src="/videos/video_1.mp4"
+          class="our-works-video"
+          autoplay
+          muted
+          loop></video>
+        <p class="our-works-title">Web Design & Development</p>
+        <p class="our-works-con">
+          Crafting responsive, SEO-friendly websites that convert visitors into
+          loyal customers.
+        </p>
+      </div>
+      <div class="our-works-card animate-item from-bottom">
+        <video
+          src="/videos/video_1.mp4"
+          class="our-works-video"
+          autoplay
+          muted
+          loop></video>
+        <p class="our-works-title">Interactive Digital Catalogue</p>
+        <p class="our-works-con">
+          Turn your product listings into engaging digital catalogues that
+          customers love to explore.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Fragment slot="bodyEnd">
+    <!-- Scripts or DOM hooks before </body> -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js' is:inline></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js' is:inline></script>
+    <script src="/js/home_slider.js" is:inline></script>
+  </Fragment>
+</BaseLayout>

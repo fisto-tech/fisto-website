@@ -1,0 +1,499 @@
+footer {
+  width: 100%;
+  color: #fff;
+  background-color: #0a0a0a;
+  padding: 50px 0 0;
+  line-height: 22px;
+}
+
+/* ========================
+   Grid Layout for Footer
+======================== */
+footer .foot-con {
+  width: 90%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 27% 20% 53%;
+  gap: 2rem;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+/* ========================
+   Column Styles
+======================== */
+.colm,
+.colm-2 {
+  color: #fff;
+}
+
+.colm a {
+  text-decoration: none;
+}
+
+.colm img {
+  width: 120px;
+  margin-bottom: 10px;
+}
+
+.colm h4 {
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.colm ul {
+  padding: 0;
+  list-style: none;
+  margin: 0;
+}
+
+.colm ul li {
+  margin: 0.75rem 0;
+}
+
+.colm ul li a {
+  color: #eee;
+  font-size: 15px;
+  transition: 0.3s ease;
+}
+
+.colm ul li a:hover {
+  color: #fff;
+  padding-left: 8px;
+}
+
+/* ========================
+   Logo Column
+======================== */
+.colm-logo p {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0.5rem 0 1rem;
+}
+
+.colm-logo a {
+  display: inline-block;
+}
+
+.colm-logo i {
+  color: #eee;
+}
+
+.colm-logo br {
+  line-height: 0.5;
+}
+
+.colm-logo p a {
+  display: inline-block;
+  line-height: 1.4;
+}
+
+/* Social icons */
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.75rem;
+}
+
+.colm-logo a i {
+  font-size: 16px;
+  color: #eee;
+  transition: 0.3s ease;
+}
+
+.colm-logo a i:hover {
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+/* ========================
+   Contact Section Grid
+======================== */
+.colm-2 h4 {
+  margin-bottom: 1rem;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem 0rem;
+}
+
+.contact-flex {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.contact-flex > p:first-child {
+  font-size: 14px;
+  white-space: nowrap;
+  margin: 0;
+  font-weight: 500;
+}
+
+.contact-flex p {
+  font-size: 14px;
+  margin: 0;
+}
+
+.div-spacer {
+  width: 2px;
+  background-color: #fff;
+  align-self: stretch;
+  flex-shrink: 0;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+}
+
+/* ========================
+   Underline Animation
+======================== */
+.underline {
+  width: 100%;
+  height: 3px;
+  background: #767676;
+  border-radius: 3px;
+  position: relative;
+  top: 4px;
+  overflow: hidden;
+}
+
+.underline span {
+  width: 25px;
+  height: 100%;
+  background: #fff;
+  border-radius: 3px;
+  position: absolute;
+  top: 0;
+  left: 10px;
+  animation: 5s linear infinite moving;
+}
+
+@keyframes moving {
+  0% { left: -20px; }
+  100% { left: 100%; }
+}
+
+/* ========================
+   Footer Bottom
+======================== */
+.copyright {
+  font-size: 12px;
+  margin: 0;
+  padding: 15px 0;
+  border-top: 1px solid #333;
+  color: #ddd;
+  text-align: center;
+}
+
+.copyright img {
+  width: 60px;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+
+.copyright a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.privacy-policy {
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+}
+
+.privacy-policy::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background-color: white;
+  transition: width 0.3s ease;
+}
+
+.privacy-policy:hover::after {
+  width: 100%;
+}
+
+.designed-by {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+h4 {
+  width: fit-content;
+}
+
+p i.fa-address-book {
+  vertical-align: top;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+
+.space {
+  display: none;
+}
+/* ========================
+   Responsive Design
+======================== */
+
+/* Large Tablets and Small Laptops (1024px - 1250px) */
+@media screen and (max-width: 1300px) {
+  footer .foot-con {
+    grid-template-columns: 35% 25% 40%;
+    gap: 1.5rem;
+  }
+
+  .contact-grid {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.25rem;
+  }
+  
+}
+
+/* Tablets (768px - 1024px) */
+@media screen and (max-width: 1024px) {
+  footer {
+    padding: 40px 0 0;
+  }
+
+  footer .foot-con {
+    grid-template-columns: 45% 55%;
+    gap: 2rem 1.5rem;
+    width: 85%;
+  }
+
+  .colm-2 {
+    grid-column: span 2;
+  }
+
+  .contact-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 2rem;
+  }
+
+  .colm-logo img {
+    width: 100px;
+  }
+}
+
+/* Small Tablets (600px - 768px) */
+@media screen and (max-width: 768px) {
+  footer {
+    padding: 35px 0 0;
+  }
+
+  footer .foot-con {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    width: 85%;
+  }
+
+  .colm-2 {
+    grid-column: span 1;
+  }
+
+  .colm-logo {
+    text-align: center;
+  }
+
+  .colm-logo p {
+    width: 90%;
+    display: block;
+    margin: 1rem auto 2rem auto;
+  }
+
+  .colm-logo img {
+    width: 110px;
+  }
+
+  .colm-logo p {
+    text-align: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  .colm h4,
+  .colm-2 h4 {
+    text-align: center;
+    margin: 0 auto 15px;
+  }
+
+  .colm ul {
+    text-align: center;
+  }
+
+  .colm ul li a:hover {
+    padding-left: 0;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .contact-flex {
+    justify-content: center;
+  }
+  
+.space {
+  display: unset;
+}
+}
+
+/* Mobile Devices (480px - 600px) */
+@media screen and (max-width: 600px) {
+  footer {
+    padding: 30px 0 0;
+  }
+
+  footer .foot-con {
+    width: 90%;
+    gap: 2rem;
+  }
+
+  .colm-logo img {
+    width: 100px;
+  }
+
+  .colm h4,
+  .colm-2 h4 {
+    font-size: 16px;
+  }
+
+  .contact-grid {
+    gap: 1.25rem;
+  }
+
+  .contact-flex {
+    /* flex-direction: column; */
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .div-spacer {
+    /* display: none; */
+  }
+
+  .contact-flex > p:first-child {
+    white-space: normal;
+    margin-bottom: 0.25rem;
+  }
+
+  .copyright {
+    font-size: 11px;
+    padding: 12px 5px;
+    line-height: 1.6;
+  }
+
+  .copyright img {
+    width: 50px;
+  }
+
+  .designed-by {
+    display: block;
+    margin-top: 8px;
+    margin-left: 0;
+  }
+}
+
+/* Small Mobile Devices (320px - 480px) */
+@media screen and (max-width: 480px) {
+  footer {
+    padding: 25px 0 0;
+  }
+
+  footer .foot-con {
+    width: 90%;
+    gap: 1.75rem;
+  }
+
+  .colm-logo img {
+    width: 90px;
+  }
+
+  .colm-logo p {
+    font-size: 13px;
+  }
+
+  .colm ul li a {
+    font-size: 14px;
+  }
+
+  .social-icons {
+    gap: 0.75rem;
+  }
+
+  .colm-logo a i {
+    font-size: 18px;
+  }
+
+  .contact-flex p {
+    font-size: 13px;
+  }
+
+  .flex-col {
+    gap: 0.3rem;
+  }
+
+  .copyright {
+    font-size: 10px;
+    padding: 10px 5px;
+  }
+
+  .copyright img {
+    width: 45px;
+  }
+}
+
+/* Extra Small Mobile (below 360px) */
+@media screen and (max-width: 360px) {
+  footer .foot-con {
+    width: 92%;
+  }
+
+  .colm-logo img {
+    width: 80px;
+  }
+
+  .colm h4,
+  .colm-2 h4 {
+    font-size: 15px;
+  }
+
+  .colm ul li a {
+    font-size: 13px;
+  }
+
+  .contact-flex p {
+    font-size: 12px;
+  }
+}

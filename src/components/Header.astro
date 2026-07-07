@@ -1,0 +1,135 @@
+---
+const { current = "" } = Astro.props;
+
+function isActive(name) {
+  return name.toLowerCase() === current.toLowerCase() ? "active" : "";
+}
+---
+
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="#" class="logo">
+      <img src="/images/fisto_white.png" />
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li class={isActive("home")}><a href="/index.html">HOME</a></li>
+      <li class={isActive("about")}><a href="/about.html">ABOUT</a></li>
+      <li class="has-dropdown">
+        <a href="#" class="dropdown-toggle">
+          SERVICES
+          <svg
+            class="dropdown-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </a>
+        <ul class="dropdown-menu">
+          <li class={isActive("ar-vr-mr")}>
+            <a href="/ar-vr-mr.html" >AR/VR/MR</a>
+          </li>
+          <li class={isActive("2d-3d-animation")}>
+            <a href="/2d-3d-animation.html" >2D/3D Animation</a>
+          </li>
+          <li class={isActive("idc")}>
+            <a href="/idc.html" >IDC</a>
+          </li>
+          <li class={isActive("customized-applications")}>
+            <a href="/customized-applications.html" 
+              >Customized Applications</a
+            >
+          </li>
+          <li class={isActive("3d-website")}>
+            <a href="/3d-website.html" >3D Website Design</a>
+          </li>
+        </ul>
+      </li>
+      <li class={isActive("works")}><a href="/works.html">WORKS</a></li>
+      <li class={isActive("product")}><a href="/product.html">PRODUCT</a></li>
+      <li class={isActive("blog")}><a href="/blog/index.html">BLOG</a></li>
+      <li class={isActive("contact")}><a href="/contact.html">CONTACT</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <!-- <button class="icon-button" aria-label="User Account">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+      </button>
+      <button class="icon-button" aria-label="Shopping Cart">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+      </button> -->
+      <!-- LinkedIn Icon -->
+      <button class="icon-button" aria-label="LinkedIn">
+        <a
+          href="https://www.linkedin.com/company/82545817"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"
+            ></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
+        </a>
+      </button>
+
+      <!-- Instagram Icon -->
+      <button class="icon-button" aria-label="Instagram">
+        <a
+          href="https://www.instagram.com/fisto_ar/?igsh=OWlzNm4ydGV6b2di#"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+      </button>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</nav>
