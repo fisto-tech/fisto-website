@@ -9,16 +9,38 @@ const { imageBefore, imageAfter } = Astro.props;
 
 <section class="scroll-reveal-section">
   <div class="scroll-reveal-container" id="scrollRevealContainer">
-    <!-- Image 2 (Background - fully visible at all times) -->
+    <!-- Image 2 (Background - always visible on the left) -->
     <img src={imageAfter} alt="After Image" class="reveal-bg-img" />
     
-    <!-- Image 1 (Foreground - initially covers background) -->
+    <!-- Image 1 (Foreground - slides in on the right half) -->
     <div class="reveal-fg-wrapper" id="revealFgWrapper">
       <img src={imageBefore} alt="Before Image" class="reveal-fg-img" />
     </div>
 
     <!-- The vertical white reveal line -->
     <div class="reveal-line" id="revealLine"></div>
+
+    <!-- Centralized Text Container, perfectly aligned to the left side -->
+    <div class="reveal-text-container">
+      
+      <!-- Background Text (Left side color) -->
+      <h2 class="reveal-text bg-text">
+        <span class="part part-1">Experience the</span> 
+        <span class="part part-2">future with immersive</span>
+        <span class="part part-3">AR & VR</span> 
+        <span class="part part-4">technology</span>
+      </h2>
+
+      <!-- Foreground Text (Wipes over to change the color fully) -->
+      <h2 class="reveal-text fg-text" id="revealTextFg">
+        <span class="part part-1">Experience the</span> 
+        <span class="part part-2">future with immersive</span>
+        <span class="part part-3">AR & VR</span> 
+        <span class="part part-4">technology</span>
+      </h2>
+
+    </div>
+
   </div>
 </section>
 
@@ -36,7 +58,7 @@ const { imageBefore, imageAfter } = Astro.props;
   overflow: hidden;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; 
 }
 
 .reveal-bg-img,
@@ -56,9 +78,7 @@ const { imageBefore, imageAfter } = Astro.props;
   left: 0;
   width: 100%;
   height: 100%;
-  /* Initially 0% clipped from left */
-  clip-path: inset(0 0 0 0%);
-  /* Will-change for better performance during animation */
+  clip-path: inset(0 0 0 100%);
   will-change: clip-path;
 }
 
@@ -66,25 +86,92 @@ const { imageBefore, imageAfter } = Astro.props;
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 0%;
-  width: 5px; /* 4-6px wide as requested */
+  left: 100%;
+  width: 5px;
   background-color: #ffffff;
-  /* Shift left by 50% of its own width so it centers exactly on the boundary */
   transform: translateX(-50%);
   z-index: 10;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.3);
   will-change: left;
+}
+
+.reveal-text-container {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+  width: 50%;
+  z-index: 20;
+  pointer-events: none;
+  perspective: 1000px;
+}
+
+.reveal-text {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: clamp(2rem, 5vw, 6rem); /* Slightly larger for this layout */
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 0.95; /* Tighter line spacing for cinematic feel */
+  margin: 0;
+  letter-spacing: -0.02em;
+  text-shadow: 0px 4px 15px rgba(0,0,0,0.7);
+}
+
+.bg-text {
+  position: relative; 
+  color: #ffffff; 
+}
+
+.fg-text {
+  position: absolute; 
+  top: 0;
+  left: 0;
+  height: 100%;
+  color: #ffcb05; 
+  clip-path: inset(0 100% 0 0);
+  will-change: clip-path;
+}
+
+.part {
+  display: block;
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+/* Staggered Cinematic Layout */
+.part-1 { margin-left: 0%; }
+.part-2 { margin-left: 2%; }
+.part-3 { margin-left: 35%; }
+.part-4 { margin-left: 22%; }
+
+@media (max-width: 1024px) {
+  .reveal-text-container {
+    width: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .reveal-text-container {
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95%;
+  }
+  .part-1 { margin-left: 0%; align-self: center; }
+  .part-2 { margin-left: 0%; align-self: center; }
+  .part-3 { margin-left: 0%; align-self: center; }
+  .part-4 { margin-left: 0%; align-self: center; }
 }
 </style>
 
 <script>
   let isInitialized = false;
 
-  // Setup GSAP ScrollTrigger for the reveal effect
   const initRevealAnimation = () => {
     if (isInitialized) return;
 
-    // Ensure GSAP is loaded
     if (typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined') {
       isInitialized = true;
       const gsap = window.gsap;
@@ -95,49 +182,70 @@ const { imageBefore, imageAfter } = Astro.props;
       const container = document.getElementById('scrollRevealContainer');
       const fgWrapper = document.getElementById('revealFgWrapper');
       const revealLine = document.getElementById('revealLine');
+      const textFg = document.getElementById('revealTextFg');
+      
+      const bgParts = document.querySelectorAll('.bg-text .part');
+      const fgParts = document.querySelectorAll('.fg-text .part');
 
-      if (container && fgWrapper && revealLine) {
+      if (container && fgWrapper && revealLine && textFg && bgParts.length > 0) {
+        
+        gsap.set(bgParts, { opacity: 0, y: 50, rotationX: -90, transformOrigin: "50% 50% -50px" });
+        gsap.set(fgParts, { opacity: 0, y: 50, rotationX: -90, transformOrigin: "50% 50% -50px" });
+
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: container,
             start: "top top",
-            // Pin the container for 150% of viewport height while animating
-            end: "+=150%", 
+            end: "+=200%", 
             pin: true,
-            scrub: 1, // Smooth scrubbing linking animation directly to scrollbar
-            // Prevent layout shifts during pin
+            scrub: 1, 
             pinSpacing: true
           }
         });
 
-        // Animate the clip-path from left to right (0% to 100%)
+        // 1. Reveal image strictly on the right half (from 100% clipped to 50% clipped)
         tl.to(fgWrapper, {
-          clipPath: "inset(0 0 0 100%)",
+          clipPath: "inset(0 0 0 50%)",
           ease: "none",
           duration: 1
         }, 0);
-
-        // Animate the reveal line matching the clip-path
+        
+        // 2. Line sync (moves from 100% right edge to 50% center)
         tl.to(revealLine, {
-          left: "100%",
+          left: "50%",
           ease: "none",
           duration: 1
         }, 0);
 
-        // Crucial Fix: Since we created the pin AFTER main.js created the footer triggers,
-        // we must sort the triggers by DOM order before refreshing. Otherwise, the footer 
-        // trigger refreshes before the pin adds its spacer, resulting in wrong coordinates!
+        // 3. Independent Color Wipe for the text (Left to Right)
+        tl.to(textFg, {
+          clipPath: "inset(0 0% 0 0)",
+          ease: "none",
+          duration: 1
+        }, 0);
+
+        // 4. Unique 3D Text Reveals
+        const timings = [0.2, 0.4, 0.6, 0.8];
+        
+        bgParts.forEach((part, index) => {
+          tl.to([part, fgParts[index]], {
+            opacity: 1,
+            y: 0,
+            rotationX: 0,
+            duration: 0.25,
+            ease: "back.out(1.7)" 
+          }, timings[index]);
+        });
+
         ScrollTrigger.sort();
         ScrollTrigger.refresh();
       }
     } else {
-      // Retry if gsap is not yet loaded
       setTimeout(initRevealAnimation, 100);
     }
   };
 
   document.addEventListener('DOMContentLoaded', initRevealAnimation);
-  // Also run immediately in case DOMContentLoaded already fired (common in Astro)
   if (document.readyState === 'interactive' || document.readyState === 'complete') {
     initRevealAnimation();
   }

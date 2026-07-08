@@ -5,7 +5,7 @@
 <section class="industries-section">
   <div class="container">
     <div class="section-header">
-      <h2>AR Across Industries</h2>
+      <h2 class="animated-heading-sweep">AR Across Industries</h2>
       <p>Elevating Efficiency with Advanced Technology</p>
     </div>
 
@@ -88,12 +88,20 @@
   }
 
   .section-header h2 {
-    font-size: clamp(2rem, 5vw, 2.5rem);
-    font-weight: 700;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.15;
     margin-bottom: 15px;
     position: relative;
     display: inline-block;
-    color: var(--text-primary, #112025);
+    letter-spacing: -0.02em;
+    padding-bottom: 0.1em;
+  }
+
+  .section-header h2 .char {
+    display: inline-block;
+    white-space: pre;
+    will-change: transform, opacity, background;
   }
 
   /* Stylized graphic element behind "Industries" to match the screenshot vibe */
@@ -147,14 +155,14 @@
     width: 100%;
     aspect-ratio: 1;
     max-width: 140px;
-    background: #ffffff;
+    /* background: #ffffff;
     border-radius: 20px;
-    border: 2px solid rgba(14, 116, 144, 0.1);
+    border: 2px solid rgba(14, 116, 144, 0.1); */
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 25px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); */
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     overflow: hidden;
@@ -164,7 +172,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(14, 116, 144, 0.1), rgba(34, 211, 238, 0.05));
+    /* background: linear-gradient(135deg, rgba(14, 116, 144, 0.1), rgba(34, 211, 238, 0.05)); */
     opacity: 0;
     transition: opacity 0.4s ease;
   }

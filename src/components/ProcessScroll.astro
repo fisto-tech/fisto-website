@@ -1,0 +1,493 @@
+---
+// src/components/ProcessScroll.astro
+
+const steps = [
+  {
+    id: "01",
+    title: "Immersive Experience",
+    desc: "Immersive environments blend digital and physical worlds, allowing users to interact naturally with realistic 3D content for engaging experiences.",
+    img: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?w=1200&q=80"
+  },
+  {
+    id: "02",
+    title: "Real-Time Interaction",
+    desc: "AR and VR respond instantly to user movements and gestures, creating seamless and interactive digital experiences with minimal latency.",
+    img: "https://images.unsplash.com/photo-1617802690992-15d93263d3a9?w=1200&q=80"
+  },
+  {
+    id: "03",
+    title: "3D Visualization",
+    desc: "High-quality 3D models enable users to explore products, environments, and concepts from every angle with realistic depth and detail.",
+    img: "https://images.unsplash.com/photo-1633412802994-5c058f151b66?w=1200&q=80"
+  },
+  {
+    id: "04",
+    title: "Spatial Tracking",
+    desc: "Advanced tracking technology accurately detects user position and surroundings, ensuring virtual content stays anchored in the correct location.",
+    img: "https://images.unsplash.com/photo-1535223289827-42f1e9919769?w=1200&q=80"
+  },
+  {
+    id: "05",
+    title: "Cross-Platform Compatibility",
+    desc: "AR and VR experiences can be accessed across smartphones, tablets, web browsers, headsets, and other supported devices for maximum accessibility.",
+    img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&q=80"
+  }
+];
+---
+
+<section class="process-scroll-section" id="processScrollSection">
+  <div class="process-container">
+    
+    <!-- Left: Accordion Content -->
+    <div class="process-left">
+      <!-- SVG Curve Separator -->
+      <div class="curve-separator">
+        <svg viewBox="-200 0 400 1000" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#aa771c" />
+              <stop offset="30%" stop-color="#f4e271" />
+              <stop offset="50%" stop-color="#8a5a19" />
+              <stop offset="70%" stop-color="#f4e271" />
+              <stop offset="100%" stop-color="#aa771c" />
+            </linearGradient>
+            <filter id="shadowRight" x="-50%" y="-10%" width="200%" height="120%">
+              <feDropShadow dx="15" dy="0" stdDeviation="12" flood-color="#000" flood-opacity="0.4" />
+            </filter>
+          </defs>
+          <!-- Fill path without stroke -->
+          <path 
+            d="M 0,0 C 180,250 -180,750 0,1000 L -250,1000 L -250,0 Z" 
+            fill="#ffffff" 
+          />
+          <!-- Stroke path just for the curve -->
+          <path 
+            d="M 0,0 C 180,250 -180,750 0,1000" 
+            fill="none" 
+            stroke="url(#goldGradient)" 
+            stroke-width="5" 
+            filter="url(#shadowRight)"
+          />
+        </svg>
+      </div>
+
+      <div class="process-left-content">
+        <div class="process-header">
+          <h2 class="process-main-title animated-heading-sweep">Core Features of<br/>AR & VR Technology</h2>
+        </div>
+
+        <div class="process-list">
+          {steps.map((step, index) => (
+            <div class={`process-item ${index === 0 ? 'active' : ''}`} data-index={index}>
+              <div class="process-item-header">
+                <span class="process-num">{step.id}</span>
+                <h3 class="process-title">{step.title}</h3>
+              </div>
+              <div class="process-item-body">
+                <p class="process-desc">{step.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Sticky Images -->
+    <div class="process-right">
+      <div class="process-images">
+        {steps.map((step, index) => (
+          <img 
+            src={step.img} 
+            alt={step.title} 
+            class="process-img" 
+            data-index={index}
+          />
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .process-scroll-section {
+    width: 100%;
+    background-color: #ffffff;
+    color: #1a1a1a;
+  }
+
+  .process-container {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  @media (min-width: 992px) {
+    .process-container {
+      flex-direction: row;
+    }
+  }
+
+  /* --- Left Side (Text) --- */
+  .process-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 5%;
+    background-color: #ffffff;
+    height: 60vh;
+    position: relative; /* For curve separator */
+  }
+
+  @media (min-width: 992px) {
+    .process-left {
+      height: 100vh;
+      padding: 90px 0 30px 10%; /* 0 right padding so borders can reach the curve */
+      /* Removed overflow-y: auto to disable internal scrolling per request */
+    }
+  }
+
+  /* --- S-Curve Separator --- */
+  .curve-separator {
+    display: none;
+  }
+  @media (min-width: 992px) {
+    .curve-separator {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: -100px; /* SVG is 160px wide visually */
+      width: 160px;
+      height: 100%;
+      z-index: 10;
+      pointer-events: none;
+    }
+    .curve-separator svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+  }
+
+  .process-left-content {
+    margin: auto 0; /* Safely vertically centers content */
+    width: 100%;
+    position: relative;
+    z-index: 2; /* below curve so curve overlaps borders */
+    padding-right: 40px; /* buffer to keep text from hitting the curve */
+  }
+
+  .process-header {
+    margin-bottom: 2rem; /* Adjusted for auto fit */
+  }
+
+  .process-main-title {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    padding-bottom: 0.1em; /* prevents clipping of descenders */
+  }
+
+  /* The animation is handled by JS on individual .char spans */
+  .process-main-title .char {
+    display: inline-block;
+    white-space: pre;
+    will-change: transform, opacity, background;
+  }
+
+  .process-list {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid #eaeaea;
+  }
+
+  .process-item {
+    border-bottom: 1px solid #eaeaea;
+    padding: 1.2rem 0; /* Adjusted padding to prevent vertical overflow */
+    cursor: default;
+  }
+
+  .process-item-header {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+  }
+
+  .process-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #f5f5f5;
+    color: #555;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+
+  .process-title {
+    font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+    font-weight: 400;
+    color: #333;
+    margin: 0;
+    transition: color 0.3s ease;
+  }
+
+  .process-item.active .process-title {
+    color: #000;
+    font-weight: 500;
+  }
+
+  .process-item-body {
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding-left: calc(40px + 1.2rem); /* align with text */
+  }
+
+  .process-desc {
+    margin: 0.8rem 0 0 0;
+    color: #666;
+    font-size: clamp(0.95rem, 1vw, 1.05rem);
+    line-height: 1.5;
+  }
+
+  /* --- Right Side (Images) --- */
+  .process-right {
+    width: 100%;
+    height: 40vh;
+    position: relative;
+  }
+
+  @media (min-width: 992px) {
+    .process-right {
+      flex: 1;
+      height: 100vh;
+    }
+  }
+
+  .process-images {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: #000; /* Prevent white flashes during crossfade */
+  }
+
+  .process-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transform: scale(1.05);
+    will-change: opacity, transform;
+    /* GSAP handles the animation, no CSS transition */
+  }
+</style>
+
+<script>
+  let processInitialized = false;
+
+  const initProcessScroll = () => {
+    if (processInitialized) return;
+    
+    if (typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined') {
+      processInitialized = true;
+      const gsap = window.gsap;
+      const ScrollTrigger = window.ScrollTrigger;
+                     
+      const section = document.getElementById('processScrollSection');
+      const items = document.querySelectorAll('.process-item');
+      const images = document.querySelectorAll('.process-img');
+      const totalSteps = items.length;
+
+      if (!section || totalSteps === 0) return;
+
+      // Reset inactive bodies and images for GSAP
+      items.forEach((item, i) => {
+        const body = item.querySelector('.process-item-body');
+        if (i !== 0) {
+          gsap.set(body, { height: 0, opacity: 0 });
+          gsap.set(images[i], { opacity: 0, scale: 1.05 });
+        } else {
+          gsap.set(body, { height: "auto", opacity: 1 });
+          gsap.set(images[i], { opacity: 1, scale: 1 });
+        }
+      });
+
+      let currentIndex = 0;
+
+      const updateStep = (index) => {
+        if (index === currentIndex) return;
+        
+        // Update accordion
+        const oldItem = items[currentIndex];
+        const newItem = items[index];
+        
+        oldItem.classList.remove('active');
+        newItem.classList.add('active');
+
+        gsap.to(oldItem.querySelector('.process-item-body'), {
+          height: 0,
+          opacity: 0,
+          duration: 0.4,
+          ease: "power2.inOut"
+        });
+
+        gsap.to(newItem.querySelector('.process-item-body'), {
+          height: "auto",
+          opacity: 1,
+          duration: 0.4,
+          ease: "power2.inOut"
+        });
+
+        // Ultra-smooth GSAP cinematic image crossfade
+        const oldImg = images[currentIndex];
+        const newImg = images[index];
+
+        gsap.to(oldImg, { 
+          opacity: 0, 
+          scale: 1.05, 
+          duration: 0.8, 
+          ease: "power2.inOut" 
+        });
+        
+        gsap.to(newImg, { 
+          opacity: 1, 
+          scale: 1, 
+          duration: 0.8, 
+          ease: "power2.inOut" 
+        });
+
+        currentIndex = index;
+      };
+
+      // Create scroll pin and scrub
+      ScrollTrigger.create({
+        trigger: section,
+        start: "top top",
+        end: `+=${totalSteps * 100}%`, // Scroll distance: 100% viewport per step
+        pin: true,
+        anticipatePin: 1,
+        onUpdate: (self) => {
+          // self.progress goes from 0 to 1
+          let progress = self.progress;
+          // map progress to index
+          let activeIndex = Math.floor(progress * totalSteps);
+          if (activeIndex >= totalSteps) activeIndex = totalSteps - 1;
+          if (activeIndex < 0) activeIndex = 0;
+          
+          updateStep(activeIndex);
+        }
+      });
+
+      // Recalculate layout
+      ScrollTrigger.sort();
+      ScrollTrigger.refresh();
+      
+    } else {
+      setTimeout(initProcessScroll, 100);
+    }
+  };
+
+  document.addEventListener('DOMContentLoaded', initProcessScroll);
+  if (document.readyState === 'interactive' || document.readyState === 'complete') {
+    initProcessScroll();
+  }
+</script>
+
+<script>
+  if (!window.lightSweepInitialized) {
+    window.lightSweepInitialized = true;
+    
+    const initLightSweep = () => {
+      const textEls = document.querySelectorAll('.animated-heading-sweep');
+      if (!textEls.length) return;
+
+      const ease = {
+        out:   t => 1 - (1 - t) ** 3,
+        in:    t => t ** 3,
+        inOut: t => t < 0.5 ? 4 * t ** 3 : 1 - (-2 * t + 2) ** 3 / 2,
+      };
+
+      function cyc(f, offset, enter, hold, exit, pause, eIn = ease.out, eOut = ease.in) {
+        if (f < offset) return 0;
+        const total = enter + hold + exit + pause;
+        const t = (f - offset) % total;
+        if (t < enter)               return eIn(t / enter);
+        if (t < enter + hold)        return 1;
+        if (t < enter + hold + exit) return 1 - eOut((t - enter - hold) / exit);
+        return 0;
+      }
+
+      function grad(el, css) {
+        el.style.background           = css;
+        el.style.webkitBackgroundClip = 'text';
+        el.style.backgroundClip       = 'text';
+        el.style.webkitTextFillColor  = 'transparent';
+      }
+
+      let _raf = null;
+      function loop(tick) {
+        cancelAnimationFrame(_raf);
+        (function frame() { tick(); _raf = requestAnimationFrame(frame); })();
+      }
+
+      const allChars = [];
+      textEls.forEach(el => {
+        if (el.querySelector('.char')) return; // Already split
+        
+        const nodes = Array.from(el.childNodes);
+        el.innerHTML = '';
+        const chars = [];
+        
+        nodes.forEach(node => {
+          if (node.nodeType === Node.TEXT_NODE) {
+            node.textContent.split('').forEach(ch => {
+              const s = document.createElement('span');
+              s.className = 'char';
+              s.textContent = ch;
+              el.appendChild(s);
+              chars.push(s);
+            });
+          } else {
+            el.appendChild(node.cloneNode(true));
+          }
+        });
+        allChars.push(chars);
+      });
+
+      const STAGGER = 8, ENTER = 84, HOLD = 20, EXIT = 58, PAUSE = 36;
+      let f = 0;
+      
+      loop(() => {
+        f++;
+        allChars.forEach(chars => {
+          chars.forEach((ch, i) => {
+            const p   = cyc(f, i * STAGGER, ENTER, HOLD, EXIT, PAUSE);
+            const mid = (p * 130 - 15).toFixed(1);
+            // Sweeps Purple -> White -> Purple
+            grad(ch, `linear-gradient(90deg,
+              #3d2d70 0%,
+              #3d2d70 ${(+mid - 18).toFixed(1)}%,
+              #ffffff ${mid}%,
+              #3d2d70 ${(+mid + 18).toFixed(1)}%,
+              #3d2d70 100%)`);
+          });
+        });
+      });
+    };
+
+    document.addEventListener('DOMContentLoaded', initLightSweep);
+    if (document.readyState === 'interactive' || document.readyState === 'complete') {
+      initLightSweep();
+    }
+  }
+</script>

@@ -3,6 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ImageReveal from '../components/ImageReveal.astro';
 import CinematicHero from '../components/CinematicHero.astro';
 import IndustriesSection from '../components/IndustriesSection.astro';
+import ProcessScroll from '../components/ProcessScroll.astro';
+import ArVrCtaBanner from '../components/ArVrCtaBanner.astro';
 import '../styles/service1.css';
 ---
 
@@ -21,11 +23,15 @@ import '../styles/service1.css';
 <CinematicHero />
 
 <ImageReveal 
-  imageBefore="/images/services/AR-VR/normal-world-img.webp" 
-  imageAfter="/images/services/AR-VR/AR-world-img.webp" 
+  imageBefore="/images/services/AR-VR/AR-world-img.webp" 
+  imageAfter="/images/services/AR-VR/normal-world-img.webp" 
 />
 
+<ProcessScroll />
+
 <IndustriesSection />
+
+<ArVrCtaBanner />
 
 </BaseLayout>
 
