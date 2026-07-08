@@ -1,0 +1,169 @@
+---
+// src/components/CinematicHero.astro
+---
+
+<section class="cinematic-hero-section" id="cinematicHero">
+  <div class="hero-overlay"></div>
+  <video autoplay loop muted playsinline class="hero-video-bg">
+    <source src="/images/services/AR-VR/AR-VR-video-new.mp4" type="video/mp4" />
+  </video>
+
+  <div class="hero-text-container" id="heroTextContainer">
+    <div class="hero-line"><span class="hero-text-inner">WE BUILD</span></div>
+    <div class="hero-line"><span class="hero-text-inner">IMMERSIVE</span></div>
+    <div class="hero-line"><span class="hero-text-inner">AR & VR</span></div>
+    <div class="hero-line"><span class="hero-text-inner">EXPERIENCES</span></div>
+  </div>
+</section>
+
+<style>
+  .cinematic-hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #000;
+  }
+
+  .hero-video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.45); /* Subtle dark overlay for readability */
+    z-index: 2;
+  }
+
+  .hero-text-container {
+    position: absolute;
+    top: 55%;
+    left: 5%;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    pointer-events: none;
+    transform-origin: left center;
+  }
+
+  .hero-line {
+    overflow: hidden;
+    padding-bottom: 0.05em; /* prevents clipping of descenders if any */
+  }
+
+  .hero-text-inner {
+    display: block;
+    font-family: 'Bebas Neue', 'Anton', 'Oswald', 'Impact', sans-serif;
+    font-size: clamp(5rem, 12vw, 13rem);
+    font-weight: 100;
+    color: #fff;
+    line-height: 0.82;
+    text-transform: uppercase;
+    white-space: nowrap;
+    
+    /* Initial state for GSAP */
+    opacity: 0;
+    filter: blur(10px);
+    will-change: transform, opacity, filter;
+  }
+
+  /* Responsive adjustments for mobile */
+  @media (max-width: 768px) {
+    .hero-text-container {
+      left: 8%;
+    }
+  }
+</style>
+
+<script>
+  let heroInitialized = false;
+
+  const initCinematicHero = () => {
+    if (heroInitialized) return;
+    if (typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined') {
+      heroInitialized = true;
+      const gsap = window.gsap;
+      const ScrollTrigger = window.ScrollTrigger;
+      
+      const heroSection = document.getElementById('cinematicHero');
+      const textContainer = document.getElementById('heroTextContainer');
+      const textLines = gsap.utils.toArray('.hero-text-inner');
+
+      if (heroSection && textContainer && textLines.length > 0) {
+        
+        // Initial setup to avoid CSS transform conflicts
+        gsap.set(textContainer, { yPercent: -50, scale: 1.08 });
+        gsap.set(textLines, { y: 120 });
+
+        // Create the ScrollTrigger timeline
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: heroSection,
+            start: "top top",
+            end: "+=250%", // Scroll distance for the whole animation (adjust to control speed)
+            pin: true,
+            scrub: 1, // smooth scrubbing
+            anticipatePin: 1
+          }
+        });
+
+        // 1. Reveal sequentially from bottom
+        tl.to(textLines, {
+          y: 0,
+          opacity: 1,
+          filter: "blur(0px)",
+          duration: 1.2,
+          stagger: 0.25,
+          ease: "power3.out"
+        });
+
+        // 2. Scale down the entire block slightly while video plays
+        tl.to(textContainer, {
+          scale: 1.0,
+          duration: 1.2,
+          ease: "none"
+        }, "-=0.5"); // overlap with the end of the text reveal
+
+        // Animate the text color to a futuristic cyan during the scale down
+        tl.to(textLines, {
+          color: "#22d3ee",
+          duration: 1.2,
+          ease: "power2.inOut"
+        }, "<"); // Start exactly when the scale animation starts
+
+        // Add a small pause in the timeline where text stays fully visible
+        tl.to({}, { duration: 0.5 });
+
+        // 3. Move upward and fade out
+        tl.to(textContainer, {
+          yPercent: -150, // Move it up relative to its size
+          opacity: 0,
+          scale: 0.95,
+          duration: 1.5,
+          ease: "power2.inOut"
+        });
+        
+        // Refresh triggers to ensure layout is calculated correctly, especially for footer below
+        ScrollTrigger.sort();
+        ScrollTrigger.refresh();
+      }
+    } else {
+      setTimeout(initCinematicHero, 100);
+    }
+  };
+
+  document.addEventListener('DOMContentLoaded', initCinematicHero);
+  if (document.readyState === 'interactive' || document.readyState === 'complete') {
+    initCinematicHero();
+  }
+</script>

@@ -7,49 +7,40 @@ export interface Props {
 const { imageBefore, imageAfter } = Astro.props;
 ---
 
-<section class="image-reveal-section">
-  <div class="image-reveal-container" id="imageRevealContainer">
-    <!-- Base Image (Normal World) -->
-    <img src={imageBefore} alt="Normal World" class="image-reveal-before" />
+<section class="scroll-reveal-section">
+  <div class="scroll-reveal-container" id="scrollRevealContainer">
+    <!-- Image 2 (Background - fully visible at all times) -->
+    <img src={imageAfter} alt="After Image" class="reveal-bg-img" />
     
-    <!-- Top Image (AR World) - Clipped -->
-    <img src={imageAfter} alt="AR World" class="image-reveal-after" id="imageRevealAfter" />
-
-    <!-- Interactive Reveal Line -->
-    <div class="image-reveal-slider" id="imageRevealSlider">
-      <!-- Invisible hit area for easier grabbing -->
-      <div class="image-reveal-hitbox"></div>
-      <div class="image-reveal-handle"></div>
+    <!-- Image 1 (Foreground - initially covers background) -->
+    <div class="reveal-fg-wrapper" id="revealFgWrapper">
+      <img src={imageBefore} alt="Before Image" class="reveal-fg-img" />
     </div>
+
+    <!-- The vertical white reveal line -->
+    <div class="reveal-line" id="revealLine"></div>
   </div>
 </section>
 
 <style>
-.image-reveal-section {
+.scroll-reveal-section {
+  width: 100%;
+  background-color: #000;
+  position: relative;
+}
+
+.scroll-reveal-container {
+  position: relative;
   width: 100%;
   height: 100vh;
-  min-height: 600px;
-  background-color: #000;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  position: relative;
 }
 
-.image-reveal-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  /* Prevent text selection while dragging */
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: none; /* Prevent scrolling while swiping horizontally on mobile */
-}
-
-.image-reveal-before,
-.image-reveal-after {
+.reveal-bg-img,
+.reveal-fg-img {
   position: absolute;
   top: 0;
   left: 0;
@@ -59,175 +50,95 @@ const { imageBefore, imageAfter } = Astro.props;
   pointer-events: none;
 }
 
-/* Initially clip the top image to exactly 50% */
-.image-reveal-after {
-  clip-path: inset(0 50% 0 0);
+.reveal-fg-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Initially 0% clipped from left */
+  clip-path: inset(0 0 0 0%);
+  /* Will-change for better performance during animation */
+  will-change: clip-path;
 }
 
-/* The vertical reveal line */
-.image-reveal-slider {
+.reveal-line {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 50%;
-  width: 2px;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 15%, rgba(255, 255, 255, 1) 85%, rgba(255, 255, 255, 0) 100%);
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 0 0 30px rgba(0, 212, 255, 0.4);
+  left: 0%;
+  width: 5px; /* 4-6px wide as requested */
+  background-color: #ffffff;
+  /* Shift left by 50% of its own width so it centers exactly on the boundary */
   transform: translateX(-50%);
   z-index: 10;
-}
-
-/* Invisible hit area for the slider so it's easy to grab on mobile/desktop */
-.image-reveal-hitbox {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: -24px;
-  right: -24px;
-  cursor: ew-resize;
-  z-index: 1;
-}
-
-/* Minimal glowing handle */
-.image-reveal-handle {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.9);
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  box-shadow: 0 0 20px rgba(0, 212, 255, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: ew-resize;
-  z-index: 2;
-}
-
-/* Left and right arrows inside handle */
-.image-reveal-handle::before,
-.image-reveal-handle::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-style: solid;
-}
-
-.image-reveal-handle::before {
-  border-width: 5px 6px 5px 0;
-  border-color: transparent rgba(255, 255, 255, 0.9) transparent transparent;
-  left: 10px;
-}
-.image-reveal-handle::after {
-  border-width: 5px 0 5px 6px;
-  border-color: transparent transparent transparent rgba(255, 255, 255, 0.9);
-  right: 10px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.3);
+  will-change: left;
 }
 </style>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const container = document.getElementById('imageRevealContainer');
-  const slider = document.getElementById('imageRevealSlider');
-  const afterImage = document.getElementById('imageRevealAfter');
+  let isInitialized = false;
 
-  if (!container || !slider || !afterImage) return;
+  // Setup GSAP ScrollTrigger for the reveal effect
+  const initRevealAnimation = () => {
+    if (isInitialized) return;
 
-  let isInteracted = false;
-  let isDragging = false;
-  let currentPercentage = 50;
-  let targetPercentage = 50;
-  
-  // Animation timing
-  const startTime = Date.now();
+    // Ensure GSAP is loaded
+    if (typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined') {
+      isInitialized = true;
+      const gsap = window.gsap;
+      const ScrollTrigger = window.ScrollTrigger;
+      
+      gsap.registerPlugin(ScrollTrigger);
 
-  // LERP for smooth easing
-  const lerp = (start, end, factor) => {
-    return start + (end - start) * factor;
-  };
+      const container = document.getElementById('scrollRevealContainer');
+      const fgWrapper = document.getElementById('revealFgWrapper');
+      const revealLine = document.getElementById('revealLine');
 
-  const calculateTarget = (clientX) => {
-    const rect = container.getBoundingClientRect();
-    let x = clientX - rect.left;
+      if (container && fgWrapper && revealLine) {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: container,
+            start: "top top",
+            // Pin the container for 150% of viewport height while animating
+            end: "+=150%", 
+            pin: true,
+            scrub: 1, // Smooth scrubbing linking animation directly to scrollbar
+            // Prevent layout shifts during pin
+            pinSpacing: true
+          }
+        });
 
-    // Clamp values
-    if (x < 0) x = 0;
-    if (x > rect.width) x = rect.width;
+        // Animate the clip-path from left to right (0% to 100%)
+        tl.to(fgWrapper, {
+          clipPath: "inset(0 0 0 100%)",
+          ease: "none",
+          duration: 1
+        }, 0);
 
-    return (x / rect.width) * 100;
-  };
+        // Animate the reveal line matching the clip-path
+        tl.to(revealLine, {
+          left: "100%",
+          ease: "none",
+          duration: 1
+        }, 0);
 
-  const animationLoop = () => {
-    // If not interacted with, slowly oscillate between 20% and 80% (i.e., 30% from edges)
-    if (!isInteracted) {
-      const timeElapsed = Date.now() - startTime;
-      // Math.sin oscillates between -1 and 1. Multiply by 30 for a 60% total swing (50-30=20 to 50+30=80)
-      // Dividing by 1500 slows it down.
-      targetPercentage = 50 + Math.sin(timeElapsed / 1500) * 30;
-    }
-
-    // Always lerp towards target for smooth movement
-    currentPercentage = lerp(currentPercentage, targetPercentage, isInteracted ? 0.15 : 0.03);
-    
-    slider.style.left = `${currentPercentage}%`;
-    afterImage.style.clipPath = `inset(0 ${100 - currentPercentage}% 0 0)`;
-    
-    requestAnimationFrame(animationLoop);
-  };
-
-  // Start the render loop
-  requestAnimationFrame(animationLoop);
-
-  // Stop auto-animation and start dragging
-  const startDrag = (clientX) => {
-    isInteracted = true;
-    isDragging = true;
-    targetPercentage = calculateTarget(clientX);
-  };
-
-  // Handle Dragging
-  const handleDrag = (clientX) => {
-    if (isDragging) {
-      targetPercentage = calculateTarget(clientX);
+        // Crucial Fix: Since we created the pin AFTER main.js created the footer triggers,
+        // we must sort the triggers by DOM order before refreshing. Otherwise, the footer 
+        // trigger refreshes before the pin adds its spacer, resulting in wrong coordinates!
+        ScrollTrigger.sort();
+        ScrollTrigger.refresh();
+      }
+    } else {
+      // Retry if gsap is not yet loaded
+      setTimeout(initRevealAnimation, 100);
     }
   };
 
-  const stopDrag = () => {
-    isDragging = false;
-  };
-
-  // --- Desktop Events ---
-  // Only start dragging if mousedown happens on the slider (hitbox or handle)
-  slider.addEventListener('mousedown', (e) => {
-    startDrag(e.clientX);
-  });
-  
-  window.addEventListener('mousemove', (e) => {
-    handleDrag(e.clientX);
-  });
-  
-  window.addEventListener('mouseup', () => {
-    stopDrag();
-  });
-
-  // --- Mobile Events ---
-  // Only start dragging if touchstart happens on the slider
-  slider.addEventListener('touchstart', (e) => {
-    startDrag(e.touches[0].clientX);
-  }, { passive: false });
-
-  window.addEventListener('touchmove', (e) => {
-    handleDrag(e.touches[0].clientX);
-  }, { passive: false });
-
-  window.addEventListener('touchend', () => {
-    stopDrag();
-  });
-});
+  document.addEventListener('DOMContentLoaded', initRevealAnimation);
+  // Also run immediately in case DOMContentLoaded already fired (common in Astro)
+  if (document.readyState === 'interactive' || document.readyState === 'complete') {
+    initRevealAnimation();
+  }
 </script>

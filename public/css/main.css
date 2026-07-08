@@ -12,11 +12,9 @@ body {
     background-color: #000000;
     /* font-family: "Inter", sans-serif; */
     font-family: "Poppins", sans-serif;
-    overflow-x: hidden;
 }
 
 body main {
-    overflow-x: hidden;
 }
 
 :global(h1, h2, h3, h4, h5, h6) {

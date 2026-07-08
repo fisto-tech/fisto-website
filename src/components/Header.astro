@@ -4,6 +4,11 @@ const { current = "" } = Astro.props;
 function isActive(name) {
   return name.toLowerCase() === current.toLowerCase() ? "active" : "";
 }
+
+function isServiceActive() {
+  const services = ["ar-vr-mr", "2d-3d-animation", "idc", "customized-applications", "3d-website"];
+  return services.includes(current.toLowerCase()) ? "active-parent" : "";
+}
 ---
 
 <nav class="navbar">
@@ -15,7 +20,7 @@ function isActive(name) {
     <ul class="nav-links" id="navLinks">
       <li class={isActive("home")}><a href="/index.html">HOME</a></li>
       <li class={isActive("about")}><a href="/about.html">ABOUT</a></li>
-      <li class="has-dropdown">
+      <li class={`has-dropdown ${isServiceActive()}`}>
         <a href="#" class="dropdown-toggle">
           SERVICES
           <svg
