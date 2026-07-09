@@ -1,5 +1,5 @@
 ---
-const { title, description, image, current, additionalStyles } = Astro.props;
+const { title, description, image, current, additionalStyles, keywords } = Astro.props;
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Preloader from "../components/Preloader.astro";
@@ -15,7 +15,7 @@ import Preloader from "../components/Preloader.astro";
       name="description"
       content={description || "Default site description"}
     />
-    <meta name="keywords" content="astro, multipage, static site, seo" />
+    <meta name="keywords" content={keywords || "astro, multipage, static site, seo"} />
 
     <!-- Open Graph (Facebook, LinkedIn) -->
     <meta property="og:title" content={title} />

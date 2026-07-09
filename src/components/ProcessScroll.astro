@@ -4,32 +4,32 @@
 const steps = [
   {
     id: "01",
-    title: "Immersive Experience",
-    desc: "Immersive environments blend digital and physical worlds, allowing users to interact naturally with realistic 3D content for engaging experiences.",
+    title: "Interactive 3D Visualization",
+    desc: "Transform complex ideas into interactive 3D models and virtual experiences for product demonstrations, architectural walkthroughs, digital twins, and virtual prototyping.",
     img: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?w=1200&q=80"
   },
   {
     id: "02",
-    title: "Real-Time Interaction",
-    desc: "AR and VR respond instantly to user movements and gestures, creating seamless and interactive digital experiences with minimal latency.",
+    title: "Real-Time User Interaction",
+    desc: "Deliver intuitive interactions through gesture recognition, voice commands, touch controls, hand tracking, and motion sensors for a truly immersive experience.",
     img: "https://images.unsplash.com/photo-1617802690992-15d93263d3a9?w=1200&q=80"
   },
   {
     id: "03",
-    title: "3D Visualization",
-    desc: "High-quality 3D models enable users to explore products, environments, and concepts from every angle with realistic depth and detail.",
+    title: "AR Product Visualization",
+    desc: "Enable customers to place and explore virtual products in real-world environments, improving buying confidence and increasing customer engagement.",
     img: "https://images.unsplash.com/photo-1633412802994-5c058f151b66?w=1200&q=80"
   },
   {
     id: "04",
-    title: "Spatial Tracking",
-    desc: "Advanced tracking technology accurately detects user position and surroundings, ensuring virtual content stays anchored in the correct location.",
+    title: "VR Training & Simulation",
+    desc: "Develop immersive training simulations for healthcare, manufacturing, education, construction, retail, and enterprise environments to improve learning outcomes and workplace safety.",
     img: "https://images.unsplash.com/photo-1535223289827-42f1e9919769?w=1200&q=80"
   },
   {
     id: "05",
-    title: "Cross-Platform Compatibility",
-    desc: "AR and VR experiences can be accessed across smartphones, tablets, web browsers, headsets, and other supported devices for maximum accessibility.",
+    title: "Immersive Extended Reality Experiences",
+    desc: "Create highly engaging and realistic digital environments with advanced XR technology, combining the power of AR and VR to deliver seamless user experiences",
     img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&q=80"
   }
 ];
@@ -73,7 +73,10 @@ const steps = [
 
       <div class="process-left-content">
         <div class="process-header">
-          <h2 class="process-main-title animated-heading-sweep">Core Features of<br/>AR & VR Technology</h2>
+          <h2 class="process-main-title">
+            <div class="animated-heading-sweep"> Features of Our </div>
+            <div class="animated-heading-sweep">AR, VR & MR  Solutions</div>
+          </h2>
         </div>
 
         <div class="process-list">
@@ -110,6 +113,10 @@ const steps = [
 </section>
 
 <style>
+  .char {
+    display: inline-block;
+    white-space: pre-wrap;
+  }
   .process-scroll-section {
     width: 100%;
     background-color: #ffffff;
@@ -298,10 +305,10 @@ const steps = [
   const initProcessScroll = () => {
     if (processInitialized) return;
     
-    if (typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined') {
+    if (typeof (window as any).gsap !== 'undefined' && typeof (window as any).ScrollTrigger !== 'undefined') {
       processInitialized = true;
-      const gsap = window.gsap;
-      const ScrollTrigger = window.ScrollTrigger;
+      const gsap = (window as any).gsap;
+      const ScrollTrigger = (window as any).ScrollTrigger;
                      
       const section = document.getElementById('processScrollSection');
       const items = document.querySelectorAll('.process-item');
@@ -398,14 +405,22 @@ const steps = [
   };
 
   document.addEventListener('DOMContentLoaded', initProcessScroll);
+  // Also run on Astro page load if using View Transitions
+  document.addEventListener('astro:page-load', initProcessScroll);
   if (document.readyState === 'interactive' || document.readyState === 'complete') {
     initProcessScroll();
   }
 </script>
 
 <script>
-  if (!window.lightSweepInitialized) {
-    window.lightSweepInitialized = true;
+  // Initial reveal animation for features text
+  let featuresRevealInit = false;
+
+</script>
+
+<script>
+  if (!(window as any).lightSweepInitialized) {
+    (window as any).lightSweepInitialized = true;
     
     const initLightSweep = () => {
       const textEls = document.querySelectorAll('.animated-heading-sweep');
@@ -434,23 +449,23 @@ const steps = [
         el.style.webkitTextFillColor  = 'transparent';
       }
 
-      let _raf = null;
+      let _raf: any = null;
       function loop(tick) {
         cancelAnimationFrame(_raf);
         (function frame() { tick(); _raf = requestAnimationFrame(frame); })();
       }
 
-      const allChars = [];
+      const allChars: any[] = [];
       textEls.forEach(el => {
         if (el.querySelector('.char')) return; // Already split
         
         const nodes = Array.from(el.childNodes);
         el.innerHTML = '';
-        const chars = [];
+        const chars: any[] = [];
         
         nodes.forEach(node => {
           if (node.nodeType === Node.TEXT_NODE) {
-            node.textContent.split('').forEach(ch => {
+            (node.textContent || '').split('').forEach(ch => {
               const s = document.createElement('span');
               s.className = 'char';
               s.textContent = ch;

@@ -1,0 +1,283 @@
+---
+const benefits = [
+  {
+    num: "01",
+    title: "CREATIVE STORYTELLING",
+    desc: "Fisto Tech develops visually compelling stories that simplify complex concepts and communicate your brand message effectively through professional animation.",
+    color1: "#ff4b4b",
+    color2: "#ff7676",
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>`
+  },
+  {
+    num: "02",
+    title: "REALISTIC 3D ANIMATION",
+    desc: "We create detailed 3D animations with realistic models, textures, lighting, and cinematic effects for products, industries, architecture, and digital experiences.",
+    color1: "#ff8f3d",
+    color2: "#ffb476",
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 6.5l3 3"></path><path d="M14.4 3.6a2.1 2.1 0 0 1 3 0l2 2a2.1 2.1 0 0 1 0 3l-9 9-4 1 1-4 9-9z"></path></svg>`
+  },
+  {
+    num: "03",
+    title: "PRODUCT ANIMATION",
+    desc: "Showcase your products with detailed 3D animations that highlight features, functionality, and benefits, helping customers better understand your offerings.",
+    color1: "#4b7bff",
+    color2: "#769bff",
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="M18 9l-5 5-3-3-5 5"></path></svg>`
+  },
+  {
+    num: "04",
+    title: "CHARACTER ANIMATION",
+    desc: "Our creative character animations bring ideas to life with expressive movements and engaging visuals for advertising, education, entertainment, and marketing campaigns.",
+    color1: "#a84bff",
+    color2: "#c476ff",
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>`
+  }
+];
+---
+
+<section class="benefits-infographic">
+  <!-- Optional subtle background elements to make the glass effect visible -->
+  <div class="glass-bg-orb orb-1"></div>
+  <div class="glass-bg-orb orb-2"></div>
+
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Features of Our <span>2D/3D ANIMATION</span> Solutions</h2>
+    </div>
+
+    <div class="cards-wrapper">
+      {benefits.map((b, idx) => (
+        <div class="info-card" style={`--delay: -${idx * 1.8}s; --dur: ${3.5 + (idx % 3) * 1.2}s;`}>
+          <!-- The Glowing Outline Animation -->
+          <svg class="outline-svg" viewBox="0 0 300 400" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id={`grad-${b.num}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color={b.color1} />
+                <stop offset="100%" stop-color={b.color2} />
+              </linearGradient>
+            </defs>
+            <rect 
+              class="svg-rect glow" 
+              x="2" y="2" width="296" height="396" rx="32" ry="32" 
+              stroke={`url(#grad-${b.num})`} 
+              pathLength="100"
+            />
+            <rect 
+              class="svg-rect" 
+              x="2" y="2" width="296" height="396" rx="32" ry="32" 
+              stroke={`url(#grad-${b.num})`} 
+              pathLength="100"
+            />
+          </svg>
+          
+          <!-- The Glass Card -->
+          <div class="card-inner">
+            <div class="icon-wrap" set:html={b.icon}></div>
+            <h3>{b.title}</h3>
+            <p>{b.desc}</p>
+            <div class="num" style={`color: ${b.color1};`}>{b.num}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .benefits-infographic {
+    padding: 100px 20px 140px 20px;
+    background: #050505; /* Matches the main site dark theme */
+    color: #fff;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Orbs to give the glass something to blur/refract */
+  .glass-bg-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.15;
+    z-index: 0;
+  }
+
+  .orb-1 {
+    width: 400px;
+    height: 400px;
+    background: #ff4b4b;
+    top: 10%;
+    left: 15%;
+  }
+
+  .orb-2 {
+    width: 500px;
+    height: 500px;
+    background: #4b7bff;
+    bottom: -10%;
+    right: 10%;
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+  }
+
+  .section-title span {
+    font-weight: 300;
+    color: #888;
+  }
+
+  .cards-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .info-card {
+    position: relative;
+    width: 280px;
+    height: 380px;
+    margin-bottom: 30px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+
+  .info-card:hover {
+    transform: translateY(-10px);
+  }
+
+  /* The Hyper-Realistic Glass Card */
+  .card-inner {
+    position: absolute;
+    inset: 0;
+    /* Semi-transparent gradient for a more realistic glass sheen */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 100%);
+    /* Stronger blur and saturation for better light bending */
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    /* Slightly thicker rim light */
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    /* Combining a dark drop shadow with a soft white inset shadow for 3D rim lighting */
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2), 0 20px 40px rgba(0,0,0,0.4);
+    z-index: 2;
+  }
+
+  .icon-wrap {
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 30px;
+  }
+
+  .card-inner h3 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: #fff;
+    margin: 0 0 15px 0;
+    letter-spacing: 0.5px;
+  }
+
+  .card-inner p {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: #a0a0a0;
+    margin: 0;
+  }
+
+  .num {
+    position: absolute;
+    bottom: 25px;
+    right: 30px;
+    font-family: 'Bebas Neue', 'Anton', 'Inter', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5); /* Helps number pop on glass */
+  }
+
+  /* SVG Drawing Animation */
+  .outline-svg {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    bottom: -10px;
+    left: -10px;
+    width: calc(100% + 20px);
+    height: calc(100% + 20px);
+    z-index: 1;
+    pointer-events: none; /* Let hovers pass through to the card */
+  }
+
+  /* Keyframes for continuous drawing and erasing animation */
+  @keyframes drawOutline {
+    0% {
+      stroke-dasharray: 0 100;
+      stroke-dashoffset: 0;
+    }
+    50% {
+      /* The line draws completely around the card */
+      stroke-dasharray: 100 100;
+      stroke-dashoffset: 0;
+    }
+    100% {
+      /* The tail catches up to the head, erasing the line */
+      stroke-dasharray: 0 100;
+      stroke-dashoffset: -100;
+    }
+  }
+
+  .svg-rect {
+    fill: none;
+    stroke-width: 3;
+    /* Animate continuously by default with varying durations */
+    animation: drawOutline var(--dur, 4s) ease-in-out infinite;
+    animation-delay: var(--delay, 0s);
+  }
+
+  .svg-rect.glow {
+    filter: blur(12px);
+    stroke-width: 6;
+    opacity: 0.8;
+  }
+
+  /* Removed hover speed-up to prevent animation jumping/glitching (stuck effect) */
+
+  @media (max-width: 1200px) {
+    .cards-wrapper {
+      gap: 30px;
+    }
+    .info-card {
+      width: calc(50% - 30px);
+      max-width: 320px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .info-card {
+      width: 100%;
+      max-width: 350px;
+    }
+  }
+</style>

@@ -1,0 +1,83 @@
+---
+// src/components/ClientMarquee.astro
+---
+<section class="our-clients-marquee">
+  <div class="marquee">
+    <div class="marquee-content">
+      <img src="/images/home/clients/client1.png" alt="Client" />
+      <img src="/images/home/clients/client3.png" alt="Client" />
+      <img src="/images/home/clients/client4.png" alt="Client" />
+      <img src="/images/home/clients/client5.png" alt="Client" />
+      <img src="/images/home/clients/client6.png" alt="Client" />
+      <img src="/images/home/clients/client7.png" alt="Client" />
+      <img src="/images/home/clients/Client8.png" alt="Client" />
+      <img src="/images/home/clients/client9.png" alt="Client" />
+      <img src="/images/home/clients/client10.png" alt="Client" />
+      <img src="/images/home/clients/client11.png" alt="Client" />
+      <img src="/images/home/clients/client12.png" alt="Client" />
+      <img src="/images/home/clients/client13.png" alt="Client" />
+      <img src="/images/home/clients/client14.png" alt="Client" />
+      <img src="/images/home/clients/client15.png" alt="Client" />
+    </div>
+  </div>
+</section>
+
+<style>
+.our-clients-marquee {
+  background: #ffffff;
+  padding: 20px 0;
+  width: 100%;
+  overflow: hidden;
+ 
+}
+
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+}
+
+.marquee-content {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  animation: marquee 30s linear infinite;
+  min-width: max-content;
+}
+
+.marquee-content img {
+  height: 150px;
+  max-width: 220px;
+  object-fit: contain;
+
+
+  transition: all 0.3s ease;
+}
+
+.marquee-content:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+</style>
+
+<script>
+  // Clone the marquee content to make it seamless
+  document.addEventListener('DOMContentLoaded', () => {
+    const marqueeContent = document.querySelector('.marquee-content');
+    if (marqueeContent) {
+      const clone = marqueeContent.cloneNode(true) as HTMLElement;
+      // We don't want the clone to also animate on its own, it inherits from parent? No, animation is on .marquee-content
+      // Wait, we should append the cloned items into the same .marquee-content container!
+      const items = Array.from(marqueeContent.children);
+      items.forEach(item => {
+        const clonedItem = item.cloneNode(true);
+        marqueeContent.appendChild(clonedItem);
+      });
+    }
+  });
+</script>

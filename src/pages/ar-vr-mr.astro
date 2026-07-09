@@ -1,7 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ImageReveal from '../components/ImageReveal.astro';
+import FlexSliderSection from '../components/FlexSliderSection.astro';
 import CinematicHero from '../components/CinematicHero.astro';
+import ClientMarquee from '../components/ClientMarquee.astro';
+import OvalLayoutSection from '../components/OvalLayoutSection.astro';
 import IndustriesSection from '../components/IndustriesSection.astro';
 import ProcessScroll from '../components/ProcessScroll.astro';
 import ArVrCtaBanner from '../components/ArVrCtaBanner.astro';
@@ -9,8 +12,9 @@ import '../styles/service1.css';
 ---
 
 <BaseLayout
-  title="AR/ VR/ MR Development"
-  description="AR/ VR/ MR Development"
+  title="Best AR/VR Development Company in Coimbatore | Leading AR & VR Solutions in India"
+  description="Fisto Tech Private Limited delivers advanced AR/VR app solutions in India for training, manufacturing, marketing, and immersive business experiences."
+  keywords="AR VR Development Company India, Mixed Reality Application Development, Augmented Reality Solutions for Business, Virtual Reality Training Application Development, WebAR Development Services, Immersive AR VR Experience Development, Metaverse Experience Development Company, 3D Virtual Simulation Development, Enterprise AR VR Solutions, AR/VR companies in India AR VR Development Company India, Mixed Reality Application Development, Augmented Reality Solutions for Business, Virtual Reality Training Application Development, WebAR Development Services, Immersive AR VR Experience Development, Metaverse Experience Development Company, 3D Virtual Simulation Development, Enterprise AR VR Solutions, AR/VR companies in India, 2D/3D Animation Services in Coimbatore, Catalogue Services in India, 3D Virtual Tour Services in Coimbatore, Website Services in Coimbatore, Customized App Development Company in Coimbatore, Top AR VR companies India 2D, AR/VR development, 3D animation services Coimbatore, Best VR AR companies India animation services Coimbatore, AR VR solutions India 2D 3D animation Coimbatore providers, Leading AR/VR firms India animation rendering Coimbatore, India virtual reality companies 3D animation services Coimbatore, Digital product catalog services Coimbatore, Interactive digital catalogs India, Coimbatore digital catalog solutions, Product and service digital catalogs, Digital catalogue services interactive, Catalog services digital Coimbatore India, Top Website Development Company in Coimbatore India, Web Design Company Coimbatore, Best Web Development Services in Coimbatore, Top Web Design Company India, Custom Web Development Coimbatore, Ecommerce Website Development Coimbatore"
   image="/images/about-og.jpg"
   current="ar-vr-mr"
    additionalStyles="/css/services.css"
@@ -22,14 +26,20 @@ import '../styles/service1.css';
 
 <CinematicHero />
 
+<OvalLayoutSection />
+
 <ImageReveal 
   imageBefore="/images/services/AR-VR/AR-world-img.webp" 
   imageAfter="/images/services/AR-VR/normal-world-img.webp" 
 />
 
+<FlexSliderSection />
+
 <ProcessScroll />
 
 <IndustriesSection />
+
+<ClientMarquee />
 
 <ArVrCtaBanner />
 

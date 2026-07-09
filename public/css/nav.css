@@ -14,16 +14,9 @@
     transition: all 0.3s ease;
 }
 
-/* Add this class for scrolled state */
-.navbar.scrolled {
-    background: rgba(45, 45, 45, 0.95);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
-    backdrop-filter: blur(30px);
-}
 
-.navbar.scrolled .nav-container {
-    height: 70px;
-}
+
+
 
 /* Add padding to body to prevent content from hiding under navbar */
 body {
@@ -57,9 +50,6 @@ body {
     transition: height 0.3s ease;
 }
 
-.navbar.scrolled .logo img {
-    height: 38px;
-}
 
 .logo-icon {
     width: 45px;
@@ -275,10 +265,6 @@ body {
         overflow-y: auto;
     }
 
-    .navbar.scrolled .nav-links {
-        top: 70px;
-        height: calc(100vh - 70px);
-    }
 
     .nav-links.active {
         transform: translateX(0);
@@ -354,17 +340,12 @@ body {
         height: 70px;
     }
 
-    .navbar.scrolled .nav-container {
-        height: 60px;
-    }
+   
 
     .logo img {
         height: 35px;
     }
 
-    .navbar.scrolled .logo img {
-        height: 30px;
-    }
 
     .logo-text {
         display: none;
@@ -391,13 +372,10 @@ body {
 
     .nav-links {
         top: 70px;
-        height: calc(100vh - 70px);
+        height: calc(100vh - 70px); 
     }
 
-    .navbar.scrolled .nav-links {
-        top: 60px;
-        height: calc(100vh - 60px);
-    }
+
 
     .nav-links > li > a {
         font-size: 0.95rem;

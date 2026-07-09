@@ -4,6 +4,9 @@ import tailwind from '@astrojs/tailwind'; // ✅ Correct Tailwind plugin
 
 
 export default defineConfig({
+  devToolbar: {
+    enabled: false
+  },
   integrations: [
     react(),
     // tailwind(),

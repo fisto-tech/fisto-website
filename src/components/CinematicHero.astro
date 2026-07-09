@@ -3,16 +3,93 @@
 ---
 
 <section class="cinematic-hero-section" id="cinematicHero">
-  <div class="hero-overlay"></div>
-  <video autoplay loop muted playsinline class="hero-video-bg">
-    <source src="/images/services/AR-VR/AR-VR-video-new.mp4" type="video/mp4" />
-  </video>
+  <div class="hero-container">
+    <div class="slide">
+      
+      <!-- ITEM 1: AR -->
+      <div class="item">
+        <video muted loop playsinline class="item-video" preload="auto">
+          <source src="/images/services/AR-VR/AR-video.mp4" type="video/mp4" />
+        </video>
+        <div class="item-overlay"></div>
+        <div class="content">
+          <div class="name">Augmented Reality</div>
+          <div class="des">Overlay digital information onto the real world. Enhance training, marketing, and business operations with interactive 3D elements.</div>
+          <button class="action-btn">Explore AR</button>
+        </div>
+      </div>
 
-  <div class="hero-text-container" id="heroTextContainer">
-    <div class="hero-line"><span class="hero-text-inner">WE BUILD</span></div>
-    <div class="hero-line"><span class="hero-text-inner">IMMERSIVE</span></div>
-    <div class="hero-line"><span class="hero-text-inner">AR & VR</span></div>
-    <div class="hero-line"><span class="hero-text-inner">EXPERIENCES</span></div>
+      <!-- ITEM 2: VR -->
+      <div class="item">
+        <video muted loop playsinline class="item-video" preload="auto">
+          <source src="/images/services/AR-VR/VR-video.mp4" type="video/mp4" />
+        </video>
+        <div class="item-overlay"></div>
+        <div class="content">
+          <div class="name">Virtual Reality</div>
+          <div class="des">Step into completely simulated environments. Perfect for immersive training, virtual tours, and next-generation entertainment.</div>
+          <button class="action-btn">Explore VR</button>
+        </div>
+      </div>
+
+      <!-- ITEM 3: MR -->
+      <div class="item">
+        <video muted loop playsinline class="item-video" preload="auto">
+          <source src="/images/services/AR-VR/AR-VR-video-new.mp4" type="video/mp4" />
+        </video>
+        <div class="item-overlay"></div>
+        <div class="content">
+          <div class="name">Mixed Reality</div>
+          <div class="des">Seamlessly blend physical and digital worlds. Interact with holograms as if they were real objects in your physical space.</div>
+          <button class="action-btn">Explore MR</button>
+        </div>
+    </div>
+
+      <!-- ITEM 4: AR (Clone) -->
+      <div class="item">
+        <video muted loop playsinline class="item-video" preload="auto">
+          <source src="/images/services/AR-VR/AR-video.mp4" type="video/mp4" />
+        </video>
+        <div class="item-overlay"></div>
+        <div class="content">
+          <div class="name">Augmented Reality</div>
+          <div class="des">Overlay digital information onto the real world. Enhance training, marketing, and business operations with interactive 3D elements.</div>
+          <button class="action-btn">Explore AR</button>
+        </div>
+      </div>
+
+      <!-- ITEM 5: VR (Clone) -->
+      <div class="item">
+        <video muted loop playsinline class="item-video" preload="auto">
+          <source src="/images/services/AR-VR/VR-video.mp4" type="video/mp4" />
+        </video>
+        <div class="item-overlay"></div>
+        <div class="content">
+          <div class="name">Virtual Reality</div>
+          <div class="des">Step into completely simulated environments. Perfect for immersive training, virtual tours, and next-generation entertainment.</div>
+          <button class="action-btn">Explore VR</button>
+        </div>
+      </div>
+
+      <!-- ITEM 6: MR (Clone) -->
+      <div class="item">
+        <video muted loop playsinline class="item-video" preload="auto">
+          <source src="/images/services/AR-VR/AR-VR-video-new.mp4" type="video/mp4" />
+        </video>
+        <div class="item-overlay"></div>
+        <div class="content">
+          <div class="name">Mixed Reality</div>
+          <div class="des">Seamlessly blend physical and digital worlds. Interact with holograms as if they were real objects in your physical space.</div>
+          <button class="action-btn">Explore MR</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="button-container">
+      <button class="nav-btn prev"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <button class="nav-btn next"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+    </div>
   </div>
 </section>
 
@@ -20,12 +97,96 @@
   .cinematic-hero-section {
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: calc(100dvh - 80px); /* Subtract navbar height */
+    background: #000;
     overflow: hidden;
-    background-color: #000;
   }
 
-  .hero-video-bg {
+  .hero-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+  }
+
+  .slide {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Base Item Style - Hidden off screen by default */
+  .hero-container .slide .item {
+    width: 250px;
+    height: 350px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: calc(55% + 810px); /* Off screen */
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+    background-position: 50% 50%;
+    background-size: cover;
+    display: inline-block;
+    transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  /* Position 1 (Exiting background) */
+  .hero-container .slide .item.pos-1 {
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    z-index: 1;
+    box-shadow: none;
+    cursor: default;
+  }
+
+  /* Position 2 (Active Background) */
+  .hero-container .slide .item.pos-2 {
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    z-index: 2;
+    box-shadow: none;
+    cursor: default;
+  }
+
+  /* Thumbnails (Positions 3+) */
+  .hero-container .slide .item.pos-3 { left: 55%; z-index: 3; }
+  .hero-container .slide .item.pos-4 { left: calc(55% + 270px); z-index: 3; }
+  
+  /* Instantly snap items when skipping */
+  .hero-container .slide .item.snap-instant {
+    transition: none !important;
+  }
+
+  /* Prevent items from flying across the screen when wrapping around */
+  .hero-container .slide .item.wrap-around {
+    transition: none !important;
+    animation: fadeInCard 0.8s ease-in-out forwards;
+  }
+
+  @keyframes fadeInCard {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  /* Fallback for items that go off screen to the right */
+  .hero-container .slide .item.pos-last {
+    left: calc(55% + 810px);
+    z-index: 1;
+  }
+
+  .item-video {
     position: absolute;
     top: 0;
     left: 0;
@@ -33,137 +194,294 @@
     height: 100%;
     object-fit: cover;
     z-index: 1;
+    filter: brightness(0.6); /* Dim thumbnails slightly */
+    transition: filter 0.7s cubic-bezier(0.25, 1, 0.5, 1);
   }
 
-  .hero-overlay {
+  /* Full brightness when it becomes the active background */
+  .hero-container .slide .item.pos-2 .item-video {
+    filter: brightness(1); 
+  }
+
+  .item-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.45); /* Subtle dark overlay for readability */
+    /* Smooth, professional gradient */
+    background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0) 100%);
     z-index: 2;
+    transition: opacity 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+    opacity: 0; /* Hidden on thumbnails */
   }
 
-  .hero-text-container {
+  .hero-container .slide .item.pos-2 .item-overlay {
+    opacity: 1; /* Show gradient on active video */
+  }
+
+  .hero-container .slide .item:hover .item-video {
+    filter: brightness(0.9); /* Brighten thumbnail on hover */
+  }
+  .hero-container .slide .item.pos-2:hover .item-video {
+    filter: brightness(1);
+  }
+
+  .item .content {
     position: absolute;
-    top: 55%;
-    left: 5%;
+    top: 50%;
+    left: 8%;
+    width: min(500px, 90vw);
+    text-align: left;
+    color: #eee;
+    transform: translate(0, -50%);
     z-index: 3;
-    display: flex;
-    flex-direction: column;
-    pointer-events: none;
-    transform-origin: left center;
+    display: none;
+    font-family: 'Inter', sans-serif;
   }
 
-  .hero-line {
-    overflow: hidden;
-    padding-bottom: 0.05em; /* prevents clipping of descenders if any */
-  }
-
-  .hero-text-inner {
+  .hero-container .slide .item.pos-2 .content {
     display: block;
-    font-family: 'Bebas Neue', 'Anton', 'Oswald', 'Impact', sans-serif;
-    font-size: clamp(5rem, 12vw, 13rem);
-    font-weight: 100;
-    color: #fff;
-    line-height: 0.82;
-    text-transform: uppercase;
-    white-space: nowrap;
-    
-    /* Initial state for GSAP */
-    opacity: 0;
-    filter: blur(10px);
-    will-change: transform, opacity, filter;
   }
 
-  /* Responsive adjustments for mobile */
+  .item .name {
+    font-size: clamp(32px, 5vw, 60px);
+    font-weight: 800;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: animate 1s ease-in-out 1 forwards;
+    letter-spacing: 2px;
+    line-height: 1.1;
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .item .des {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    opacity: 0;
+    animation: animate 1s ease-in-out 0.3s 1 forwards;
+    font-size: clamp(14px, 2vw, 18px);
+    line-height: 1.6;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .item .action-btn {
+    padding: 15px 35px;
+    border: none;
+    border-radius: 50px;
+    background-color: #fff;
+    color: #000;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    opacity: 0;
+    animation: animate 1s ease-in-out 0.6s 1 forwards;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+
+  .item .action-btn:hover {
+    transform: scale(1.05);
+    background-color: #f0f0f0;
+  }
+
+  @keyframes animate {
+    from {
+      opacity: 0;
+      transform: translate(0, 100px);
+      filter: blur(5px);
+    }
+    to {
+      opacity: 1;
+      transform: translate(0, 0);
+      filter: blur(0);
+    }
+  }
+
+  .button-container {
+    position: absolute;
+    bottom: 50px;
+    left: 55%;
+    width: 520px; /* Width of the two thumbnails (250px + 270px spacing) */
+    text-align: center;
+    z-index: 10;
+  }
+
+  .nav-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.6);
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    cursor: pointer;
+    margin: 0 15px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
+  }
+
+  .nav-btn:hover {
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+    transform: scale(1.1);
+  }
+
+  @media (max-width: 1024px) {
+    .hero-container .slide .item.pos-3 { left: 45%; }
+    .hero-container .slide .item.pos-4 { left: calc(45% + 220px); }
+    
+    .button-container {
+      left: 45%;
+      width: 470px;
+    }
+  }
+
   @media (max-width: 768px) {
-    .hero-text-container {
-      left: 8%;
+    .item .content {
+      left: 5%;
+      width: 90%;
+      top: 30%;
+      transform: translateY(0);
+    }
+    .item .name { font-size: 40px; }
+    
+    .hero-container .slide .item {
+      width: 150px;
+      height: 220px;
+      top: auto;
+      bottom: 120px;
+      transform: none;
+    }
+    
+    .hero-container .slide .item.pos-1,
+    .hero-container .slide .item.pos-2 {
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .hero-container .slide .item.pos-3 { left: 5%; }
+    .hero-container .slide .item.pos-4 { left: calc(5% + 160px); }
+    
+    .button-container {
+      left: 5%;
+      width: 310px;
+      bottom: 30px;
+    }
+    
+    .item-overlay {
+      background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0) 100%);
     }
   }
 </style>
 
 <script>
-  let heroInitialized = false;
+  let sliderInitialized = false;
 
-  const initCinematicHero = () => {
-    if (heroInitialized) return;
-    if (typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined') {
-      heroInitialized = true;
-      const gsap = window.gsap;
-      const ScrollTrigger = window.ScrollTrigger;
-      
-      const heroSection = document.getElementById('cinematicHero');
-      const textContainer = document.getElementById('heroTextContainer');
-      const textLines = gsap.utils.toArray('.hero-text-inner');
+  function initSliderClassBased() {
+    if (sliderInitialized) return;
+    
+    const items = Array.from(document.querySelectorAll('.hero-container .slide .item'));
+    if (items.length === 0) return;
+    
+    const nextBtn = document.querySelector('.hero-container .button-container .next');
+    const prevBtn = document.querySelector('.hero-container .button-container .prev');
+    const slide = document.querySelector('.hero-container .slide');
+    
+    sliderInitialized = true;
+    let positions = items.map((_, i) => i + 1);
+    let prevPositions = [...positions];
 
-      if (heroSection && textContainer && textLines.length > 0) {
+    const updateClasses = () => {
+      items.forEach((item, index) => {
+        let pos = positions[index];
+        let oldPos = prevPositions[index];
         
-        // Initial setup to avoid CSS transform conflicts
-        gsap.set(textContainer, { yPercent: -50, scale: 1.08 });
-        gsap.set(textLines, { y: 120 });
+        const isClickedItem = false; // Click logic removed
+        const isSlidingThumb = (pos >= 3 && pos < oldPos); // Items sliding left
+        const isNormalNext = (oldPos === 2 && pos === 1); // Normal active to old background
+        const isNormalPrev = (oldPos === 1 && pos === 2); // Normal old bg to active
 
-        // Create the ScrollTrigger timeline
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: heroSection,
-            start: "top top",
-            end: "+=250%", // Scroll distance for the whole animation (adjust to control speed)
-            pin: true,
-            scrub: 1, // smooth scrubbing
-            anticipatePin: 1
+        if (oldPos === 1 && pos >= 3) {
+          // Wrapping from old background to any thumbnail (fades in)
+          item.classList.add('wrap-around');
+          item.classList.remove('snap-instant');
+        } else if (!isSlidingThumb && !isNormalNext && !isNormalPrev && Math.abs(pos - oldPos) > 1) {
+          // Skipped steps -> Snap instantly to prevent flying
+          item.classList.add('snap-instant');
+          item.classList.remove('wrap-around');
+        } else {
+          item.classList.remove('wrap-around', 'snap-instant');
+        }
+        
+        // Clear all pos-* classes
+        item.classList.remove('pos-1', 'pos-2', 'pos-3', 'pos-4', 'pos-5', 'pos-last');
+        
+        if (pos <= 5) {
+          item.classList.add(`pos-${pos}`);
+        } else {
+          item.classList.add('pos-last');
+        }
+
+        // Handle video playback logic
+        const video = item.querySelector('video');
+        if (video) {
+          if (pos === 2) {
+            // Play the active video AFTER the zoom transition finishes (700ms)
+            setTimeout(() => {
+              if (item.classList.contains('pos-2')) {
+                video.play().catch(e => console.log('Autoplay prevented:', e));
+              }
+            }, 700);
+          } else {
+            // Pause non-active videos
+            video.pause();
+            
+            // Wait for the shrink transition to finish before resetting frame
+            setTimeout(() => {
+              if (!item.classList.contains('pos-2')) {
+                video.currentTime = 0;
+              }
+            }, 700);
           }
-        });
+        }
+      });
+      prevPositions = [...positions];
+    };
 
-        // 1. Reveal sequentially from bottom
-        tl.to(textLines, {
-          y: 0,
-          opacity: 1,
-          filter: "blur(0px)",
-          duration: 1.2,
-          stagger: 0.25,
-          ease: "power3.out"
-        });
+    // Initialize first positions
+    updateClasses();
 
-        // 2. Scale down the entire block slightly while video plays
-        tl.to(textContainer, {
-          scale: 1.0,
-          duration: 1.2,
-          ease: "none"
-        }, "-=0.5"); // overlap with the end of the text reveal
+    const next = () => {
+      positions = positions.map(p => {
+        let newPos = p - 1;
+        if (newPos < 1) newPos = items.length;
+        return newPos;
+      });
+      updateClasses();
+    };
 
-        // Animate the text color to a futuristic cyan during the scale down
-        tl.to(textLines, {
-          color: "#22d3ee",
-          duration: 1.2,
-          ease: "power2.inOut"
-        }, "<"); // Start exactly when the scale animation starts
+    const prev = () => {
+      positions = positions.map(p => {
+        let newPos = p + 1;
+        if (newPos > items.length) newPos = 1;
+        return newPos;
+      });
+      updateClasses();
+    };
 
-        // Add a small pause in the timeline where text stays fully visible
-        tl.to({}, { duration: 0.5 });
-
-        // 3. Move upward and fade out
-        tl.to(textContainer, {
-          yPercent: -150, // Move it up relative to its size
-          opacity: 0,
-          scale: 0.95,
-          duration: 1.5,
-          ease: "power2.inOut"
-        });
-        
-        // Refresh triggers to ensure layout is calculated correctly, especially for footer below
-        ScrollTrigger.sort();
-        ScrollTrigger.refresh();
-      }
-    } else {
-      setTimeout(initCinematicHero, 100);
-    }
-  };
-
-  document.addEventListener('DOMContentLoaded', initCinematicHero);
-  if (document.readyState === 'interactive' || document.readyState === 'complete') {
-    initCinematicHero();
+    if (nextBtn) nextBtn.addEventListener("click", next);
+    if (prevBtn) prevBtn.addEventListener("click", prev);
   }
+
+  // Initialize on page load and astro page swaps
+  document.addEventListener('DOMContentLoaded', initSliderClassBased);
+  document.addEventListener('astro:page-load', initSliderClassBased);
+  
+  // Also run immediately just in case
+  initSliderClassBased();
 </script>

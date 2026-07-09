@@ -1,0 +1,237 @@
+---
+const cards = [
+  {
+    title: "3D Brand Animation",
+    desc: "Transforms your brand identity into visually engaging and memorable stories. Using advanced animation techniques, we craft dynamic visuals that convey your message with clarity and impact.",
+    img: "https://images.unsplash.com/photo-1561089489-08174a56201e?w=800&q=80"
+  },
+  {
+    title: "3D Explainer Videos",
+    desc: "Our professional 3D animation services create captivating product animations, motion graphics, and branding visuals that enhance understanding and engage audiences.",
+    img: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&q=80"
+  },
+  {
+    title: "Corporate Presentation",
+    desc: "Corporate videos showcase your brand’s story, values, and achievements through powerful visual storytelling. They build trust, enhance brand awareness, and leave a lasting impression.",
+    img: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80"
+  },
+  {
+    title: "Industrial Animation",
+    desc: "Demonstrate product functionality and processes through clear, engaging visuals. Our product animation and tutorial video services simplify learning and build trust.",
+    img: "https://images.unsplash.com/photo-1536240478700-b869070f9279?w=800&q=80"
+  },
+  {
+    title: "Motion Graphics Product Animation",
+    desc: "Showcases how your product or service works through engaging visuals and sound. Our creative product animation and motion graphics services simplify learning and boost engagement.",
+    img: "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?w=800&q=80"
+  }
+];
+---
+
+<section class="hover-accordion-section">
+  <div class="section-header">
+    <h2 class="section-title">Types of Animation</h2>
+    <p class="section-subtitle">Hover over the panels to explore our animation services</p>
+  </div>
+  
+  <div class="accordion-container">
+    {cards.map((card, index) => (
+      <div class="acc-card" style={`background-image: url(${card.img})`}>
+        <div class="acc-overlay"></div>
+        <div class="acc-title-vertical">
+          <h3>{card.title}</h3>
+        </div>
+        <div class="acc-content">
+          <div class="content-inner">
+            <h3 class="expanded-title">{card.title}</h3>
+            <p>{card.desc}</p>
+            <div class="explore-btn">
+              <span>View Details</span>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .hover-accordion-section {
+    padding: 100px 20px;
+    background: #050505;
+    color: #fff;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .section-title {
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    font-family: 'Bebas Neue', 'Anton', sans-serif;
+    color: #22d3ee;
+    letter-spacing: 2px;
+    margin: 0;
+  }
+
+  .section-subtitle {
+    font-size: 1.1rem;
+    font-family: 'Inter', sans-serif;
+    color: #a0a0a0;
+    margin-top: 10px;
+  }
+
+  .accordion-container {
+    display: flex;
+    gap: 15px;
+    max-width: 1400px;
+    margin: 0 auto;
+    height: 65vh;
+    min-height: 500px;
+  }
+
+  .acc-card {
+    flex: 1;
+    border-radius: 30px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: flex 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .acc-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.4) 100%);
+    opacity: 0.8;
+    transition: opacity 0.5s ease;
+  }
+
+  .acc-card:hover {
+    flex: 6;
+  }
+
+  .acc-card:hover .acc-overlay {
+    opacity: 0.6;
+  }
+
+  /* Vertical Title (Visible when collapsed) */
+  .acc-title-vertical {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    transition: opacity 0.3s ease;
+  }
+
+  .acc-title-vertical h3 {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: 'Bebas Neue', 'Anton', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    margin: 0;
+    color: #fff;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  }
+
+  .acc-card:hover .acc-title-vertical {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Expanded Content (Visible when hovered) */
+  .acc-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    transition-delay: 0s;
+    pointer-events: none;
+  }
+
+  .content-inner {
+    max-width: 600px;
+  }
+
+  .acc-card:hover .acc-content {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+    pointer-events: auto;
+  }
+
+  .expanded-title {
+    font-family: 'Bebas Neue', 'Anton', sans-serif;
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    color: #22d3ee;
+    letter-spacing: 1px;
+    margin: 0 0 15px 0;
+    line-height: 1;
+  }
+
+  .acc-content p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #e0e0e0;
+    margin-bottom: 25px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .explore-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: gap 0.3s ease, color 0.3s ease;
+  }
+
+  .explore-btn:hover {
+    gap: 15px;
+    color: #22d3ee;
+  }
+
+  @media (max-width: 992px) {
+    .accordion-container {
+      flex-direction: column;
+      height: 1000px;
+    }
+    
+    .acc-title-vertical {
+      top: 50%;
+      left: 30px;
+      bottom: auto;
+      transform: translateY(-50%);
+    }
+
+    .acc-title-vertical h3 {
+      writing-mode: horizontal-tb;
+      transform: none;
+    }
+    
+    .acc-card:hover {
+      flex: 3;
+    }
+  }
+</style>

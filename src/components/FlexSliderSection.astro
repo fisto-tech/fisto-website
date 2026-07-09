@@ -1,0 +1,210 @@
+---
+---
+
+<section class="flex-slider-section">
+  <div class="flex-container">
+    <div class="flex-slide home active">
+      <div class="flex-title">Augmented Reality</div>
+      <div class="flex-about">
+        <p>Overlay digital elements onto the real world. We build powerful AR solutions that enhance environments with interactive data, 3D models, and real-time visualization.</p>
+      </div>
+    </div>
+    <div class="flex-slide about">
+      <div class="flex-title">Virtual Reality</div>
+      <div class="flex-about">
+        <p>Fully immersive digital experiences. Step into completely simulated environments designed for enterprise training, simulations, and virtual tours.</p>
+      </div>
+    </div>
+    <div class="flex-slide work">
+      <div class="flex-title">Mixed Reality</div>
+      <div class="flex-about">
+        <p>The true convergence of physical and digital. Interact naturally with holographic objects that map to and respond to real-world physics and environments.</p>
+      </div>
+    </div>
+    <div class="flex-slide contact">
+      <div class="flex-title">WebAR & Metaverse</div>
+      <div class="flex-about">
+        <p>Seamlessly connected digital spaces. Experience high-end spatial computing directly in the web browser without downloading any external applications.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.flex-slider-section {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+  padding: 40px 20px;
+}
+
+.flex-container {
+  width: 100%;
+  max-width: 1400px;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  gap: 15px;
+}
+
+.flex-slide {
+  width: 10%;
+  height: 100%;
+  cursor: pointer;
+  transition: all 500ms ease;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.flex-slide:hover, .flex-slide.active {
+  padding: 40px;
+  width: 70%;
+}
+
+.home {
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1617802690992-15d93263d3a9?q=80&w=1000&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+}
+.about {
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?q=80&w=1000&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+}
+.work {
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1592478411213-6153e4ebc07d?q=80&w=1000&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+}
+.contact {
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1614729939124-03290b56c9ce?q=80&w=1000&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+}
+
+.flex-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  width: 400px;
+  height: 80px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: 700;
+  margin: 0;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  transition: all 500ms ease;
+  font-family: 'Outfit', sans-serif;
+}
+
+.flex-slide:hover .flex-title, .flex-slide.active .flex-title {
+  transform: translate(0, 0) rotate(0deg);
+  top: 40px;
+  left: 40px;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.flex-about {
+  opacity: 0;
+  color: #f1f1f1;
+  position: absolute;
+  width: calc(100% - 80px);
+  font-size: 18px;
+  padding: 0;
+  top: 60%;
+  left: 40px;
+  line-height: 1.4;
+  text-align: left;
+  transition: all 500ms ease;
+  font-family: 'Inter', sans-serif;
+}
+
+.flex-slide:hover .flex-about, .flex-slide.active .flex-about {
+  opacity: 1;
+  top: 120px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .flex-slide:hover, .flex-slide.active {
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .flex-slider-section {
+    height: auto;
+    padding: 20px 10px;
+  }
+  .flex-container {
+    flex-direction: column;
+    height: 100vh;
+  }
+  .flex-slide {
+    width: 100%;
+    height: 12%;
+  }
+  .flex-slide:hover, .flex-slide.active {
+    width: 100%;
+    height: 64%;
+    padding: 20px;
+  }
+  .flex-title {
+    transform: translate(-50%, -50%) rotate(0deg);
+    font-size: 20px;
+    width: auto;
+  }
+  .flex-slide:hover .flex-title, .flex-slide.active .flex-title {
+    top: 25px;
+    left: 20px;
+  }
+  .flex-about {
+    width: calc(100% - 40px);
+    left: 20px;
+    top: 70%;
+    font-size: 15px;
+  }
+  .flex-slide:hover .flex-about, .flex-slide.active .flex-about {
+    top: 65px;
+  }
+}
+</style>
+
+<script>
+  const initFlexSlider = () => {
+    const divContainer = document.querySelector(".flex-container");
+    const slides = document.querySelectorAll(".flex-slide");
+
+    if (divContainer && slides.length > 0) {
+      slides.forEach((slide) => {
+        slide.addEventListener("mouseenter", function () {
+          slides.forEach((s) => s.classList.remove("active"));
+          slide.classList.add("active");
+        });
+      });
+
+      divContainer.addEventListener("mouseleave", function () {
+        const homeSlide = document.querySelector(".flex-slide.home");
+        if (homeSlide) {
+          slides.forEach((s) => s.classList.remove("active"));
+          homeSlide.classList.add("active");
+        }
+      });
+    }
+  };
+
+  document.addEventListener("DOMContentLoaded", initFlexSlider);
+  if (document.readyState === "interactive" || document.readyState === "complete") {
+    initFlexSlider();
+  }
+</script>

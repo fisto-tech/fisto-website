@@ -25,20 +25,52 @@ const { imageBefore, imageAfter } = Astro.props;
       
       <!-- Background Text (Left side color) -->
       <h2 class="reveal-text bg-text">
-        <span class="part part-1">Experience the</span> 
-        <span class="part part-2">future with immersive</span>
-        <span class="part part-3">AR & VR</span> 
-        <span class="part part-4">technology</span>
+        <span class="part part-1">India's</span> 
+        <span class="part part-2">Leading</span>
+        <span class="part part-3">AR, VR & MR</span>
+        <span class="part part-4">Development</span> 
+        <span class="part part-5">Company</span>
       </h2>
 
       <!-- Foreground Text (Wipes over to change the color fully) -->
       <h2 class="reveal-text fg-text" id="revealTextFg">
-        <span class="part part-1">Experience the</span> 
-        <span class="part part-2">future with immersive</span>
-        <span class="part part-3">AR & VR</span> 
-        <span class="part part-4">technology</span>
+        <span class="part part-1">India's</span> 
+        <span class="part part-2">Leading</span>
+        <span class="part part-3">AR, VR & MR</span>
+        <span class="part part-4">Development</span> 
+        <span class="part part-5">Company</span>
       </h2>
 
+    </div>
+
+    <!-- QR Code Scanner Trigger Button -->
+    <div class="qr-trigger-wrapper" id="qrTriggerBtn">
+      <div class="qr-pulse-ring"></div>
+      <div class="qr-trigger-content">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="qr-icon">
+          <path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4z" />
+          <path d="M14 14h2v2h-2zM18 14h2v2h-2zM14 18h2v2h-2zM18 18h2v2h-2zM16 16h2v2h-2z" />
+        </svg>
+        <span class="qr-text">SCAN ME</span>
+      </div>
+    </div>
+
+    <!-- QR Code Modal Popup -->
+    <div class="qr-modal-overlay" id="qrModalOverlay">
+      <div class="qr-modal-content">
+        <button class="qr-modal-close" id="qrModalClose">&times;</button>
+        <div class="qr-modal-header">
+          <h3>Experience AR Now</h3>
+          <p>Point your phone camera at the QR code below</p>
+        </div>
+        <div class="qr-modal-body">
+          <div class="qr-scanner-frame">
+            <!-- Dynamic placeholder QR code that will actually scan to text -->
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=Fist-O-AR-Experience" alt="AR QR Code" class="qr-code-img" loading="lazy" />
+            <div class="scanner-line"></div>
+          </div>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -104,6 +136,7 @@ const { imageBefore, imageAfter } = Astro.props;
   z-index: 20;
   pointer-events: none;
   perspective: 1000px;
+  color: white;
 }
 
 .reveal-text {
@@ -114,15 +147,10 @@ const { imageBefore, imageAfter } = Astro.props;
   font-size: clamp(2rem, 5vw, 6rem); /* Slightly larger for this layout */
   font-weight: 800;
   text-transform: uppercase;
-  line-height: 0.95; /* Tighter line spacing for cinematic feel */
+  line-height: 0.95;
   margin: 0;
   letter-spacing: -0.02em;
   text-shadow: 0px 4px 15px rgba(0,0,0,0.7);
-}
-
-.bg-text {
-  position: relative; 
-  color: #ffffff; 
 }
 
 .fg-text {
@@ -141,7 +169,6 @@ const { imageBefore, imageAfter } = Astro.props;
   will-change: opacity, transform;
 }
 
-/* Staggered Cinematic Layout */
 .part-1 { margin-left: 0%; }
 .part-2 { margin-left: 2%; }
 .part-3 { margin-left: 35%; }
@@ -164,18 +191,206 @@ const { imageBefore, imageAfter } = Astro.props;
   .part-3 { margin-left: 0%; align-self: center; }
   .part-4 { margin-left: 0%; align-self: center; }
 }
+
+/* --- QR Trigger Button --- */
+.qr-trigger-wrapper {
+  position: absolute;
+  bottom: 80px;
+  left: 8%;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.qr-pulse-ring {
+  display: none; /* Removed in favor of the new glow animation */
+}
+.qr-trigger-content {
+  padding: 14px 30px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  border: none;
+  background: #000;
+  /* animation: qrGlow linear 2s infinite; */
+  transition: transform 0.3s ease;
+}
+.qr-trigger-content::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  aspect-ratio: 1/1;
+  width: 150%;
+  height: auto;
+  border-radius: 50%;
+  background: conic-gradient(#fff 0%, #000 3%, #409 60%, #fff 100%);
+  animation: qrSpin linear 2s infinite;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+.qr-trigger-content::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(100% - 4px); /* Creates the 2px border effect */
+  height: calc(100% - 4px);
+  background: #000d;
+  transform: translate(-50%, -50%);
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 1;
+}
+.qr-trigger-wrapper:hover .qr-trigger-content {
+  transform: translateY(-5px);
+}
+.qr-icon, .qr-text {
+  position: relative;
+  z-index: 2; /* Brings content above the glass background */
+  color: #fff;
+}
+.qr-icon {
+  width: 24px;
+  height: 24px;
+}
+.qr-text {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+@keyframes qrSpin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes qrGlow {
+  0% { box-shadow: 0 0 0 0 transparent; }
+  25% { box-shadow: 0 0 0 15px rgba(68, 0, 153, 0.27); } /* #4094 solid equivalent */
+  50% { box-shadow: 0 0 0 30px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+/* --- QR Modal Popup --- */
+.qr-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+.qr-modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.qr-modal-content {
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  border-radius: 24px;
+  padding: 40px;
+  max-width: 400px;
+  width: 90%;
+  position: relative;
+  text-align: center;
+  transform: translateY(40px) scale(0.95);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+}
+.qr-modal-overlay.active .qr-modal-content {
+  transform: translateY(0) scale(1);
+}
+.qr-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 32px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s, transform 0.3s;
+}
+.qr-modal-close:hover { 
+  opacity: 1; 
+  transform: rotate(90deg);
+}
+.qr-modal-header h3 {
+  color: #ffffff;
+  margin-bottom: 8px;
+  font-family: "Outfit", sans-serif;
+  font-size: 1.8rem;
+}
+.qr-modal-header p {
+  color: #aaa;
+  font-size: 0.95rem;
+  margin-bottom: 30px;
+}
+.qr-scanner-frame {
+  position: relative;
+  display: inline-block;
+  padding: 15px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+.qr-code-img {
+  display: block;
+  width: 220px;
+  height: 220px;
+}
+.scanner-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #ffffff;
+  box-shadow: 0 0 15px 2px rgba(255, 255, 255, 0.8);
+  animation: scanLine 2s ease-in-out infinite;
+}
+@keyframes scanLine {
+  0% { top: 0; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+@media (max-width: 768px) {
+  .qr-trigger-wrapper {
+    bottom: 40px;
+    left: 5%;
+  }
+}
 </style>
 
 <script>
   let isInitialized = false;
 
-  const initRevealAnimation = () => {
+  const initRevealScript = () => {
     if (isInitialized) return;
 
-    if (typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined') {
+    if (typeof (window as any).gsap !== 'undefined' && typeof (window as any).ScrollTrigger !== 'undefined') {
       isInitialized = true;
-      const gsap = window.gsap;
-      const ScrollTrigger = window.ScrollTrigger;
+      const gsap = (window as any).gsap;
+      const ScrollTrigger = (window as any).ScrollTrigger;
       
       gsap.registerPlugin(ScrollTrigger);
 
@@ -234,19 +449,56 @@ const { imageBefore, imageAfter } = Astro.props;
             rotationX: 0,
             duration: 0.25,
             ease: "back.out(1.7)" 
-          }, timings[index]);
+          }, timings[index] || 0.8);
         });
 
         ScrollTrigger.sort();
         ScrollTrigger.refresh();
       }
     } else {
-      setTimeout(initRevealAnimation, 100);
+      setTimeout(initRevealScript, 100);
     }
   };
 
-  document.addEventListener('DOMContentLoaded', initRevealAnimation);
-  if (document.readyState === 'interactive' || document.readyState === 'complete') {
-    initRevealAnimation();
+  // QR Modal Logic
+  const initQrModal = () => {
+    const btn = document.getElementById('qrTriggerBtn');
+    const modal = document.getElementById('qrModalOverlay');
+    const closeBtn = document.getElementById('qrModalClose');
+
+    if (btn && modal && closeBtn) {
+      btn.addEventListener('click', () => {
+        modal.classList.add('active');
+        // Prevent body scrolling when modal is open
+        document.body.style.overflow = 'hidden';
+      });
+      
+      closeBtn.addEventListener('click', () => {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+      
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+    }
+  };
+
+  document.addEventListener("DOMContentLoaded", () => {
+    initRevealScript();
+    initQrModal();
+  });
+  
+  if (
+    document.readyState === "interactive" ||
+    document.readyState === "complete"
+  ) {
+    initRevealScript();
+    initQrModal();
   }
 </script>
+
+

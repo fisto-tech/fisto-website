@@ -1,0 +1,364 @@
+---
+// Use the passed images or fallbacks for the 3 ovals
+const imgAR = "/images/services/AR-VR/AR-world-img.webp";
+const imgVR = "/images/services/AR-VR/normal-world-img.webp";
+const imgMR = "/images/services/AR-VR/AR-world-img.webp"; // Using education as a placeholder for MR
+---
+
+<section class="oval-layout-section" id="ovalSectionPin">
+  <div class="oval-container">
+    
+    <!-- Left Column: 3 Oval Images -->
+    <div class="oval-images-column">
+      <div class="oval-image-wrapper oval-anim-item">
+        <img src={imgAR} alt="AR Experience" class="oval-img" />
+        <div class="oval-label">AR</div>
+      </div>
+      <div class="oval-image-wrapper middle-oval oval-anim-item">
+        <img src={imgVR} alt="VR Experience" class="oval-img" />
+        <div class="oval-label">VR</div>
+      </div>
+      <div class="oval-image-wrapper oval-anim-item">
+        <img src={imgMR} alt="MR Experience" class="oval-img" />
+        <div class="oval-label">MR</div>
+      </div>
+    </div>
+
+    <!-- Right Column: Text Content -->
+    <div class="oval-text-column">
+      <h2 class="section-heading">
+        <div class="line-wrap"><span class="oval-text-line"><span class="highlight">India's</span> Leading</span></div>
+        <div class="line-wrap"><span class="oval-text-line">AR, VR & MR</span></div>
+        <div class="line-wrap"><span class="oval-text-line">Development Company</span></div>
+      </h2>
+      <div class="text-content">
+        <div class="line-wrap"><p class="oval-text-line">We build immersive, next-generation experiences that</p></div>
+        <div class="line-wrap"><p class="oval-text-line">blur the line between the physical and digital worlds.</p></div>
+        <div class="line-wrap"><p class="oval-text-line">From enterprise training simulations to cutting-edge</p></div>
+        <div class="line-wrap"><p class="oval-text-line">consumer marketing, our augmented, virtual, and</p></div>
+        <div class="line-wrap"><p class="oval-text-line">mixed reality solutions are designed to captivate.</p></div>
+      </div>
+      <div class="line-wrap mt-4"><a href="#" class="primary-btn oval-btn-anim">Discover More</a></div>
+    </div>
+    
+  </div>
+</section>
+
+<style>
+.oval-layout-section {
+  width: 100%;
+  height: calc(100vh - 80px); /* Fill the screen below the 80px navbar */
+  display: flex;
+  align-items: center; /* Vertically center everything perfectly */
+  background-color: #000;
+  padding: 0 5%;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.oval-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* Left Column - Images */
+.oval-images-column {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  height: min(600px, 70vh); /* Ensure it fits on smaller laptop screens */
+  padding: 20px 0;
+}
+
+.oval-image-wrapper {
+  position: relative;
+  flex: 1;
+  height: 100%;
+  border-radius: 200px; /* Capsule/oval shape */
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
+  cursor: pointer;
+  background-color: #1a1a1a;
+}
+
+.middle-oval {
+  transform: translateY(40px); /* Stagger the middle one slightly */
+}
+
+.oval-image-wrapper:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(34, 211, 238, 0.3);
+  z-index: 2;
+}
+
+.middle-oval:hover {
+  transform: translateY(30px) scale(1.02);
+}
+
+.oval-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease, filter 0.4s ease;
+  filter: brightness(0.85);
+}
+
+.oval-image-wrapper:hover .oval-img {
+  transform: scale(1.1);
+  filter: brightness(1.1);
+}
+
+.oval-label {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  padding: 8px 24px;
+  border-radius: 30px;
+  font-family: "Bebas Neue", "Anton", sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.oval-image-wrapper:hover .oval-label {
+  background: #22d3ee;
+  color: #000;
+  border-color: #22d3ee;
+  box-shadow: 0 0 15px rgba(34, 211, 238, 0.5);
+}
+
+/* Right Column - Text */
+.oval-text-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.section-heading {
+  font-family: "Bebas Neue", "Anton", sans-serif;
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  line-height: 1.1;
+  margin-bottom: 30px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.highlight {
+  color: #22d3ee; /* Cyan highlight */
+}
+
+.text-content p {
+  font-family: "Inter", "Poppins", sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 0; /* Margin handled by wraps now */
+}
+
+.line-wrap {
+  overflow: hidden;
+  display: block;
+}
+.oval-text-line {
+  display: inline-block;
+  will-change: transform;
+}
+.mt-4 { margin-top: 1.5rem; }
+
+.primary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  margin-top: 15px;
+  padding: 15px 35px;
+  background: transparent;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid #22d3ee;
+  border-radius: 30px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.primary-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: #22d3ee;
+  z-index: -1;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.primary-btn:hover {
+  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(34, 211, 238, 0.2);
+}
+
+.primary-btn:hover::before {
+  width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .oval-layout-section {
+    height: auto; /* Allow scrolling on smaller screens if content is tall */
+    padding: 80px 5%;
+  }
+
+  .oval-container {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+  
+  .oval-images-column {
+    height: 500px;
+    padding: 0 10%;
+  }
+  
+  .section-heading {
+    text-align: center;
+  }
+  
+  .text-content {
+    text-align: center;
+  }
+  
+  .primary-btn {
+    align-self: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .oval-layout-section {
+    padding: 80px 5%;
+  }
+
+  .oval-images-column {
+    height: 400px;
+    padding: 0 5%;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .oval-images-column {
+    height: 320px;
+    padding: 0;
+    gap: 10px;
+  }
+  
+  .oval-label {
+    font-size: 1rem;
+    bottom: 20px;
+    padding: 5px 15px;
+  }
+}
+</style>
+
+<script>
+  let ovalPinInitialized = false;
+
+  const initOvalPin = () => {
+    if (ovalPinInitialized) return;
+    if (
+      typeof (window as any).gsap !== "undefined" &&
+      typeof (window as any).ScrollTrigger !== "undefined"
+    ) {
+      ovalPinInitialized = true;
+      const gsap = (window as any).gsap;
+      const ScrollTrigger = (window as any).ScrollTrigger;
+
+      const ovalSection = document.getElementById("ovalSectionPin");
+      const ovalItems = gsap.utils.toArray(".oval-anim-item");
+      const textLines = gsap.utils.toArray(".oval-text-line");
+      const btnAnim = document.querySelector(".oval-btn-anim");
+
+      // Set initial states for animation
+      gsap.set(ovalItems, { y: 150, opacity: 0, scale: 0.9 });
+      gsap.set(textLines, { y: "100%", opacity: 0 });
+      gsap.set(btnAnim, { y: 50, opacity: 0 });
+
+      if (ovalSection) {
+        // Create the ScrollTrigger timeline
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: ovalSection,
+            start: "top 50%", // Reveal when 50% into the section
+            toggleActions: "play reverse play reverse",
+          },
+        });
+
+        // 1. Reveal ovals from bottom (Smoother)
+        tl.to(ovalItems, {
+          y: (i) => i === 1 ? 40 : 0, // Middle oval goes to 40px, others to 0 to preserve staggered CSS design
+          opacity: 1,
+          scale: 1,
+          duration: 1.2,
+          stagger: 0.15,
+          ease: "power2.out",
+        });
+
+        // 2. Reveal text line by line
+        tl.to(
+          textLines,
+          {
+            y: "0%",
+            opacity: 1,
+            duration: 1,
+            stagger: 0.1,
+            ease: "power2.out",
+          },
+          "<0.2" // Overlap start with the previous animation
+        );
+
+        // 3. Reveal button
+        tl.to(
+          btnAnim,
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: "power2.out",
+          },
+          "-=0.5"
+        );
+        
+        // Add a small pause at the end so it stays fully visible before unpinning
+        tl.to({}, { duration: 0.5 });
+        
+        // Refresh ScrollTrigger when images load to fix layout shifts
+        ScrollTrigger.refresh();
+      }
+    } else {
+      setTimeout(initOvalPin, 100);
+    }
+  };
+
+  document.addEventListener("DOMContentLoaded", initOvalPin);
+  if (
+    document.readyState === "interactive" ||
+    document.readyState === "complete"
+  ) {
+    initOvalPin();
+  }
+</script>

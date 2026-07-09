@@ -239,3 +239,48 @@
     }
   }
 </style>
+
+<script>
+  let industriesInitialized = false;
+
+  const initIndustriesAnim = () => {
+    if (industriesInitialized) return;
+    if (
+      typeof (window as any).gsap !== "undefined" &&
+      typeof (window as any).ScrollTrigger !== "undefined"
+    ) {
+      industriesInitialized = true;
+      const gsap = (window as any).gsap;
+
+      const cards = gsap.utils.toArray(".industry-card");
+      
+      // Set initial state
+      gsap.set(cards, { scale: 0.5, opacity: 0, y: 50 });
+
+      // Animate on scroll
+      gsap.to(cards, {
+        scrollTrigger: {
+          trigger: ".industries-grid",
+          start: "top 85%", // Start when grid is 15% into viewport
+          toggleActions: "play reverse play reverse",
+        },
+        scale: 1,
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        stagger: 0.1, // Reveal one by one
+        ease: "back.out(1.5)", // Popup effect
+      });
+    } else {
+      setTimeout(initIndustriesAnim, 100);
+    }
+  };
+
+  document.addEventListener("DOMContentLoaded", initIndustriesAnim);
+  if (
+    document.readyState === "interactive" ||
+    document.readyState === "complete"
+  ) {
+    initIndustriesAnim();
+  }
+</script>
