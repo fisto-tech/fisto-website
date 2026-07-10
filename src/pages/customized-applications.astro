@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PhoneSimulator from '../components/PhoneSimulator.astro';
+import EventAppSection from '../components/EventAppSection.astro';
+import PatternAppSection from '../components/PatternAppSection.astro';
 import '../styles/service1.css';
 ---
 
@@ -48,16 +50,28 @@ import '../styles/service1.css';
     </div>
   </section>
 
+  <!-- App Details Sections -->
+  <EventAppSection />
+  <PatternAppSection />
+
 </BaseLayout>
 
 <style>
 .app-dev-section {
-  padding: 6rem 5%;
+
   background: linear-gradient(135deg, #071518 0%, #0c2025 100%);
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .app-dev-section {
+    height: 100vh;
+   /* Small padding for navbar clearance */
+  }
 }
 
 .app-dev-container {
@@ -65,8 +79,9 @@ import '../styles/service1.css';
   flex-direction: column;
   align-items: center;
   gap: 4rem;
-  width: 100%;
-  max-width: 1200px;
+  width: 90%;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 @media (min-width: 1024px) {
@@ -78,16 +93,16 @@ import '../styles/service1.css';
 
 /* Left Content */
 .app-dev-content {
-  flex: 1;
-  max-width: 500px;
+  flex: 0 1 50%;
+  max-width: 580px;
   color: #fff;
 }
 
 .app-dev-title {
-  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-size: clamp(2.2rem, 3.5vw, 3.5rem);
   font-weight: 700;
   line-height: 1.1;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .highlight {
@@ -98,10 +113,10 @@ import '../styles/service1.css';
 }
 
 .app-dev-desc {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   color: #a3b8bc;
   line-height: 1.6;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 /* App Selector */
@@ -116,7 +131,7 @@ import '../styles/service1.css';
 .app-selector {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .selector-btn {
@@ -126,7 +141,7 @@ import '../styles/service1.css';
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: #a3b8bc;
-  padding: 1rem 1.5rem;
+  padding: 0.8rem 1.25rem;
   border-radius: 12px;
   font-size: 1.1rem;
   font-weight: 500;
@@ -157,38 +172,170 @@ import '../styles/service1.css';
 
 /* Right Content */
 .app-dev-simulator {
-  flex: 1;
+  flex: 0 1 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
+  transform: scale(0.95); /* Increased phone frame size globally */
+  transform-origin: center center;
+}
+
+@media (max-width: 991px) {
+  .app-dev-simulator {
+    justify-content: center;
+    transform: scale(0.85);
+    transform-origin: center center;
+    margin-top: 2rem;
+  }
+}
+@media (max-height: 850px) and (min-width: 992px) {
+  .app-dev-simulator {
+    transform: scale(0.85);
+  }
+}
+@media (max-height: 750px) and (min-width: 992px) {
+  .app-dev-simulator {
+    transform: scale(0.75);
+  }
+}
+@media (max-height: 650px) and (min-width: 992px) {
+  .app-dev-simulator {
+    transform: scale(0.65);
+  }
 }
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const selectors = document.querySelectorAll('.selector-btn');
+  const section = document.querySelector('.app-dev-section');
+  
+  // -- User Interaction State --
+  let isUserInteracting = false;
+  let inactivityTimer = null;
+  const INACTIVITY_DELAY = 5000;
 
-  selectors.forEach(btn => {
-    btn.addEventListener('click', () => {
-      // Update active state
-      selectors.forEach(s => s.classList.remove('active'));
-      btn.classList.add('active');
+  // -- Autoplay State --
+  let autoplayInterval = null;
+  let currentAppIndex = 0;
+  const THEMES = ['app', 'pattern', 'event'];
+  
+  // -- Internal App Simulation Timers --
+  let simulationTimeouts = [];
 
-      const theme = btn.getAttribute('data-theme');
-      
-      // Dispatch event to the PhoneSimulator shell
-      document.dispatchEvent(new CustomEvent('swapPhoneTheme', { detail: { theme } }));
+  const clearSimulation = () => {
+    simulationTimeouts.forEach(t => clearTimeout(t));
+    simulationTimeouts = [];
+  };
 
-      // Add a little subtle shake animation to the phone to indicate change
-      const phoneFrame = document.getElementById('mainPhoneFrame');
-      if (phoneFrame) {
-        phoneFrame.style.transform = 'scale(0.98)';
-        setTimeout(() => {
-          phoneFrame.style.transform = 'scale(1)';
-        }, 150);
-      }
+  const simulateClick = (elementSelector) => {
+    const el = document.querySelector(elementSelector);
+    if (el && !isUserInteracting) {
+      el.click();
+    }
+  };
+
+  const runAppSimulation = (theme) => {
+    clearSimulation();
+    if (isUserInteracting) return;
+
+    if (theme === 'app') {
+      // Simulate Business App
+      let t1 = setTimeout(() => simulateClick('.b-nav-item[data-target="analytics"]'), 1500);
+      let t2 = setTimeout(() => simulateClick('.b-nav-item[data-target="orders"]'), 3000);
+      let t3 = setTimeout(() => simulateClick('.b-nav-item[data-target="profile"]'), 4500);
+      let t4 = setTimeout(() => simulateClick('.b-nav-item[data-target="settings"]'), 6000);
+      let t5 = setTimeout(() => simulateClick('.b-nav-item[data-target="dashboard"]'), 7500);
+      simulationTimeouts.push(t1, t2, t3, t4, t5);
+    } else if (theme === 'pattern') {
+      // Simulate Pattern App
+      // Since Home screen is removed, the viewer is already active!
+      let t1 = setTimeout(() => simulateClick('.lid-color-btn:nth-child(3)'), 1500);
+      let t2 = setTimeout(() => simulateClick('.tub-color-btn:nth-child(4)'), 3000);
+      let t3 = setTimeout(() => document.dispatchEvent(new CustomEvent('patternAppZoomIn')), 4500);
+      let t4 = setTimeout(() => document.dispatchEvent(new CustomEvent('patternAppZoomOut')), 6500);
+      simulationTimeouts.push(t1, t2, t3, t4);
+    } else if (theme === 'event') {
+      // Simulate Event App
+      let t1 = setTimeout(() => simulateClick('.e-nav-item[data-target="register"]'), 1500);
+      let t2 = setTimeout(() => simulateClick('.e-nav-item[data-target="list"]'), 3000);
+      let t3 = setTimeout(() => simulateClick('.e-nav-item[data-target="analytics"]'), 4500);
+      let t4 = setTimeout(() => simulateClick('.e-nav-item[data-target="profile"]'), 6000);
+      let t5 = setTimeout(() => simulateClick('.e-nav-item[data-target="dashboard"]'), 7500);
+      simulationTimeouts.push(t1, t2, t3, t4, t5);
+    }
+  };
+
+  const switchTheme = (theme, fromUser = false) => {
+    selectors.forEach(s => s.classList.remove('active'));
+    const btn = document.querySelector(`.selector-btn[data-theme="${theme}"]`);
+    if(btn) btn.classList.add('active');
+
+    document.dispatchEvent(new CustomEvent('swapPhoneTheme', { detail: { theme } }));
+
+    const phoneFrame = document.getElementById('mainPhoneFrame');
+    if (phoneFrame) {
+      phoneFrame.style.transform = 'scale(0.98)';
+      setTimeout(() => {
+        phoneFrame.style.transform = 'scale(1)';
+      }, 150);
+    }
+
+    if (!fromUser) {
+      runAppSimulation(theme);
+    }
+  };
+
+  const nextApp = () => {
+    if (isUserInteracting) return;
+    currentAppIndex = (currentAppIndex + 1) % THEMES.length;
+    switchTheme(THEMES[currentAppIndex]);
+  };
+
+  const startAutoplay = () => {
+    isUserInteracting = false;
+    clearSimulation();
+    clearInterval(autoplayInterval);
+    // Switch to current and run simulation
+    switchTheme(THEMES[currentAppIndex]);
+    // Then cycle every 12 seconds
+    autoplayInterval = setInterval(nextApp, 12000);
+  };
+
+  const pauseAutoplay = () => {
+    isUserInteracting = true;
+    clearSimulation();
+    clearInterval(autoplayInterval);
+    clearTimeout(inactivityTimer);
+    
+    // Resume after inactivity
+    inactivityTimer = setTimeout(() => {
+      startAutoplay();
+    }, INACTIVITY_DELAY);
+  };
+
+  // Add click listeners to selector buttons
+  selectors.forEach((btn, index) => {
+    btn.addEventListener('click', (e) => {
+      if(!e.isTrusted) return; // Ignore simulated clicks for pausing logic
+      pauseAutoplay();
+      currentAppIndex = index;
+      switchTheme(btn.getAttribute('data-theme'), true);
     });
   });
+
+  // Pause if user clicks anywhere in the section
+  if (section) {
+    section.addEventListener('mousedown', (e) => {
+      if(e.isTrusted) pauseAutoplay();
+    });
+    section.addEventListener('touchstart', (e) => {
+      if(e.isTrusted) pauseAutoplay();
+    });
+  }
+
+  // Start initial autoplay
+  setTimeout(startAutoplay, 1000);
 });
 </script>

@@ -6,7 +6,7 @@ const benefits = [
     desc: "Fisto Tech develops visually compelling stories that simplify complex concepts and communicate your brand message effectively through professional animation.",
     color1: "#ff4b4b",
     color2: "#ff7676",
-    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>`
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>`
   },
   {
     num: "02",
@@ -14,7 +14,7 @@ const benefits = [
     desc: "We create detailed 3D animations with realistic models, textures, lighting, and cinematic effects for products, industries, architecture, and digital experiences.",
     color1: "#ff8f3d",
     color2: "#ffb476",
-    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 6.5l3 3"></path><path d="M14.4 3.6a2.1 2.1 0 0 1 3 0l2 2a2.1 2.1 0 0 1 0 3l-9 9-4 1 1-4 9-9z"></path></svg>`
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>`
   },
   {
     num: "03",
@@ -22,7 +22,7 @@ const benefits = [
     desc: "Showcase your products with detailed 3D animations that highlight features, functionality, and benefits, helping customers better understand your offerings.",
     color1: "#4b7bff",
     color2: "#769bff",
-    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="M18 9l-5 5-3-3-5 5"></path></svg>`
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>`
   },
   {
     num: "04",
@@ -30,7 +30,7 @@ const benefits = [
     desc: "Our creative character animations bring ideas to life with expressive movements and engaging visuals for advertising, education, entertainment, and marketing campaigns.",
     color1: "#a84bff",
     color2: "#c476ff",
-    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>`
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>`
   }
 ];
 ---
@@ -42,12 +42,16 @@ const benefits = [
 
   <div class="container">
     <div class="section-header">
-      <h2 class="section-title">Features of Our <span>2D/3D ANIMATION</span> Solutions</h2>
+      <h2 class="section-title js-animate-title">
+        <span class="line-wrap"><span class="text-line shimmer-text" data-base="#ffffff" data-sweep="#08c098">Features of Our</span></span>
+        <span class="line-wrap"><span class="text-line shimmer-text" data-base="#08c098" data-sweep="#ffffff">2D/3D ANIMATION</span></span>
+        <span class="line-wrap"><span class="text-line shimmer-text" data-base="#ffffff" data-sweep="#08c098">Solutions</span></span>
+      </h2>
     </div>
 
     <div class="cards-wrapper">
       {benefits.map((b, idx) => (
-        <div class="info-card" style={`--delay: -${idx * 1.8}s; --dur: ${3.5 + (idx % 3) * 1.2}s;`}>
+        <div class="info-card" style={`--delay: -${idx * 1.5}s; --dur: 6s;`}>
           <!-- The Glowing Outline Animation -->
           <svg class="outline-svg" viewBox="0 0 300 400" preserveAspectRatio="none">
             <defs>
@@ -84,12 +88,27 @@ const benefits = [
 </section>
 
 <style>
+  .char {
+    display: inline-block;
+    white-space: pre-wrap;
+  }
+
   .benefits-infographic {
     padding: 100px 20px 140px 20px;
     background: #050505; /* Matches the main site dark theme */
     color: #fff;
     overflow: hidden;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (min-width: 992px) {
+    .benefits-infographic {
+      height: 100vh;
+      padding: 0 20px;
+    }
   }
 
   /* Orbs to give the glass something to blur/refract */
@@ -130,16 +149,25 @@ const benefits = [
   }
 
   .section-title {
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-family: 'Inter', sans-serif;
+    font-size: clamp(2.5rem, 4.5vw, 3.5rem);
+    font-family: 'Bebas Neue', 'Anton', sans-serif;
     font-weight: 700;
     color: #fff;
     margin: 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    line-height: 1.1;
   }
 
-  .section-title span {
-    font-weight: 300;
-    color: #888;
+  .line-wrap {
+    overflow: hidden;
+    display: block;
+  }
+
+  .text-line {
+    display: inline-block;
+    will-change: transform;
+    opacity: 0; /* Handled by GSAP */
   }
 
   .cards-wrapper {
@@ -152,7 +180,7 @@ const benefits = [
   .info-card {
     position: relative;
     width: 280px;
-    height: 380px;
+    height: 320px;
     margin-bottom: 30px;
     transition: transform 0.3s ease;
     cursor: pointer;
@@ -174,7 +202,7 @@ const benefits = [
     /* Slightly thicker rim light */
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 24px;
-    padding: 40px 30px;
+    padding: 30px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -186,7 +214,7 @@ const benefits = [
 
   .icon-wrap {
     color: rgba(255,255,255,0.9);
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
 
   .card-inner h3 {
@@ -208,8 +236,8 @@ const benefits = [
 
   .num {
     position: absolute;
-    bottom: 25px;
-    right: 30px;
+    bottom: 20px;
+    right: 25px;
     font-family: 'Bebas Neue', 'Anton', 'Inter', sans-serif;
     font-size: 2rem;
     font-weight: 800;
@@ -230,29 +258,23 @@ const benefits = [
     pointer-events: none; /* Let hovers pass through to the card */
   }
 
-  /* Keyframes for continuous drawing and erasing animation */
+  /* Keyframes for a short running line animation */
   @keyframes drawOutline {
     0% {
-      stroke-dasharray: 0 100;
-      stroke-dashoffset: 0;
-    }
-    50% {
-      /* The line draws completely around the card */
-      stroke-dasharray: 100 100;
-      stroke-dashoffset: 0;
+      stroke-dashoffset: 100;
     }
     100% {
-      /* The tail catches up to the head, erasing the line */
-      stroke-dasharray: 0 100;
-      stroke-dashoffset: -100;
+      stroke-dashoffset: 0;
     }
   }
 
   .svg-rect {
     fill: none;
     stroke-width: 3;
-    /* Animate continuously by default with varying durations */
-    animation: drawOutline var(--dur, 4s) ease-in-out infinite;
+    /* 20% length line, 80% gap to equal the 100 pathLength */
+    stroke-dasharray: 20 80;
+    /* Linear animation for a constant running speed */
+    animation: drawOutline var(--dur, 6s) linear infinite;
     animation-delay: var(--delay, 0s);
   }
 
@@ -281,3 +303,125 @@ const benefits = [
     }
   }
 </style>
+
+<script>
+  const initBenefitsAnimation = () => {
+    // Make sure GSAP and ScrollTrigger are loaded
+    if (typeof (window as any).gsap === 'undefined' || typeof (window as any).ScrollTrigger === 'undefined') {
+      setTimeout(initBenefitsAnimation, 100);
+      return;
+    }
+
+    const gsap = (window as any).gsap;
+    const ScrollTrigger = (window as any).ScrollTrigger;
+    
+    gsap.registerPlugin(ScrollTrigger);
+
+    const heading = document.querySelector('.benefits-infographic .js-animate-title');
+    if (heading) {
+      const textLines = heading.querySelectorAll('.text-line');
+      gsap.set(textLines, { y: "100%", opacity: 0 });
+
+      gsap.to(textLines, {
+        scrollTrigger: {
+          trigger: heading,
+          start: 'top 85%',
+        },
+        y: "0%",
+        opacity: 1,
+        duration: 1,
+        stagger: 0.15,
+        ease: 'power2.out',
+      });
+    }
+  };
+
+  document.addEventListener('DOMContentLoaded', initBenefitsAnimation);
+  document.addEventListener('astro:page-load', initBenefitsAnimation);
+</script>
+
+<script>
+  if (!(window as any).shimmerSweepInit) {
+    (window as any).shimmerSweepInit = true;
+    
+    const initShimmer = () => {
+      const textEls = document.querySelectorAll('.shimmer-text');
+      if (!textEls.length) return;
+
+      const ease = {
+        out:   (t: number) => 1 - (1 - t) ** 3,
+        in:    (t: number) => t ** 3,
+      };
+
+      function cyc(f: number, offset: number, enter: number, hold: number, exit: number, pause: number) {
+        if (f < offset) return 0;
+        const total = enter + hold + exit + pause;
+        const t = (f - offset) % total;
+        if (t < enter)               return ease.out(t / enter);
+        if (t < enter + hold)        return 1;
+        if (t < enter + hold + exit) return 1 - ease.in((t - enter - hold) / exit);
+        return 0;
+      }
+
+      function grad(el: HTMLElement, css: string) {
+        el.style.background           = css;
+        el.style.webkitBackgroundClip = 'text';
+        el.style.backgroundClip       = 'text';
+        el.style.webkitTextFillColor  = 'transparent';
+      }
+
+      let _raf: number;
+      function loop(tick: () => void) {
+        cancelAnimationFrame(_raf);
+        (function frame() { tick(); _raf = requestAnimationFrame(frame); })();
+      }
+
+      const allChars: any[] = [];
+      textEls.forEach(el => {
+        if (el.querySelector('.char')) return;
+        
+        const baseColor = el.getAttribute('data-base') || '#ffffff';
+        const sweepColor = el.getAttribute('data-sweep') || '#08c098';
+
+        const text = el.textContent || '';
+        el.innerHTML = '';
+        const chars: any[] = [];
+        
+        text.split('').forEach(ch => {
+          const s = document.createElement('span');
+          s.className = 'char';
+          s.textContent = ch;
+          el.appendChild(s);
+          chars.push({ el: s, base: baseColor, sweep: sweepColor });
+        });
+        
+        allChars.push(chars);
+      });
+
+      const STAGGER = 8, ENTER = 84, HOLD = 20, EXIT = 58, PAUSE = 36;
+      let f = 0;
+      
+      loop(() => {
+        f++;
+        allChars.forEach(chars => {
+          chars.forEach((charObj, i) => {
+            const p   = cyc(f, i * STAGGER, ENTER, HOLD, EXIT, PAUSE);
+            const mid = (p * 130 - 15).toFixed(1);
+            grad(charObj.el, `linear-gradient(90deg,
+              ${charObj.base} 0%,
+              ${charObj.base} ${(+mid - 18).toFixed(1)}%,
+              ${charObj.sweep} ${mid}%,
+              ${charObj.base} ${(+mid + 18).toFixed(1)}%,
+              ${charObj.base} 100%)`);
+          });
+        });
+      });
+    };
+
+    document.addEventListener('DOMContentLoaded', initShimmer);
+    document.addEventListener('astro:page-load', initShimmer);
+    if (document.readyState === 'interactive' || document.readyState === 'complete') {
+      initShimmer();
+    }
+  }
+</script>

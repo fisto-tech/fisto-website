@@ -1,173 +1,273 @@
 ---
+// Banner images for smooth slider transition
+const images = [
+  "/images/services/2D-3D-animation/banner-1.webp",
+  "/images/services/2D-3D-animation/banner-2.webp",
+  "/images/services/2D-3D-animation/banner-3.webp",
+  "/images/services/2D-3D-animation/banner-4.webp"
+];
 ---
 
-<section class="animation-cta-section">
-  <div class="cta-container">
-    <div class="cta-content">
-      <h2>Ready to Bring Your Vision to Life?</h2>
-      <p>Let's collaborate to create stunning 2D and 3D animations that captivate your audience, simplify complex ideas, and elevate your brand to the next level.</p>
-      
-      <div class="cta-actions">
-        <a href="#" class="primary-btn">
-          Start Your Project
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </a>
-        <a href="#" class="secondary-btn">View Portfolio</a>
-      </div>
+<section class="banner-section">
+  <div class="banner-wrapper">
+    <!-- Right side Background Images for Slider -->
+    <div class="banner-slider">
+      {images.map((src, index) => (
+        <img class={`bg-image slide-${index} ${index === 0 ? 'active' : ''}`} src={src} alt={`3D Animation Studio Workspace ${index + 1}`} />
+      ))}
     </div>
-    
-    <!-- Decorative floating elements for the animation theme -->
-    <div class="floating-shapes">
-      <div class="shape shape-1"></div>
-      <div class="shape shape-2"></div>
-      <div class="shape shape-3"></div>
+
+    <!-- Layered S-Curve Overlay for the Split Effect -->
+    <svg class="wave-overlay" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <!-- Dark Purple Wave (Bottom layer) -->
+      <path d="M0,0 L58.5,0 C47,40 66,60 48.5,100 L0,100 Z" fill="#2e1065" />
+      <!-- Mid Purple Wave (Middle layer) -->
+      <path d="M0,0 L58.2,0 C45.5,40 64,60 48.2,100 L0,100 Z" fill="#4c1d95" />
+      <!-- Solid White Area (Top layer) -->
+      <path d="M0,0 L58,0 C44,40 62,60 48,100 L0,100 Z" fill="#ffffff" />
+    </svg>
+
+    <!-- Left side Content on the White Area -->
+    <div class="content-left">
+      <!-- Main Title -->
+      <h2 class="title">
+        <span class="text-dark">NEXT-GEN 3D</span><br/>
+        <span class="text-dark">ANIMATION SOLUTIONS</span>
+      </h2>
+      
+      <!-- Description -->
+      <p class="desc">
+        High-quality 2D and 3D visualizations tailored to simplify complex concepts and elevate your brand storytelling globally.
+      </p>
+      
+      <!-- Bottom Icons Row -->
+      <div class="features-row">
+        <div class="feature">
+          <div class="icon-circle">
+            <!-- 3D Cube Icon -->
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+          </div>
+          <span>2D/3D<br/>Design</span>
+        </div>
+        <div class="feature">
+          <div class="icon-circle">
+            <!-- Play/Motion Icon -->
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          </div>
+          <span>Motion<br/>Graphics</span>
+        </div>
+        <div class="feature">
+          <div class="icon-circle">
+            <!-- Monitor/Studio Icon -->
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+          </div>
+          <span>CGI<br/>Studio</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <style>
-  .animation-cta-section {
-    padding: 100px 20px;
-    background: #050505;
+  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;700;900&family=Montserrat:wght@400;500;600;700&display=swap');
+
+  .banner-section {
+    padding: 30px 20px;
     display: flex;
     justify-content: center;
+    background-color: #f1f5f9;
+    width: 100%;
   }
 
-  .cta-container {
-    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+  .banner-wrapper {
+    position: relative;
     width: 100%;
     max-width: 1200px;
-    border-radius: 40px;
-    padding: 80px 40px;
-    position: relative;
+    height: 300px; /* Reduced height */
+    background-color: #ffffff;
+    border-radius: 12px;
     overflow: hidden;
-    text-align: center;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-    border: 1px solid rgba(255,255,255,0.05);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    font-family: 'Montserrat', sans-serif;
   }
 
-  .cta-content {
-    position: relative;
-    z-index: 10;
-    max-width: 800px;
-    margin: 0 auto;
+  .banner-slider {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60%;
+    height: 100%;
+    z-index: 1;
   }
 
-  .cta-content h2 {
-    font-size: clamp(2.5rem, 4vw, 4rem);
-    font-family: 'Bebas Neue', 'Anton', sans-serif;
-    color: #fff;
-    letter-spacing: 2px;
-    margin: 0 0 20px 0;
+  .bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+  }
+
+  .bg-image.active {
+    opacity: 1;
+  }
+
+  .wave-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 94%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .content-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 55%; /* Covers the white area */
+    height: 100%;
+    z-index: 3;
+    padding: 30px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .top-tagline {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+  }
+
+  .mini-logo {
+    color: #1e293b; /* Dark color matching reference */
+  }
+
+  .tagline-text {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #1e293b;
+    text-transform: uppercase;
+  }
+
+  .title {
+    font-size: clamp(2rem, 3.8vw, 3.2rem);
     line-height: 1.1;
+    font-weight: 900;
+    font-family: 'Oswald', sans-serif;
+    margin: 0 0 12px 0;
+    letter-spacing: 0px;
+    text-transform: uppercase;
   }
 
-  .cta-content p {
-    font-size: clamp(1.1rem, 1.5vw, 1.3rem);
-    font-family: 'Inter', sans-serif;
-    color: #cbd5e1;
-    margin-bottom: 40px;
-    line-height: 1.6;
+  .text-dark {
+    color: #201a2d; /* Very dark rich tone matching reference text */
   }
 
-  .cta-actions {
+  .desc {
+    font-size: 0.85rem;
+    color: #64748b;
+    line-height: 1.4;
+    margin: 0 0 15px 0;
+    max-width: 90%;
+    font-weight: 500;
+  }
+
+  .features-row {
+    display: flex;
+    gap: 25px;
+  }
+
+  .feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 6px;
+  }
+
+  .icon-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #201a2d; /* Dark matching the reference icons */
+    color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
   }
 
-  .primary-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 18px 40px;
-    background: #22d3ee;
-    color: #000;
-    font-family: 'Inter', sans-serif;
+  .feature span {
+    font-size: 0.65rem;
     font-weight: 700;
-    font-size: 1.1rem;
-    text-decoration: none;
-    border-radius: 30px;
-    transition: all 0.3s ease;
+    color: #1e293b;
+    line-height: 1.3;
+    text-transform: uppercase;
   }
 
-  .primary-btn:hover {
-    background: #fff;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(34, 211, 238, 0.4);
-  }
-
-  .secondary-btn {
-    display: inline-flex;
-    align-items: center;
-    padding: 18px 40px;
-    background: transparent;
-    color: #fff;
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    font-size: 1.1rem;
-    text-decoration: none;
-    border-radius: 30px;
-    border: 1px solid rgba(255,255,255,0.2);
-    transition: all 0.3s ease;
-  }
-
-  .secondary-btn:hover {
-    background: rgba(255,255,255,0.1);
-    border-color: #fff;
-  }
-
-  /* Floating 3D-like Shapes */
-  .floating-shapes {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 1;
-    overflow: hidden;
-  }
-
-  .shape {
-    position: absolute;
-    background: linear-gradient(45deg, #22d3ee, #818cf8);
-    border-radius: 50%;
-    filter: blur(60px);
-    opacity: 0.4;
-    animation: float 10s infinite ease-in-out alternate;
-  }
-
-  .shape-1 {
-    width: 300px;
-    height: 300px;
-    top: -100px;
-    left: -50px;
-    background: linear-gradient(45deg, #c084fc, #818cf8);
-  }
-
-  .shape-2 {
-    width: 400px;
-    height: 400px;
-    bottom: -150px;
-    right: -100px;
-    background: linear-gradient(45deg, #2dd4bf, #22d3ee);
-    animation-delay: -5s;
-  }
-
-  .shape-3 {
-    width: 200px;
-    height: 200px;
-    top: 50%;
-    left: 60%;
-    background: linear-gradient(45deg, #f472b6, #c084fc);
-    animation-delay: -2s;
-  }
-
-  @keyframes float {
-    0% { transform: translate(0, 0) rotate(0deg); }
-    100% { transform: translate(30px, -50px) rotate(20deg); }
+  @media (max-width: 900px) {
+    .banner-wrapper {
+      height: auto;
+      min-height: 600px;
+      display: flex;
+      flex-direction: column;
+    }
+    .wave-overlay {
+      display: none; /* Hide the complex wave on mobile */
+    }
+    .banner-slider {
+      position: relative;
+      width: 100%;
+      height: 250px;
+      order: 1;
+    }
+    .bg-image {
+      width: 100%;
+      height: 100%;
+    }
+    .content-left {
+      position: relative;
+      width: 100%;
+      height: auto;
+      padding: 40px 20px;
+      order: 2; /* Content below image */
+      align-items: center;
+      text-align: center;
+    }
+    .top-tagline {
+      justify-content: center;
+    }
+    .desc {
+      max-width: 100%;
+    }
+    .features-row {
+      justify-content: center;
+      flex-wrap: wrap;
+    }
   }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const sliders = document.querySelectorAll('.banner-slider');
+    sliders.forEach(slider => {
+      const slides = slider.querySelectorAll('.bg-image');
+      if (slides.length <= 1) return;
+      
+      let currentIndex = 0;
+      setInterval(() => {
+        slides[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % slides.length;
+        slides[currentIndex].classList.add('active');
+      }, 3500); // Crossfade every 3.5 seconds
+    });
+  });
+</script>

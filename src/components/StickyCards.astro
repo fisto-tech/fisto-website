@@ -35,7 +35,10 @@ const cards = [
 
 <section class="sticky-cards-section">
   <div class="section-header">
-    <h2 class="section-title">Types of Animation</h2>
+    <h2 class="section-title js-animate-title">
+      <span class="line-wrap"><span class="text-line shimmer-text" data-base="#522121" data-sweep="#888888">Types of Animation</span></span>
+
+    </h2>
   </div>
   <div class="wrap">
     {cards.map((card, index) => (
@@ -55,6 +58,11 @@ const cards = [
 </section>
 
 <style>
+  .char {
+    display: inline-block;
+    white-space: pre-wrap;
+  }
+
   .sticky-cards-section {
     width: 100%;
     padding: 100px 0;
@@ -69,11 +77,24 @@ const cards = [
   }
 
   .section-title {
-    font-size: clamp(3rem, 6vw, 5rem);
+    font-size: clamp(2.5rem, 4.5vw, 3.5rem);
     font-family: 'Bebas Neue', 'Anton', sans-serif;
     color: #111;
     letter-spacing: 2px;
     margin: 0;
+    text-transform: uppercase;
+    line-height: 1.1;
+  }
+
+  .line-wrap {
+    overflow: hidden;
+    display: block;
+  }
+
+  .text-line {
+    display: inline-block;
+    will-change: transform;
+    opacity: 0; /* Handled by GSAP */
   }
 
   .wrap {
@@ -112,7 +133,7 @@ const cards = [
     margin-top: 10px;
     margin-bottom: 30px;
     margin-inline: auto;
-    max-width: 800px;
+    /* max-width: 800px; */
     font-size: clamp(1rem, 1.5vw, 1.2rem);
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
@@ -161,6 +182,25 @@ const cards = [
 
     const elsCount = els.length;
 
+    // Animate heading using line-by-line reveal (AR/VR/MR style)
+    const heading = document.querySelector('.sticky-cards-section .js-animate-title');
+    if (heading) {
+      const textLines = heading.querySelectorAll('.text-line');
+      gsap.set(textLines, { y: "100%", opacity: 0 });
+
+      gsap.to(textLines, {
+        scrollTrigger: {
+          trigger: heading,
+          start: 'top 85%',
+        },
+        y: "0%",
+        opacity: 1,
+        duration: 1,
+        stagger: 0.15,
+        ease: 'power2.out',
+      });
+    }
+
     els.forEach((el, index) => {
       const isLastIndex = index === elsCount - 1;
 
@@ -188,4 +228,90 @@ const cards = [
   document.addEventListener('DOMContentLoaded', initStickyScroll);
   // Re-init on astro page load if using view transitions
   document.addEventListener('astro:page-load', initStickyScroll);
+</script>
+
+<script>
+  if (!(window as any).shimmerSweepInit) {
+    (window as any).shimmerSweepInit = true;
+    
+    const initShimmer = () => {
+      const textEls = document.querySelectorAll('.shimmer-text');
+      if (!textEls.length) return;
+
+      const ease = {
+        out:   (t: number) => 1 - (1 - t) ** 3,
+        in:    (t: number) => t ** 3,
+      };
+
+      function cyc(f: number, offset: number, enter: number, hold: number, exit: number, pause: number) {
+        if (f < offset) return 0;
+        const total = enter + hold + exit + pause;
+        const t = (f - offset) % total;
+        if (t < enter)               return ease.out(t / enter);
+        if (t < enter + hold)        return 1;
+        if (t < enter + hold + exit) return 1 - ease.in((t - enter - hold) / exit);
+        return 0;
+      }
+
+      function grad(el: HTMLElement, css: string) {
+        el.style.background           = css;
+        el.style.webkitBackgroundClip = 'text';
+        el.style.backgroundClip       = 'text';
+        el.style.webkitTextFillColor  = 'transparent';
+      }
+
+      let _raf: number;
+      function loop(tick: () => void) {
+        cancelAnimationFrame(_raf);
+        (function frame() { tick(); _raf = requestAnimationFrame(frame); })();
+      }
+
+      const allChars: any[] = [];
+      textEls.forEach(el => {
+        if (el.querySelector('.char')) return;
+        
+        const baseColor = el.getAttribute('data-base') || '#ffffff';
+        const sweepColor = el.getAttribute('data-sweep') || '#08c098';
+
+        const text = el.textContent || '';
+        el.innerHTML = '';
+        const chars: any[] = [];
+        
+        text.split('').forEach(ch => {
+          const s = document.createElement('span');
+          s.className = 'char';
+          s.textContent = ch;
+          el.appendChild(s);
+          chars.push({ el: s, base: baseColor, sweep: sweepColor });
+        });
+        
+        allChars.push(chars);
+      });
+
+      const STAGGER = 8, ENTER = 84, HOLD = 20, EXIT = 58, PAUSE = 36;
+      let f = 0;
+      
+      loop(() => {
+        f++;
+        allChars.forEach(chars => {
+          chars.forEach((charObj, i) => {
+            const p   = cyc(f, i * STAGGER, ENTER, HOLD, EXIT, PAUSE);
+            const mid = (p * 130 - 15).toFixed(1);
+            grad(charObj.el, `linear-gradient(90deg,
+              ${charObj.base} 0%,
+              ${charObj.base} ${(+mid - 18).toFixed(1)}%,
+              ${charObj.sweep} ${mid}%,
+              ${charObj.base} ${(+mid + 18).toFixed(1)}%,
+              ${charObj.base} 100%)`);
+          });
+        });
+      });
+    };
+
+    document.addEventListener('DOMContentLoaded', initShimmer);
+    document.addEventListener('astro:page-load', initShimmer);
+    if (document.readyState === 'interactive' || document.readyState === 'complete') {
+      initShimmer();
+    }
+  }
 </script>

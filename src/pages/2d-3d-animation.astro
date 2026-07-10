@@ -4,7 +4,7 @@ import AnimatedCounter from '../components/AnimatedCounter.astro';
 import StickyCards from '../components/StickyCards.astro';
 import AnimationBenefits from '../components/AnimationBenefits.astro';
 import ClientMarquee from '../components/ClientMarquee.astro';
-import ArVrCtaBanner from '../components/ArVrCtaBanner.astro';
+import AnimationCtaBanner from '../components/AnimationCtaBanner.astro';
 ---
 
 <BaseLayout
@@ -18,7 +18,7 @@ import ArVrCtaBanner from '../components/ArVrCtaBanner.astro';
 <section class="animation-hero">
   <!-- Removed 'loop' so it triggers 'ended' event -->
   <video id="heroVideo" class="animation-video" autoplay muted playsinline>
-    <source src="/images/services/2D-3D-animation/2D-3D-animation-video.mp4" type="video/mp4" />
+    <source src="/images/services/2D-3D-animation/2D-3D-animation-video-new.mp4" type="video/mp4" />
   </video>
   
   <div id="heroOverlay" class="animation-overlay">
@@ -54,7 +54,7 @@ import ArVrCtaBanner from '../components/ArVrCtaBanner.astro';
 
 <ClientMarquee />
 
-<ArVrCtaBanner />
+<AnimationCtaBanner />
 
 <style>
   .animation-hero {

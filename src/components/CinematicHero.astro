@@ -122,42 +122,47 @@
     height: 350px;
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-50%) translateZ(0); /* Added translateZ for hardware acceleration */
     left: calc(55% + 810px); /* Off screen */
     border-radius: 20px;
     box-shadow: 0 15px 30px rgba(0,0,0,0.5);
     background-position: 50% 50%;
     background-size: cover;
+    background-color: #000; /* Fallback background */
     display: inline-block;
     transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
     overflow: hidden;
     z-index: 1;
+    -webkit-mask-image: -webkit-radial-gradient(white, black); /* Fix Safari border-radius overflow bug */
+    will-change: transform, left, width, height;
   }
 
   /* Position 1 (Exiting background) */
   .hero-container .slide .item.pos-1 {
     top: 0;
     left: 0;
-    transform: translate(0, 0);
+    transform: translate(0, 0) translateZ(0);
     width: 100%;
     height: 100%;
     border-radius: 0;
     z-index: 1;
     box-shadow: none;
     cursor: default;
+    -webkit-mask-image: none; /* Remove mask on full screen */
   }
 
   /* Position 2 (Active Background) */
   .hero-container .slide .item.pos-2 {
     top: 0;
     left: 0;
-    transform: translate(0, 0);
+    transform: translate(0, 0) translateZ(0);
     width: 100%;
     height: 100%;
     border-radius: 0;
     z-index: 2;
     box-shadow: none;
     cursor: default;
+    -webkit-mask-image: none; /* Remove mask on full screen */
   }
 
   /* Thumbnails (Positions 3+) */
@@ -196,6 +201,8 @@
     z-index: 1;
     filter: brightness(0.6); /* Dim thumbnails slightly */
     transition: filter 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+    transform: translateZ(0); /* Hardware acceleration for video */
+    will-change: transform;
   }
 
   /* Full brightness when it becomes the active background */
