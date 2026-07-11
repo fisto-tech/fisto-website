@@ -8,78 +8,78 @@
       
       <!-- ITEM 1: AR -->
       <div class="item">
-        <video muted loop playsinline class="item-video" preload="auto">
+        <video muted playsinline class="item-video" preload="auto">
           <source src="/images/services/AR-VR/AR-video.mp4" type="video/mp4" />
         </video>
         <div class="item-overlay"></div>
         <div class="content">
           <div class="name">Augmented Reality</div>
-          <div class="des">Overlay digital information onto the real world. Enhance training, marketing, and business operations with interactive 3D elements.</div>
+          <div class="des">Fisto Tech Pvt. Ltd. develops innovative Augmented Reality (AR) solutions that enhance training, maintenance, product visualization, and customer engagement. Using AR-enabled mobile devices, tablets, we create interactive digital overlays that provide real-time guidance, visual instructions, and immersive experiences.</div>
           <button class="action-btn">Explore AR</button>
         </div>
       </div>
 
       <!-- ITEM 2: VR -->
       <div class="item">
-        <video muted loop playsinline class="item-video" preload="auto">
+        <video muted playsinline class="item-video" preload="auto">
           <source src="/images/services/AR-VR/VR-video.mp4" type="video/mp4" />
         </video>
         <div class="item-overlay"></div>
         <div class="content">
           <div class="name">Virtual Reality</div>
-          <div class="des">Step into completely simulated environments. Perfect for immersive training, virtual tours, and next-generation entertainment.</div>
+          <div class="des">Fisto Tech Pvt. Ltd. develops immersive Virtual Reality (VR) solutions that enhance training, product visualization, and business operations. Using advanced VR technology, we create realistic simulations that improve learning, reduce risks, and lower training costs.</div>
           <button class="action-btn">Explore VR</button>
         </div>
       </div>
 
       <!-- ITEM 3: MR -->
       <div class="item">
-        <video muted loop playsinline class="item-video" preload="auto">
-          <source src="/images/services/AR-VR/AR-VR-video-new.mp4" type="video/mp4" />
+        <video muted playsinline class="item-video" preload="auto">
+          <source src="/images/services/AR-VR/MR-video.mp4" type="video/mp4" />
         </video>
         <div class="item-overlay"></div>
         <div class="content">
           <div class="name">Mixed Reality</div>
-          <div class="des">Seamlessly blend physical and digital worlds. Interact with holograms as if they were real objects in your physical space.</div>
+          <div class="des">Fisto Tech Pvt. Ltd. develops advanced Mixed Reality (MR) solutions that seamlessly blend digital content with the real world. Using devices like Microsoft HoloLens and other MR wearables, we create interactive experiences for industrial training, remote assistance, maintenance, and product visualization.</div>
           <button class="action-btn">Explore MR</button>
         </div>
     </div>
 
       <!-- ITEM 4: AR (Clone) -->
       <div class="item">
-        <video muted loop playsinline class="item-video" preload="auto">
+        <video muted playsinline class="item-video" preload="auto">
           <source src="/images/services/AR-VR/AR-video.mp4" type="video/mp4" />
         </video>
         <div class="item-overlay"></div>
         <div class="content">
           <div class="name">Augmented Reality</div>
-          <div class="des">Overlay digital information onto the real world. Enhance training, marketing, and business operations with interactive 3D elements.</div>
+          <div class="des">Fisto Tech Pvt. Ltd. develops innovative Augmented Reality (AR) solutions that enhance training, maintenance, product visualization, and customer engagement. Using AR-enabled mobile devices, tablets, we create interactive digital overlays that provide real-time guidance, visual instructions, and immersive experiences.</div>
           <button class="action-btn">Explore AR</button>
         </div>
       </div>
 
       <!-- ITEM 5: VR (Clone) -->
       <div class="item">
-        <video muted loop playsinline class="item-video" preload="auto">
+        <video muted playsinline class="item-video" preload="auto">
           <source src="/images/services/AR-VR/VR-video.mp4" type="video/mp4" />
         </video>
         <div class="item-overlay"></div>
         <div class="content">
           <div class="name">Virtual Reality</div>
-          <div class="des">Step into completely simulated environments. Perfect for immersive training, virtual tours, and next-generation entertainment.</div>
+          <div class="des">Fisto Tech Pvt. Ltd. develops immersive Virtual Reality (VR) solutions that enhance training, product visualization, and business operations. Using advanced VR technology, we create realistic simulations that improve learning, reduce risks, and lower training costs.</div>
           <button class="action-btn">Explore VR</button>
         </div>
       </div>
 
       <!-- ITEM 6: MR (Clone) -->
       <div class="item">
-        <video muted loop playsinline class="item-video" preload="auto">
-          <source src="/images/services/AR-VR/AR-VR-video-new.mp4" type="video/mp4" />
+        <video muted playsinline class="item-video" preload="auto">
+          <source src="/images/services/AR-VR/MR-video.mp4" type="video/mp4" />
         </video>
         <div class="item-overlay"></div>
         <div class="content">
           <div class="name">Mixed Reality</div>
-          <div class="des">Seamlessly blend physical and digital worlds. Interact with holograms as if they were real objects in your physical space.</div>
+          <div class="des">Fisto Tech Pvt. Ltd. develops advanced Mixed Reality (MR) solutions that seamlessly blend digital content with the real world. Using devices like Microsoft HoloLens and other MR wearables, we create interactive experiences for industrial training, remote assistance, maintenance, and product visualization.</div>
           <button class="action-btn">Explore MR</button>
         </div>
       </div>
@@ -252,8 +252,8 @@
   }
 
   .item .name {
-    font-size: clamp(32px, 5vw, 60px);
-    font-weight: 800;
+    font-size: clamp(32px, 6vw, 100px);
+    font-weight: 900;
     text-transform: uppercase;
     opacity: 0;
     animation: animate 1s ease-in-out 1 forwards;
@@ -481,8 +481,21 @@
       updateClasses();
     };
 
-    if (nextBtn) nextBtn.addEventListener("click", next);
-    if (prevBtn) prevBtn.addEventListener("click", prev);
+    if (nextBtn) nextBtn.addEventListener("click", () => { next(); });
+    if (prevBtn) prevBtn.addEventListener("click", () => { prev(); });
+
+    // Autoplay logic: Wait for the active video to finish playing
+    items.forEach(item => {
+      const video = item.querySelector('video');
+      if (video) {
+        // When the video finishes playing, go to the next slide
+        video.addEventListener('ended', () => {
+          if (item.classList.contains('pos-2')) {
+            next();
+          }
+        });
+      }
+    });
   }
 
   // Initialize on page load and astro page swaps

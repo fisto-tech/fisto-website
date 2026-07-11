@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import GalleryModal from '../components/GalleryModal.astro';
+import Web3dCtaBanner from '../components/Web3dCtaBanner.astro';
 import '../styles/service1.css';
 
 // Placeholder data for the gallery modal
@@ -22,8 +23,8 @@ const tabs = [
 ---
 
 <BaseLayout
-  title="3D Website Development"
-  description="Immersive 3D Website Development"
+  title="Leading 3D Website Development Company in Coimbatore, India"
+  description="Fisto Tech Private Limited, a leading web design company in Coimbatore, India, builds responsive and creative websites tailored to your brand vision."
   image="/images/about-og.jpg"
   current="3d-website"
   additionalStyles="/css/services.css"
@@ -93,40 +94,48 @@ const tabs = [
   <!-- Gallery Popup Modal -->
   <GalleryModal items={galleryItems} />
 
+  <!-- Pre-Footer CTA -->
+  <Web3dCtaBanner />
+
 </BaseLayout>
 
 <style>
 /* --- Hero Section --- */
 .hero-3d {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 6rem 5% 4rem;
   background: linear-gradient(135deg, #071518 0%, #0c2025 100%);
   min-height: 70vh;
+  gap: 3rem;
+  text-align: center;
+  width: 100%;
 }
 
 @media (min-width: 1024px) {
   .hero-3d {
     flex-direction: row;
     justify-content: space-between;
+    text-align: left;
     min-height: 100vh;
     height: 100vh;
+    gap: 2rem;
   }
 }
 
 .hero-3d__content {
   flex: 1;
+  width: 100%;
   max-width: 600px;
   color: #fff;
   z-index: 2;
-  margin-top: 3rem;
 }
 
 @media (min-width: 1024px) {
   .hero-3d__content {
-    margin-top: 0;
-    padding-right: 4rem;
+    padding-right: 2rem;
   }
 }
 
@@ -153,6 +162,7 @@ const tabs = [
 .hero-3d__graphic {
   flex: 1;
   width: 100%;
+  max-width: 700px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -160,7 +170,7 @@ const tabs = [
 
 .hero-3d__image {
   width: 100%;
-  max-width: 700px;
+  height: auto;
   border-radius: 20px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.4);
   animation: float 6s ease-in-out infinite;

@@ -1,35 +1,214 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="Works" current="services">
-     <Fragment slot="headContent">
+<BaseLayout title="Works" current="services" additionalStyles="/css/works.css">
+  <div class="works-header">
+    <h1>Experience over explanation</h1>
+    <p class="works-subtitle">Custom-built immersive software shaping industries worldwide</p>
+  </div>
 
-    <link rel="stylesheet" href="/css/works.css" />
-    
-  </Fragment>
-    <div class="works-header">
-        <h1>Experience over explanation</h1>
-        <h2>Custom-built immersive software shaping industries worldwide</h2>
+  <div class="works-tabs-wrapper">
+    <div class="works-tabs">
+      <button class="tab-btn active" data-tab="0">AR / VR / MR</button>
+      <button class="tab-btn" data-tab="1">2D / 3D Animation</button>
+      <button class="tab-btn" data-tab="2">IDC</button>
+      <button class="tab-btn" data-tab="3">Customized Applications</button>
+      <button class="tab-btn" data-tab="4">3D Website Design</button>
+    </div>
+  </div>
+
+  <section class="works-content">
+    <div class="flex-1 content-panel" id="left-panel">
+      <div class="tab-number" id="tab-number">01</div>
+      <h2 class="panel-title" id="panel-title">AR / VR / MR</h2>
+      <ul class="panel-list" id="panel-list">
+        <li>Immersive augmented reality experiences for retail and training</li>
+        <li>Mixed reality solutions for surgical and medical visualization</li>
+        <li>Virtual walkthroughs for real estate and architecture</li>
+        <li>VR-based simulation for industrial safety and education</li>
+      </ul>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
     </div>
 
-    <section class="works-content">
-        <div class="flex-1">
-            <h2>AR/ VR/ MR</h2>
-            <ul>
-                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, minima?</li>
-                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, minima?</li>
-                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, minima?</li>
-                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, minima?</li>
-            </ul>
-        </div>
-        <div class="flex-2">
-            <div class="video-grid">
-                <video src="/videos/video_1.mp4" autoplay loop muted></video>
-                <video src="/videos/video_1.mp4" autoplay loop muted></video>
-                <video src="/videos/video_1.mp4" autoplay loop muted></video>
-                <video src="/videos/video_1.mp4" autoplay loop muted></video>
-            </div>
-        </div>
-    </section>
+    <div class="flex-2" id="right-panel">
+      <div class="video-frame">
+        <div class="video-glow"></div>
+        <video
+          id="works-video"
+          src="/videos/video_1.mp4"
+          autoplay
+          loop
+          muted
+          playsinline
+        ></video>
+        <div class="video-overlay-corner top-left"></div>
+        <div class="video-overlay-corner top-right"></div>
+        <div class="video-overlay-corner bottom-left"></div>
+        <div class="video-overlay-corner bottom-right"></div>
+      </div>
+    </div>
+  </section>
 
+  <script is:inline>
+    const tabData = [
+      {
+        number: "01",
+        title: "AR / VR / MR",
+        points: [
+          "Immersive augmented reality experiences for retail and training",
+          "Mixed reality solutions for surgical and medical visualization",
+          "Virtual walkthroughs for real estate and architecture",
+          "VR-based simulation for industrial safety and education"
+        ]
+      },
+      {
+        number: "02",
+        title: "2D / 3D Animation",
+        points: [
+          "Cinematic 3D product animations for compelling brand storytelling",
+          "Explainer videos and motion graphics for marketing campaigns",
+          "Character animation pipelines for games and entertainment",
+          "Architectural and interior 3D visualization renders"
+        ]
+      },
+      {
+        number: "03",
+        title: "IDC",
+        points: [
+          "Interactive Digital Catalogues with immersive 3D flipbook experiences",
+          "Real-time 3D model rotation and product inspection views",
+          "Tap-to-explore pages with embedded video and hotspot annotations",
+          "Shareable digital catalogues replacing print — zero print cost"
+        ]
+      },
+      {
+        number: "04",
+        title: "Customized Applications",
+        points: [
+          "Bespoke desktop and enterprise software tailored to your workflows",
+          "Cross-platform apps for operations, logistics, and field management",
+          "AI-powered internal tools, dashboards, and productivity platforms",
+          "IoT-integrated control software for smart facilities and automation"
+        ]
+      },
+      {
+        number: "05",
+        title: "3D Website Design",
+        points: [
+          "WebGL-powered three-dimensional product showcases in the browser",
+          "Scroll-driven cinematic narrative websites with real-time rendering",
+          "Interactive 3D configurators for ecommerce and product builders",
+          "Immersive landing pages that turn visitors into buyers"
+        ]
+      }
+    ];
+
+    let currentTab = 0;
+    let autoTimer = null;
+    let countdownInterval = null;
+    const DELAY_AFTER_END = 3000;
+
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const leftPanel = document.getElementById('left-panel');
+    const rightPanel = document.getElementById('right-panel');
+    const video = document.getElementById('works-video');
+    const progressBar = document.getElementById('progress-bar');
+
+    function resetProgress() {
+      progressBar.style.transition = 'none';
+      progressBar.style.width = '0%';
+    }
+
+    function startProgressCountdown(duration) {
+      resetProgress();
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          progressBar.style.transition = `width ${duration}ms linear`;
+          progressBar.style.width = '100%';
+        });
+      });
+    }
+
+    function clearTimers() {
+      if (autoTimer) clearTimeout(autoTimer);
+      if (countdownInterval) clearInterval(countdownInterval);
+      autoTimer = null;
+      countdownInterval = null;
+    }
+
+    function goToNextTab() {
+      const next = (currentTab + 1) % tabData.length;
+      switchTab(next, tabBtns[next], false);
+    }
+
+    function switchTab(index, btn, userTriggered = true) {
+      if (index === currentTab && !userTriggered) return;
+      clearTimers();
+      currentTab = index;
+
+      const data = tabData[index];
+
+      leftPanel.classList.add('panel-exit');
+      rightPanel.classList.add('panel-exit');
+
+      setTimeout(() => {
+        document.getElementById('tab-number').textContent = data.number;
+        document.getElementById('panel-title').textContent = data.title;
+        const ul = document.getElementById('panel-list');
+        ul.innerHTML = '';
+        data.points.forEach((point, i) => {
+          const li = document.createElement('li');
+          li.textContent = point;
+          li.style.animationDelay = (i * 0.09) + 's';
+          ul.appendChild(li);
+        });
+
+        leftPanel.classList.remove('panel-exit');
+        rightPanel.classList.remove('panel-exit');
+        leftPanel.classList.add('panel-enter');
+        rightPanel.classList.add('panel-enter');
+
+        video.currentTime = 0;
+        video.loop = false;
+        video.play();
+
+        setTimeout(() => {
+          leftPanel.classList.remove('panel-enter');
+          rightPanel.classList.remove('panel-enter');
+        }, 500);
+      }, 230);
+
+      tabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+
+    video.addEventListener('ended', () => {
+      video.loop = false;
+      resetProgress();
+      startProgressCountdown(DELAY_AFTER_END);
+      autoTimer = setTimeout(goToNextTab, DELAY_AFTER_END);
+    });
+
+    video.addEventListener('play', () => {
+      clearTimers();
+      resetProgress();
+    });
+
+    tabBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const index = parseInt(btn.dataset.tab);
+        switchTab(index, btn, true);
+        video.loop = false;
+        video.currentTime = 0;
+        video.play();
+        resetProgress();
+      });
+    });
+
+    video.currentTime = 0;
+    video.loop = false;
+    video.play();
+  </script>
 </BaseLayout>

@@ -13,7 +13,11 @@
       <!-- Industry Item 1 -->
       <div class="industry-card">
         <div class="icon-wrapper">
-          <img src="/images/services/AR-VR/manufacturing.webp" alt="Manufacturing" loading="lazy" />
+          <img
+            src="/images/services/AR-VR/manufacturing.webp"
+            alt="Manufacturing"
+            loading="lazy"
+          />
         </div>
         <h3>Manufacturing</h3>
       </div>
@@ -21,7 +25,11 @@
       <!-- Industry Item 2 -->
       <div class="industry-card">
         <div class="icon-wrapper">
-          <img src="/images/services/AR-VR/education.webp" alt="Education" loading="lazy" />
+          <img
+            src="/images/services/AR-VR/education.webp"
+            alt="Education"
+            loading="lazy"
+          />
         </div>
         <h3>Education</h3>
       </div>
@@ -29,7 +37,11 @@
       <!-- Industry Item 3 -->
       <div class="industry-card">
         <div class="icon-wrapper">
-          <img src="/images/services/AR-VR/jewellery.webp"  alt="Ornaments" loading="lazy" />
+          <img
+            src="/images/services/AR-VR/jewellery.webp"
+            alt="Ornaments"
+            loading="lazy"
+          />
         </div>
         <h3>Ornaments</h3>
       </div>
@@ -37,7 +49,11 @@
       <!-- Industry Item 4 -->
       <div class="industry-card">
         <div class="icon-wrapper">
-          <img src="/images/services/AR-VR/foods.webp" alt="Foods" loading="lazy" />
+          <img
+            src="/images/services/AR-VR/foods.webp"
+            alt="Foods"
+            loading="lazy"
+          />
         </div>
         <h3>Foods</h3>
       </div>
@@ -45,7 +61,11 @@
       <!-- Industry Item 5 -->
       <div class="industry-card">
         <div class="icon-wrapper">
-          <img src="/images/services/AR-VR/textile.webp" alt="Textiles" loading="lazy" />
+          <img
+            src="/images/services/AR-VR/textile.webp"
+            alt="Textiles"
+            loading="lazy"
+          />
         </div>
         <h3>Textiles</h3>
       </div>
@@ -53,7 +73,11 @@
       <!-- Industry Item 6 -->
       <div class="industry-card">
         <div class="icon-wrapper">
-          <img src="/images/services/AR-VR/real estate.webp" alt="Real Estate" loading="lazy" />
+          <img
+            src="/images/services/AR-VR/real estate.webp"
+            alt="Real Estate"
+            loading="lazy"
+          />
         </div>
         <h3>Real Estate</h3>
       </div>
@@ -61,7 +85,11 @@
       <!-- Industry Item 7 -->
       <div class="industry-card">
         <div class="icon-wrapper">
-          <img src="/images/services/AR-VR/socialmedia.webp" alt="Social Media" loading="lazy" />
+          <img
+            src="/images/services/AR-VR/socialmedia.webp"
+            alt="Social Media"
+            loading="lazy"
+          />
         </div>
         <h3>Social Media</h3>
       </div>
@@ -72,9 +100,15 @@
 <style>
   .industries-section {
     padding: 100px 20px;
-    background-color: var(--bg, #f2f9fa); /* Using theme variable with fallback */
+    background-color: var(
+      --bg,
+      #ffffff
+    ); /* Using theme variable with fallback */
     color: var(--text-primary, #112025);
-    font-family: system-ui, -apple-system, sans-serif;
+    font-family:
+      system-ui,
+      -apple-system,
+      sans-serif;
   }
 
   .container {
@@ -111,7 +145,7 @@
     z-index: 1;
   }
   .highlight::before {
-    content: '';
+    content: "";
     position: absolute;
     top: -10px;
     left: -15px;
@@ -169,7 +203,7 @@
   }
 
   .icon-wrapper::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     /* background: linear-gradient(135deg, rgba(14, 116, 144, 0.1), rgba(34, 211, 238, 0.05)); */
@@ -181,7 +215,9 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
+    transition:
+      transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+      filter 0.3s ease;
     position: relative;
     z-index: 2;
     /* Optional: If the PNGs are black, a CSS filter can add a theme color on hover */
@@ -222,7 +258,7 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 20px;
     }
-    
+
     .icon-wrapper {
       padding: 20px;
     }
@@ -233,7 +269,7 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 15px;
     }
-    
+
     .section-header {
       margin-bottom: 40px;
     }
@@ -253,7 +289,7 @@
       const gsap = (window as any).gsap;
 
       const cards = gsap.utils.toArray(".industry-card");
-      
+
       // Set initial state
       gsap.set(cards, { scale: 0.5, opacity: 0, y: 50 });
 

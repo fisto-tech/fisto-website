@@ -1,0 +1,269 @@
+---
+// src/components/Web3dCtaBanner.astro
+const images = [
+  "/images/about-og.jpg"
+];
+---
+
+<section class="banner-section">
+  <div class="banner-wrapper">
+    <div class="banner-slider">
+      {images.map((src, index) => (
+        <img class={`bg-image slide-${index} ${index === 0 ? 'active' : ''}`} src={src} alt="3D Website Experiences" />
+      ))}
+    </div>
+
+    <!-- Layered S-Curve Overlay for the Split Effect -->
+    <svg class="wave-overlay" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <!-- Dark Purple Wave (Bottom layer) -->
+      <path d="M0,0 L58.5,0 C47,40 66,60 48.5,100 L0,100 Z" fill="#2e1065" />
+      <!-- Mid Purple Wave (Middle layer) -->
+      <path d="M0,0 L58.2,0 C45.5,40 64,60 48.2,100 L0,100 Z" fill="#4c1d95" />
+      <!-- Solid White Area (Top layer) -->
+      <path d="M0,0 L58,0 C44,40 62,60 48,100 L0,100 Z" fill="#f8f9fa" />
+    </svg>
+
+    <!-- Left side Content on the White Area -->
+    <div class="content-left">
+      <!-- Top Tagline with Icon -->
+      <div class="top-tagline">
+        <svg class="mini-logo" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+        <span class="tagline-text">Fisto Tech</span>
+      </div>
+      <!-- Main Title -->
+      <h2 class="title">
+        <span class="text-dark">IMMERSIVE 3D</span><br/>
+        <span class="text-dark">WEB EXPERIENCES</span>
+      </h2>
+      
+      <!-- Description -->
+      <p class="desc">
+        Step into the next dimension of web design. We create immersive 3D websites that captivate and convert.
+      </p>
+      
+      <!-- Bottom Icons Row -->
+      <div class="features-row">
+        <div class="feature">
+          <div class="icon-circle">
+            <!-- 3D Cube Icon -->
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+          </div>
+          <span>3D<br/>Modeling</span>
+        </div>
+        <div class="feature">
+          <div class="icon-circle">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          </div>
+          <span>WebGL<br/>Tech</span>
+        </div>
+        <div class="feature">
+          <div class="icon-circle">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          </div>
+          <span>Interactive<br/>Design</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;700;900&family=Montserrat:wght@400;500;600;700&display=swap');
+
+  .banner-section {
+    padding: 50px 20px;
+    display: flex;
+    justify-content: center;
+    background-color: #f1f5f9;
+    width: 100%;
+  }
+
+  .banner-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: 300px;
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .banner-slider {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+  }
+
+  .bg-image.active {
+    opacity: 1;
+  }
+
+  .wave-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 94%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .content-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 55%;
+    height: 100%;
+    z-index: 3;
+    padding: 40px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .top-tagline {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+  }
+
+  .mini-logo {
+    color: #1e293b;
+  }
+
+  .tagline-text {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #1e293b;
+    text-transform: uppercase;
+  }
+
+  .title {
+    font-size: clamp(2rem, 3.8vw, 3.2rem);
+    line-height: 1.1;
+    font-weight: 900;
+    font-family: 'Oswald', sans-serif;
+    margin: 0 0 12px 0;
+    letter-spacing: 0px;
+    text-transform: uppercase;
+  }
+
+  .text-dark {
+    color: #201a2d;
+  }
+
+  .desc {
+    font-size: 0.85rem;
+    color: #64748b;
+    line-height: 1.4;
+    margin: 0 0 15px 0;
+    max-width: 90%;
+    font-weight: 500;
+  }
+
+  .features-row {
+    display: flex;
+    gap: 25px;
+  }
+
+  .feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 6px;
+  }
+
+  .icon-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #201a2d;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+
+  .feature span {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #1e293b;
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 900px) {
+    .banner-wrapper {
+      height: auto;
+      min-height: 600px;
+      display: flex;
+      flex-direction: column;
+    }
+    .wave-overlay {
+      display: none;
+    }
+    .banner-slider {
+      position: relative;
+      width: 100%;
+      height: 250px;
+      order: 1;
+    }
+    .bg-image {
+      width: 100%;
+      height: 100%;
+    }
+    .content-left {
+      position: relative;
+      width: 100%;
+      height: auto;
+      padding: 40px 20px;
+      order: 2;
+      align-items: center;
+      text-align: center;
+    }
+    .desc {
+      max-width: 100%;
+    }
+    .features-row {
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const sliders = document.querySelectorAll('.banner-slider');
+    sliders.forEach(slider => {
+      const slides = slider.querySelectorAll('.bg-image');
+      if (slides.length <= 1) return;
+      
+      let currentIndex = 0;
+      setInterval(() => {
+        slides[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % slides.length;
+        slides[currentIndex].classList.add('active');
+      }, 3500);
+    });
+  });
+</script>

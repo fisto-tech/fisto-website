@@ -4,56 +4,62 @@ const cards = [
     title: "3D Brand Animation",
     desc: "Transforms your brand identity into visually engaging and memorable stories. Using advanced animation techniques, we craft dynamic visuals that convey your message with clarity and impact, perfect for promotional videos, product showcases, and corporate storytelling that captivate audiences.",
     img: "https://5.imimg.com/data5/SELLER/Default/2023/1/NG/XD/XJ/43420117/3d-logo-designing-service-500x500.png",
-    bg: "#FFE4E1" // MistyRose
+    bg: "#FFE4E1", // MistyRose
   },
   {
     title: "3D Explainer Videos",
     desc: "Our professional 3D animation services create captivating product animations, motion graphics, and branding visuals that enhance understanding, engage audiences, and leave a lasting impression through creative, high-quality animation and compelling visual storytelling.",
     img: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&q=80",
-    bg: "#E0FFFF" // LightCyan
+    bg: "#E0FFFF", // LightCyan
   },
   {
     title: "Corporate Presentation",
     desc: "Corporate videos showcase your brand’s story, values, and achievements through powerful visual storytelling. They build trust, enhance brand awareness, and leave a lasting impression on your audience. With strong concepts, engaging scripts, and high-quality production, we craft impactful corporate video animations that reflect your brand’s identity and professionalism.",
     img: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80",
-    bg: "#F0FFF0" // Honeydew
+    bg: "#F0FFF0", // Honeydew
   },
   {
     title: "Industrial Animation",
     desc: "Demonstrate product functionality and processes through clear, engaging visuals. Our product animation and tutorial video services simplify learning, enhance understanding, and build trust. Combining professional 3D animation and motion graphics, we create impactful, cost-effective solutions that boost engagement, brand credibility, and sales.",
     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-OxCdgEEKsi_6pgDk8CnbaP3kQ4kbi3hireOjtDFyRXC0UNPgPBmluCs&s=10",
-    bg: "#F5F5DC" // Beige
+    bg: "#F5F5DC", // Beige
   },
   {
     title: "Motion Graphics Product Animation",
     desc: "Showcases how your product or service works through engaging visuals and sound. Our creative product animation and motion graphics services simplify learning, boost engagement, and build brand trust with professional 3D animation that effectively communicates your message and enhances audience understanding.",
     img: "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?w=800&q=80",
-    bg: "#E6E6FA" // Lavender
-  }
+    bg: "#E6E6FA", // Lavender
+  },
 ];
 ---
 
 <section class="sticky-cards-section">
   <div class="section-header">
     <h2 class="section-title js-animate-title">
-      <span class="line-wrap"><span class="text-line shimmer-text" data-base="#522121" data-sweep="#888888">Types of Animation</span></span>
-
+      <span class="line-wrap"
+        ><span
+          class="text-line shimmer-text"
+          data-base="#522121"
+          data-sweep="#888888">Types of Animation</span
+        ></span
+      >
     </h2>
   </div>
   <div class="wrap">
-    {cards.map((card, index) => (
-      <div class="js-sticky c-card" style={`background-color: ${card.bg}; top: ${index * 20}px; z-index: ${index};`}>
-        <div class="c-card__title">
-          {card.title}
+    {
+      cards.map((card, index) => (
+        <div
+          class="js-sticky c-card"
+          style={`background-color: ${card.bg}; top: ${index * 20}px; z-index: ${index};`}
+        >
+          <div class="c-card__title">{card.title}</div>
+          <div class="c-card__desc">{card.desc}</div>
+          <div class="js-sticky-img c-card_img">
+            <img src={card.img} alt={card.title} />
+          </div>
         </div>
-        <div class="c-card__desc">
-          {card.desc}
-        </div>
-        <div class="js-sticky-img c-card_img">
-          <img src={card.img} alt={card.title} />
-        </div>
-      </div>
-    ))}
+      ))
+    }
   </div>
 </section>
 
@@ -78,7 +84,7 @@ const cards = [
 
   .section-title {
     font-size: clamp(2.5rem, 4.5vw, 3.5rem);
-    font-family: 'Bebas Neue', 'Anton', sans-serif;
+    font-family: "Bebas Neue", "Anton", sans-serif;
     color: #111;
     letter-spacing: 2px;
     margin: 0;
@@ -119,12 +125,13 @@ const cards = [
     text-align: center;
     color: #111;
     overflow: hidden;
-    box-shadow: 0 -10px 30px rgba(0,0,0,0.3);
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.3);
   }
 
   .c-card__title {
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-family: 'Bebas Neue', 'Anton', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    font-family: "Bebas Neue", "Anton", sans-serif;
     letter-spacing: 1px;
     margin-bottom: 10px;
   }
@@ -134,8 +141,8 @@ const cards = [
     margin-bottom: 30px;
     margin-inline: auto;
     /* max-width: 800px; */
-    font-size: clamp(1rem, 1.5vw, 1.2rem);
-    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-family: "Inter", sans-serif;
     line-height: 1.6;
     padding: 0 20px;
   }
@@ -166,38 +173,43 @@ const cards = [
 <script>
   const initStickyScroll = () => {
     // Make sure GSAP and ScrollTrigger are loaded
-    if (typeof (window as any).gsap === 'undefined' || typeof (window as any).ScrollTrigger === 'undefined') {
+    if (
+      typeof (window as any).gsap === "undefined" ||
+      typeof (window as any).ScrollTrigger === "undefined"
+    ) {
       setTimeout(initStickyScroll, 100);
       return;
     }
 
     const gsap = (window as any).gsap;
     const ScrollTrigger = (window as any).ScrollTrigger;
-    
+
     // Register plugin if not already
     gsap.registerPlugin(ScrollTrigger);
 
-    const els = document.querySelectorAll('.js-sticky');
-    if(!els.length) return;
+    const els = document.querySelectorAll(".js-sticky");
+    if (!els.length) return;
 
     const elsCount = els.length;
 
     // Animate heading using line-by-line reveal (AR/VR/MR style)
-    const heading = document.querySelector('.sticky-cards-section .js-animate-title');
+    const heading = document.querySelector(
+      ".sticky-cards-section .js-animate-title",
+    );
     if (heading) {
-      const textLines = heading.querySelectorAll('.text-line');
+      const textLines = heading.querySelectorAll(".text-line");
       gsap.set(textLines, { y: "100%", opacity: 0 });
 
       gsap.to(textLines, {
         scrollTrigger: {
           trigger: heading,
-          start: 'top 85%',
+          start: "top 85%",
         },
         y: "0%",
         opacity: 1,
         duration: 1,
         stagger: 0.15,
-        ease: 'power2.out',
+        ease: "power2.out",
       });
     }
 
@@ -208,10 +220,10 @@ const cards = [
       const gl = gsap.timeline({
         scrollTrigger: {
           trigger: el,
-          start: 'top ' + (index * 20), // Starts animating when this card hits its sticky point
-          end: 'bottom ' + (index * 20), // Ends when the bottom of this card (in normal flow) reaches the sticky point
+          start: "top " + index * 20, // Starts animating when this card hits its sticky point
+          end: "bottom " + index * 20, // Ends when the bottom of this card (in normal flow) reaches the sticky point
           scrub: true,
-        }
+        },
       });
 
       if (!isLastIndex) {
@@ -219,98 +231,119 @@ const cards = [
           scale: 0.85,
           yPercent: -5,
           opacity: 0.5,
-          ease: "none"
+          ease: "none",
         });
       }
     });
   };
 
-  document.addEventListener('DOMContentLoaded', initStickyScroll);
+  document.addEventListener("DOMContentLoaded", initStickyScroll);
   // Re-init on astro page load if using view transitions
-  document.addEventListener('astro:page-load', initStickyScroll);
+  document.addEventListener("astro:page-load", initStickyScroll);
 </script>
 
 <script>
   if (!(window as any).shimmerSweepInit) {
     (window as any).shimmerSweepInit = true;
-    
+
     const initShimmer = () => {
-      const textEls = document.querySelectorAll('.shimmer-text');
+      const textEls = document.querySelectorAll(".shimmer-text");
       if (!textEls.length) return;
 
       const ease = {
-        out:   (t: number) => 1 - (1 - t) ** 3,
-        in:    (t: number) => t ** 3,
+        out: (t: number) => 1 - (1 - t) ** 3,
+        in: (t: number) => t ** 3,
       };
 
-      function cyc(f: number, offset: number, enter: number, hold: number, exit: number, pause: number) {
+      function cyc(
+        f: number,
+        offset: number,
+        enter: number,
+        hold: number,
+        exit: number,
+        pause: number,
+      ) {
         if (f < offset) return 0;
         const total = enter + hold + exit + pause;
         const t = (f - offset) % total;
-        if (t < enter)               return ease.out(t / enter);
-        if (t < enter + hold)        return 1;
-        if (t < enter + hold + exit) return 1 - ease.in((t - enter - hold) / exit);
+        if (t < enter) return ease.out(t / enter);
+        if (t < enter + hold) return 1;
+        if (t < enter + hold + exit)
+          return 1 - ease.in((t - enter - hold) / exit);
         return 0;
       }
 
       function grad(el: HTMLElement, css: string) {
-        el.style.background           = css;
-        el.style.webkitBackgroundClip = 'text';
-        el.style.backgroundClip       = 'text';
-        el.style.webkitTextFillColor  = 'transparent';
+        el.style.background = css;
+        el.style.webkitBackgroundClip = "text";
+        el.style.backgroundClip = "text";
+        el.style.webkitTextFillColor = "transparent";
       }
 
       let _raf: number;
       function loop(tick: () => void) {
         cancelAnimationFrame(_raf);
-        (function frame() { tick(); _raf = requestAnimationFrame(frame); })();
+        (function frame() {
+          tick();
+          _raf = requestAnimationFrame(frame);
+        })();
       }
 
       const allChars: any[] = [];
-      textEls.forEach(el => {
-        if (el.querySelector('.char')) return;
-        
-        const baseColor = el.getAttribute('data-base') || '#ffffff';
-        const sweepColor = el.getAttribute('data-sweep') || '#08c098';
+      textEls.forEach((el) => {
+        if (el.querySelector(".char")) return;
 
-        const text = el.textContent || '';
-        el.innerHTML = '';
+        const baseColor = el.getAttribute("data-base") || "#ffffff";
+        const sweepColor = el.getAttribute("data-sweep") || "#08c098";
+
+        const text = el.textContent || "";
+        el.innerHTML = "";
         const chars: any[] = [];
-        
-        text.split('').forEach(ch => {
-          const s = document.createElement('span');
-          s.className = 'char';
+
+        text.split("").forEach((ch) => {
+          const s = document.createElement("span");
+          s.className = "char";
           s.textContent = ch;
           el.appendChild(s);
           chars.push({ el: s, base: baseColor, sweep: sweepColor });
         });
-        
+
         allChars.push(chars);
       });
 
-      const STAGGER = 8, ENTER = 84, HOLD = 20, EXIT = 58, PAUSE = 36;
+      const STAGGER = 8,
+        ENTER = 84,
+        HOLD = 20,
+        EXIT = 58,
+        PAUSE = 36;
       let f = 0;
-      
+
       loop(() => {
         f++;
-        allChars.forEach(chars => {
+        allChars.forEach((chars) => {
           chars.forEach((charObj, i) => {
-            const p   = cyc(f, i * STAGGER, ENTER, HOLD, EXIT, PAUSE);
+            const p = cyc(f, i * STAGGER, ENTER, HOLD, EXIT, PAUSE);
             const mid = (p * 130 - 15).toFixed(1);
-            grad(charObj.el, `linear-gradient(90deg,
+            grad(
+              charObj.el,
+              `linear-gradient(90deg,
               ${charObj.base} 0%,
               ${charObj.base} ${(+mid - 18).toFixed(1)}%,
               ${charObj.sweep} ${mid}%,
               ${charObj.base} ${(+mid + 18).toFixed(1)}%,
-              ${charObj.base} 100%)`);
+              ${charObj.base} 100%)`,
+            );
           });
         });
       });
     };
 
-    document.addEventListener('DOMContentLoaded', initShimmer);
-    document.addEventListener('astro:page-load', initShimmer);
-    if (document.readyState === 'interactive' || document.readyState === 'complete') {
+    document.addEventListener("DOMContentLoaded", initShimmer);
+    document.addEventListener("astro:page-load", initShimmer);
+    if (
+      document.readyState === "interactive" ||
+      document.readyState === "complete"
+    ) {
       initShimmer();
     }
   }

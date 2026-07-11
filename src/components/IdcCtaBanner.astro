@@ -1,27 +1,35 @@
 ---
 // src/components/IdcCtaBanner.astro
-const { 
-  image = "/images/first-time/lap-image.webp" 
-} = Astro.props;
+const images = [
+  "/images/first-time/lap-image.webp"
+];
 ---
 
 <section class="banner-section">
   <div class="banner-wrapper">
-    <!-- Right side Background Image -->
-    <img class="bg-image" src={image} alt="Interactive Digital Catalogue" />
+    <div class="banner-slider">
+      {images.map((src, index) => (
+        <img class={`bg-image slide-${index} ${index === 0 ? 'active' : ''}`} src={src} alt="Interactive Digital Catalogue" />
+      ))}
+    </div>
 
     <!-- Layered S-Curve Overlay for the Split Effect -->
     <svg class="wave-overlay" viewBox="0 0 100 100" preserveAspectRatio="none">
-      <!-- Dark Green Wave (Bottom layer) -->
-      <path d="M0,0 L58.5,0 C47,40 66,60 48.5,100 L0,100 Z" fill="#0d2618" />
-      <!-- Mid Green Wave (Middle layer) -->
-      <path d="M0,0 L58.2,0 C45.5,40 64,60 48.2,100 L0,100 Z" fill="#1a4f3b" />
+      <!-- Dark Purple Wave (Bottom layer) -->
+      <path d="M0,0 L58.5,0 C47,40 66,60 48.5,100 L0,100 Z" fill="#2e1065" />
+      <!-- Mid Purple Wave (Middle layer) -->
+      <path d="M0,0 L58.2,0 C45.5,40 64,60 48.2,100 L0,100 Z" fill="#4c1d95" />
       <!-- Solid White Area (Top layer) -->
-      <path d="M0,0 L58,0 C44,40 62,60 48,100 L0,100 Z" fill="#ffffff" />
+      <path d="M0,0 L58,0 C44,40 62,60 48,100 L0,100 Z" fill="#f8f9fa" />
     </svg>
 
     <!-- Left side Content on the White Area -->
     <div class="content-left">
+      <!-- Top Tagline with Icon -->
+      <div class="top-tagline">
+        <svg class="mini-logo" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+        <span class="tagline-text">Fisto Tech</span>
+      </div>
       <!-- Main Title -->
       <h2 class="title">
         <span class="text-dark">TRANSFORM YOUR</span><br/>
@@ -62,7 +70,7 @@ const {
   @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;700;900&family=Montserrat:wght@400;500;600;700&display=swap');
 
   .banner-section {
-    padding: 30px 20px;
+    padding: 50px 20px;
     display: flex;
     justify-content: center;
     background-color: #f1f5f9;
@@ -73,23 +81,36 @@ const {
     position: relative;
     width: 100%;
     max-width: 1200px;
-    height: 300px; /* Reduced height */
-    background-color: #ffffff;
+    height: 300px;
+    background-color: #f8f9fa;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
     font-family: 'Montserrat', sans-serif;
   }
 
+  .banner-slider {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60%;
+    height: 100%;
+    z-index: 1;
+  }
+
   .bg-image {
     position: absolute;
-    top: 50%;
-    right: 0;
-    width: 50%;
-    height: 90%;
-    object-fit: contain;
-    z-index: 1;
-    transform: translateY(-50%) translateX(-5%);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+  }
+
+  .bg-image.active {
+    opacity: 1;
   }
 
   .wave-overlay {
@@ -106,13 +127,32 @@ const {
     position: absolute;
     top: 0;
     left: 0;
-    width: 55%; /* Covers the white area */
+    width: 55%;
     height: 100%;
     z-index: 3;
-    padding: 30px 40px;
+    padding: 40px 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+
+  .top-tagline {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+  }
+
+  .mini-logo {
+    color: #1e293b;
+  }
+
+  .tagline-text {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #1e293b;
+    text-transform: uppercase;
   }
 
   .title {
@@ -126,7 +166,7 @@ const {
   }
 
   .text-dark {
-    color: #1a4f3b; /* Very dark rich green tone matching IDC */
+    color: #201a2d;
   }
 
   .desc {
@@ -155,7 +195,7 @@ const {
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background-color: #1a4f3b; /* Dark green matching the reference icons */
+    background-color: #201a2d;
     color: #ffffff;
     display: flex;
     align-items: center;
@@ -179,22 +219,24 @@ const {
       flex-direction: column;
     }
     .wave-overlay {
-      display: none; /* Hide the complex wave on mobile */
+      display: none;
     }
-    .bg-image {
+    .banner-slider {
       position: relative;
       width: 100%;
       height: 250px;
-      order: 1; /* Image on top */
-      transform: none;
-      top: 0;
+      order: 1;
+    }
+    .bg-image {
+      width: 100%;
+      height: 100%;
     }
     .content-left {
       position: relative;
       width: 100%;
       height: auto;
       padding: 40px 20px;
-      order: 2; /* Content below image */
+      order: 2;
       align-items: center;
       text-align: center;
     }
@@ -207,3 +249,20 @@ const {
     }
   }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const sliders = document.querySelectorAll('.banner-slider');
+    sliders.forEach(slider => {
+      const slides = slider.querySelectorAll('.bg-image');
+      if (slides.length <= 1) return;
+      
+      let currentIndex = 0;
+      setInterval(() => {
+        slides[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % slides.length;
+        slides[currentIndex].classList.add('active');
+      }, 3500);
+    });
+  });
+</script>

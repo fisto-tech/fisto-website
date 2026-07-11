@@ -1,5 +1,6 @@
 ---
-const { title, description, image, current, additionalStyles, keywords } = Astro.props;
+const { title, description, image, current, additionalStyles, keywords } =
+  Astro.props;
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Preloader from "../components/Preloader.astro";
@@ -15,7 +16,10 @@ import Preloader from "../components/Preloader.astro";
       name="description"
       content={description || "Default site description"}
     />
-    <meta name="keywords" content={keywords || "astro, multipage, static site, seo"} />
+    <meta
+      name="keywords"
+      content={keywords || "astro, multipage, static site, seo"}
+    />
 
     <!-- Open Graph (Facebook, LinkedIn) -->
     <meta property="og:title" content={title} />
@@ -43,17 +47,21 @@ import Preloader from "../components/Preloader.astro";
     {additionalStyles && <link rel="stylesheet" href={additionalStyles} />}
     <link rel="stylesheet" href="/css/main.css" />
     <slot name="headContent" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   </head>
   <body>
     <!-- Preloader -->
-  <!-- <Preloader/> -->
+    <!-- <Preloader/> -->
 
     <Header current={current} />
-
 
     <main>
       <slot />
@@ -101,13 +109,14 @@ import Preloader from "../components/Preloader.astro";
 
     <slot name="bodyEnd" />
 
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" is:inline></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js" is:inline></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" is:inline
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"
+      is:inline></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" is:inline></script>
 
     <script src="/js/nav.js" is:inline></script>
     <script src="/js/main.js" is:inline></script>
-
-    
   </body>
 </html>

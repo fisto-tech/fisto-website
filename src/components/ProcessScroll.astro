@@ -6,38 +6,37 @@ const steps = [
     id: "01",
     title: "Interactive 3D Visualization",
     desc: "Transform complex ideas into interactive 3D models and virtual experiences for product demonstrations, architectural walkthroughs, digital twins, and virtual prototyping.",
-    img: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?w=1200&q=80"
+    img: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?w=1200&q=80",
   },
   {
     id: "02",
     title: "Real-Time User Interaction",
     desc: "Deliver intuitive interactions through gesture recognition, voice commands, touch controls, hand tracking, and motion sensors for a truly immersive experience.",
-    img: "https://images.unsplash.com/photo-1617802690992-15d93263d3a9?w=1200&q=80"
+    img: "https://images.unsplash.com/photo-1617802690992-15d93263d3a9?w=1200&q=80",
   },
   {
     id: "03",
     title: "AR Product Visualization",
     desc: "Enable customers to place and explore virtual products in real-world environments, improving buying confidence and increasing customer engagement.",
-    img: "https://images.unsplash.com/photo-1633412802994-5c058f151b66?w=1200&q=80"
+    img: "https://images.unsplash.com/photo-1633412802994-5c058f151b66?w=1200&q=80",
   },
   {
     id: "04",
     title: "VR Training & Simulation",
     desc: "Develop immersive training simulations for healthcare, manufacturing, education, construction, retail, and enterprise environments to improve learning outcomes and workplace safety.",
-    img: "https://images.unsplash.com/photo-1535223289827-42f1e9919769?w=1200&q=80"
+    img: "https://images.unsplash.com/photo-1535223289827-42f1e9919769?w=1200&q=80",
   },
   {
     id: "05",
     title: "Immersive Extended Reality Experiences",
     desc: "Create highly engaging and realistic digital environments with advanced XR technology, combining the power of AR and VR to deliver seamless user experiences",
-    img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&q=80"
-  }
+    img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&q=80",
+  },
 ];
 ---
 
 <section class="process-scroll-section" id="processScrollSection">
   <div class="process-container">
-    
     <!-- Left: Accordion Content -->
     <div class="process-left">
       <!-- SVG Curve Separator -->
@@ -45,52 +44,66 @@ const steps = [
         <svg viewBox="-200 0 400 1000" preserveAspectRatio="none">
           <defs>
             <linearGradient id="goldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#aa771c" />
-              <stop offset="30%" stop-color="#f4e271" />
-              <stop offset="50%" stop-color="#8a5a19" />
-              <stop offset="70%" stop-color="#f4e271" />
-              <stop offset="100%" stop-color="#aa771c" />
+              <stop offset="0%" stop-color="#aa771c"></stop>
+              <stop offset="30%" stop-color="#f4e271"></stop>
+              <stop offset="50%" stop-color="#8a5a19"></stop>
+              <stop offset="70%" stop-color="#f4e271"></stop>
+              <stop offset="100%" stop-color="#aa771c"></stop>
             </linearGradient>
-            <filter id="shadowRight" x="-50%" y="-10%" width="200%" height="120%">
-              <feDropShadow dx="15" dy="0" stdDeviation="12" flood-color="#000" flood-opacity="0.4" />
+            <filter
+              id="shadowRight"
+              x="-50%"
+              y="-10%"
+              width="200%"
+              height="120%"
+            >
+              <feDropShadow
+                dx="15"
+                dy="0"
+                stdDeviation="12"
+                flood-color="#000"
+                flood-opacity="0.4"></feDropShadow>
             </filter>
           </defs>
           <!-- Fill path without stroke -->
-          <path 
-            d="M 0,0 C 180,250 -180,750 0,1000 L -250,1000 L -250,0 Z" 
-            fill="#ffffff" 
-          />
+          <path
+            d="M 0,0 C 180,250 -180,750 0,1000 L -250,1000 L -250,0 Z"
+            fill="#ffffff"></path>
           <!-- Stroke path just for the curve -->
-          <path 
-            d="M 0,0 C 180,250 -180,750 0,1000" 
-            fill="none" 
-            stroke="url(#goldGradient)" 
-            stroke-width="5" 
-            filter="url(#shadowRight)"
-          />
+          <path
+            d="M 0,0 C 180,250 -180,750 0,1000"
+            fill="none"
+            stroke="url(#goldGradient)"
+            stroke-width="5"
+            filter="url(#shadowRight)"></path>
         </svg>
       </div>
 
       <div class="process-left-content">
         <div class="process-header">
           <h2 class="process-main-title">
-            <div class="animated-heading-sweep"> Features of Our </div>
-            <div class="animated-heading-sweep">AR, VR & MR  Solutions</div>
+            <div class="animated-heading-sweep">Features of Our</div>
+            <div class="animated-heading-sweep">AR, VR & MR Solutions</div>
           </h2>
         </div>
 
         <div class="process-list">
-          {steps.map((step, index) => (
-            <div class={`process-item ${index === 0 ? 'active' : ''}`} data-index={index}>
-              <div class="process-item-header">
-                <span class="process-num">{step.id}</span>
-                <h3 class="process-title">{step.title}</h3>
+          {
+            steps.map((step, index) => (
+              <div
+                class={`process-item ${index === 0 ? "active" : ""}`}
+                data-index={index}
+              >
+                <div class="process-item-header">
+                  <span class="process-num">{step.id}</span>
+                  <h3 class="process-title">{step.title}</h3>
+                </div>
+                <div class="process-item-body">
+                  <p class="process-desc">{step.desc}</p>
+                </div>
               </div>
-              <div class="process-item-body">
-                <p class="process-desc">{step.desc}</p>
-              </div>
-            </div>
-          ))}
+            ))
+          }
         </div>
       </div>
     </div>
@@ -98,17 +111,18 @@ const steps = [
     <!-- Right: Sticky Images -->
     <div class="process-right">
       <div class="process-images">
-        {steps.map((step, index) => (
-          <img 
-            src={step.img} 
-            alt={step.title} 
-            class="process-img" 
-            data-index={index}
-          />
-        ))}
+        {
+          steps.map((step, index) => (
+            <img
+              src={step.img}
+              alt={step.title}
+              class="process-img"
+              data-index={index}
+            />
+          ))
+        }
       </div>
     </div>
-
   </div>
 </section>
 
@@ -232,15 +246,15 @@ const steps = [
     background-color: #f5f5f5;
     color: #555;
     font-size: 0.9rem;
-    font-weight: 500;
+    font-weight: 600;
     border-radius: 4px;
     flex-shrink: 0;
   }
 
   .process-title {
     font-size: clamp(1.1rem, 1.5vw, 1.3rem);
-    font-weight: 400;
-    color: #333;
+    font-weight: 600;
+    color: #000;
     margin: 0;
     transition: color 0.3s ease;
   }
@@ -259,7 +273,7 @@ const steps = [
 
   .process-desc {
     margin: 0.8rem 0 0 0;
-    color: #666;
+    color: #141414;
     font-size: clamp(0.95rem, 1vw, 1.05rem);
     line-height: 1.5;
   }
@@ -304,22 +318,25 @@ const steps = [
 
   const initProcessScroll = () => {
     if (processInitialized) return;
-    
-    if (typeof (window as any).gsap !== 'undefined' && typeof (window as any).ScrollTrigger !== 'undefined') {
+
+    if (
+      typeof (window as any).gsap !== "undefined" &&
+      typeof (window as any).ScrollTrigger !== "undefined"
+    ) {
       processInitialized = true;
       const gsap = (window as any).gsap;
       const ScrollTrigger = (window as any).ScrollTrigger;
-                     
-      const section = document.getElementById('processScrollSection');
-      const items = document.querySelectorAll('.process-item');
-      const images = document.querySelectorAll('.process-img');
+
+      const section = document.getElementById("processScrollSection");
+      const items = document.querySelectorAll(".process-item");
+      const images = document.querySelectorAll(".process-img");
       const totalSteps = items.length;
 
       if (!section || totalSteps === 0) return;
 
       // Reset inactive bodies and images for GSAP
       items.forEach((item, i) => {
-        const body = item.querySelector('.process-item-body');
+        const body = item.querySelector(".process-item-body");
         if (i !== 0) {
           gsap.set(body, { height: 0, opacity: 0 });
           gsap.set(images[i], { opacity: 0, scale: 1.05 });
@@ -333,44 +350,44 @@ const steps = [
 
       const updateStep = (index) => {
         if (index === currentIndex) return;
-        
+
         // Update accordion
         const oldItem = items[currentIndex];
         const newItem = items[index];
-        
-        oldItem.classList.remove('active');
-        newItem.classList.add('active');
 
-        gsap.to(oldItem.querySelector('.process-item-body'), {
+        oldItem.classList.remove("active");
+        newItem.classList.add("active");
+
+        gsap.to(oldItem.querySelector(".process-item-body"), {
           height: 0,
           opacity: 0,
           duration: 0.4,
-          ease: "power2.inOut"
+          ease: "power2.inOut",
         });
 
-        gsap.to(newItem.querySelector('.process-item-body'), {
+        gsap.to(newItem.querySelector(".process-item-body"), {
           height: "auto",
           opacity: 1,
           duration: 0.4,
-          ease: "power2.inOut"
+          ease: "power2.inOut",
         });
 
         // Ultra-smooth GSAP cinematic image crossfade
         const oldImg = images[currentIndex];
         const newImg = images[index];
 
-        gsap.to(oldImg, { 
-          opacity: 0, 
-          scale: 1.05, 
-          duration: 0.8, 
-          ease: "power2.inOut" 
+        gsap.to(oldImg, {
+          opacity: 0,
+          scale: 1.05,
+          duration: 0.8,
+          ease: "power2.inOut",
         });
-        
-        gsap.to(newImg, { 
-          opacity: 1, 
-          scale: 1, 
-          duration: 0.8, 
-          ease: "power2.inOut" 
+
+        gsap.to(newImg, {
+          opacity: 1,
+          scale: 1,
+          duration: 0.8,
+          ease: "power2.inOut",
         });
 
         currentIndex = index;
@@ -390,24 +407,26 @@ const steps = [
           let activeIndex = Math.floor(progress * totalSteps);
           if (activeIndex >= totalSteps) activeIndex = totalSteps - 1;
           if (activeIndex < 0) activeIndex = 0;
-          
+
           updateStep(activeIndex);
-        }
+        },
       });
 
       // Recalculate layout
       ScrollTrigger.sort();
       ScrollTrigger.refresh();
-      
     } else {
       setTimeout(initProcessScroll, 100);
     }
   };
 
-  document.addEventListener('DOMContentLoaded', initProcessScroll);
+  document.addEventListener("DOMContentLoaded", initProcessScroll);
   // Also run on Astro page load if using View Transitions
-  document.addEventListener('astro:page-load', initProcessScroll);
-  if (document.readyState === 'interactive' || document.readyState === 'complete') {
+  document.addEventListener("astro:page-load", initProcessScroll);
+  if (
+    document.readyState === "interactive" ||
+    document.readyState === "complete"
+  ) {
     initProcessScroll();
   }
 </script>
@@ -415,59 +434,70 @@ const steps = [
 <script>
   // Initial reveal animation for features text
   let featuresRevealInit = false;
-
 </script>
 
 <script>
   if (!(window as any).lightSweepInitialized) {
     (window as any).lightSweepInitialized = true;
-    
+
     const initLightSweep = () => {
-      const textEls = document.querySelectorAll('.animated-heading-sweep');
+      const textEls = document.querySelectorAll(".animated-heading-sweep");
       if (!textEls.length) return;
 
       const ease = {
-        out:   t => 1 - (1 - t) ** 3,
-        in:    t => t ** 3,
-        inOut: t => t < 0.5 ? 4 * t ** 3 : 1 - (-2 * t + 2) ** 3 / 2,
+        out: (t) => 1 - (1 - t) ** 3,
+        in: (t) => t ** 3,
+        inOut: (t) => (t < 0.5 ? 4 * t ** 3 : 1 - (-2 * t + 2) ** 3 / 2),
       };
 
-      function cyc(f, offset, enter, hold, exit, pause, eIn = ease.out, eOut = ease.in) {
+      function cyc(
+        f,
+        offset,
+        enter,
+        hold,
+        exit,
+        pause,
+        eIn = ease.out,
+        eOut = ease.in,
+      ) {
         if (f < offset) return 0;
         const total = enter + hold + exit + pause;
         const t = (f - offset) % total;
-        if (t < enter)               return eIn(t / enter);
-        if (t < enter + hold)        return 1;
+        if (t < enter) return eIn(t / enter);
+        if (t < enter + hold) return 1;
         if (t < enter + hold + exit) return 1 - eOut((t - enter - hold) / exit);
         return 0;
       }
 
       function grad(el, css) {
-        el.style.background           = css;
-        el.style.webkitBackgroundClip = 'text';
-        el.style.backgroundClip       = 'text';
-        el.style.webkitTextFillColor  = 'transparent';
+        el.style.background = css;
+        el.style.webkitBackgroundClip = "text";
+        el.style.backgroundClip = "text";
+        el.style.webkitTextFillColor = "transparent";
       }
 
       let _raf: any = null;
       function loop(tick) {
         cancelAnimationFrame(_raf);
-        (function frame() { tick(); _raf = requestAnimationFrame(frame); })();
+        (function frame() {
+          tick();
+          _raf = requestAnimationFrame(frame);
+        })();
       }
 
       const allChars: any[] = [];
-      textEls.forEach(el => {
-        if (el.querySelector('.char')) return; // Already split
-        
+      textEls.forEach((el) => {
+        if (el.querySelector(".char")) return; // Already split
+
         const nodes = Array.from(el.childNodes);
-        el.innerHTML = '';
+        el.innerHTML = "";
         const chars: any[] = [];
-        
-        nodes.forEach(node => {
+
+        nodes.forEach((node) => {
           if (node.nodeType === Node.TEXT_NODE) {
-            (node.textContent || '').split('').forEach(ch => {
-              const s = document.createElement('span');
-              s.className = 'char';
+            (node.textContent || "").split("").forEach((ch) => {
+              const s = document.createElement("span");
+              s.className = "char";
               s.textContent = ch;
               el.appendChild(s);
               chars.push(s);
@@ -479,29 +509,39 @@ const steps = [
         allChars.push(chars);
       });
 
-      const STAGGER = 8, ENTER = 84, HOLD = 20, EXIT = 58, PAUSE = 36;
+      const STAGGER = 8,
+        ENTER = 84,
+        HOLD = 20,
+        EXIT = 58,
+        PAUSE = 36;
       let f = 0;
-      
+
       loop(() => {
         f++;
-        allChars.forEach(chars => {
+        allChars.forEach((chars) => {
           chars.forEach((ch, i) => {
-            const p   = cyc(f, i * STAGGER, ENTER, HOLD, EXIT, PAUSE);
+            const p = cyc(f, i * STAGGER, ENTER, HOLD, EXIT, PAUSE);
             const mid = (p * 130 - 15).toFixed(1);
             // Sweeps Purple -> White -> Purple
-            grad(ch, `linear-gradient(90deg,
+            grad(
+              ch,
+              `linear-gradient(90deg,
               #3d2d70 0%,
               #3d2d70 ${(+mid - 18).toFixed(1)}%,
               #ffffff ${mid}%,
               #3d2d70 ${(+mid + 18).toFixed(1)}%,
-              #3d2d70 100%)`);
+              #3d2d70 100%)`,
+            );
           });
         });
       });
     };
 
-    document.addEventListener('DOMContentLoaded', initLightSweep);
-    if (document.readyState === 'interactive' || document.readyState === 'complete') {
+    document.addEventListener("DOMContentLoaded", initLightSweep);
+    if (
+      document.readyState === "interactive" ||
+      document.readyState === "complete"
+    ) {
       initLightSweep();
     }
   }

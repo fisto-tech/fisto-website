@@ -1,57 +1,97 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import ClientMarquee from '../components/ClientMarquee.astro';
-import IdcCtaBanner from '../components/IdcCtaBanner.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ClientMarquee from "../components/ClientMarquee.astro";
+import IdcCtaBanner from "../components/IdcCtaBanner.astro";
 ---
 
 <BaseLayout
-  title="Interactive Digital Catalogue"
-  description="Interactive Digital Catalogue"
+  title="Fisto Tech Private Limited: Leading Interactive Digital Catalogue & Brochure Service Provider in India"
+  description="Discover India’s leading digital catalog designers. Transform traditional PDFs into interactive catalogs that showcase your brand with style and impact."
   image="/images/about-og.jpg"
   current="idc"
-   additionalStyles="/css/2d-3d-animation.css"
+  additionalStyles="/css/2d-3d-animation.css"
 >
-
-
   <!-- ─────────── HERO SECTION ─────────── -->
   <section id="hero" class="section section--hero">
     <div class="hero">
       <!-- Left — Text -->
       <div class="hero__text">
-       <h1 class="hero__title" data-aos="trigger-anim">
-          <span class="word-anim" style="animation-delay: 0.0s">Are</span>
-          <span class="word-anim" style="animation-delay: 0.05s">You</span>
-          <span class="word-anim" style="animation-delay: 0.1s">Losing</span><br>
-          <span class="hero__highlight-events word-anim" style="animation-delay: 0.15s">Customers<span class="blink-question">?</span></span>
+        <h1
+          class="hero__title"
+          data-aos="trigger-anim"
+          style="font-size: clamp(2rem, 3.5vw, 3rem);"
+        >
+          <span class="word-anim" style="animation-delay: 0.0s">Showcase,</span>
+          <span class="word-anim" style="animation-delay: 0.05s">Share</span>
+          <span class="word-anim" style="animation-delay: 0.1s">&amp;</span><br
+          />
+          <span class="word-anim" style="animation-delay: 0.15s">Sell</span>
+          <span class="word-anim" style="animation-delay: 0.2s">Products</span>
+          <span class="word-anim" style="animation-delay: 0.25s">with</span>
+          <br />
+          <span
+            class="hero__highlight-events word-anim"
+            style="animation-delay: 0.3s"
+            >Interactive Digital <br /> Catalogues</span
+          >
         </h1>
-        <hr class="hero__divider" data-aos="fade-up" data-aos-delay="200">
+        <hr class="hero__divider" data-aos="fade-up" data-aos-delay="200" />
         <h2 class="hero__subtitle" data-aos="trigger-anim">
-            <span class="word-anim" style="animation-delay: 0.4s">Want</span>
-            <span class="word-anim" style="animation-delay: 0.45s">to</span>
-            <span class="word-anim" style="animation-delay: 0.5s">Increase</span>
-            <span class="word-anim" style="animation-delay: 0.55s">Your</span>
-            <span class="word-anim" style="animation-delay: 0.6s">Sales</span> <br> 
-            <span class="word-anim" style="animation-delay: 0.65s">and</span> 
-            <span class="highlight-green word-anim" style="animation-delay: 0.7s">Generate</span>
-            <span class="highlight-green word-anim" style="animation-delay: 0.75s">More</span>
-            <span class="highlight-green word-anim" style="animation-delay: 0.8s">Leads?</span>
+          <span class="word-anim" style="animation-delay: 0.4s">Want</span>
+          <span class="word-anim" style="animation-delay: 0.45s">to</span>
+          <span class="word-anim" style="animation-delay: 0.5s">Increase</span>
+          <span class="word-anim" style="animation-delay: 0.55s">Your</span>
+          <span class="word-anim" style="animation-delay: 0.6s">Sales</span>
+          <br />
+          <span class="word-anim" style="animation-delay: 0.65s">and</span>
+          <span class="highlight-green word-anim" style="animation-delay: 0.7s"
+            >Generate</span
+          >
+          <span class="highlight-green word-anim" style="animation-delay: 0.75s"
+            >More</span
+          >
+          <span class="highlight-green word-anim" style="animation-delay: 0.8s"
+            >Leads?</span
+          >
         </h2>
         <div data-aos="trigger-anim">
-          <p class="hero__description word-anim" style="animation-delay: 0.85s;">
-            We create <strong>Interactive Digital Catalogues</strong>, it help <strong>attract more
-              visitors</strong>, <strong>engage customers</strong>, and <strong>generate quality leads</strong>.
+          <p
+            class="hero__description word-anim"
+            style="animation-delay: 0.85s;"
+          >
+            We create <strong>Interactive Digital Catalogues</strong>, it help <strong
+              >attract more visitors</strong
+            >, <strong>engage customers</strong>, and <strong
+              >generate quality leads</strong
+            >.
           </p>
         </div>
-        <div style="margin-top: 1.5rem; margin-bottom: 1rem;" data-aos="fade-up" data-aos-delay="500"
-          class="hero-device-img-container">
-          <img src="/images/hero-section/hero-image-devices.webp" alt="Multiple Devices"
-            style="width: 60%; max-width: 320px; height: auto;" loading="lazy">
+        <div
+          style="margin-top: 1.5rem; margin-bottom: 1rem;"
+          data-aos="fade-up"
+          data-aos-delay="500"
+          class="hero-device-img-container"
+        >
+          <img
+            src="/images/hero-section/hero-image-devices.webp"
+            alt="Multiple Devices"
+            style="width: 60%; max-width: 320px; height: auto;"
+            loading="lazy"
+          />
         </div>
       </div>
       <!-- Right — Visual -->
-      <div class="hero__visual" data-aos="zoom-in-left" data-aos-delay="200" data-aos-duration="1200">
+      <div
+        class="hero__visual"
+        data-aos="zoom-in-left"
+        data-aos-delay="200"
+        data-aos-duration="1200"
+      >
         <video class="hero__video" autoplay muted loop playsinline>
-          <source src="/images/services/IDC/hero-section-video.mp4" type="video/mp4" />
+          <source
+            src="/images/services/IDC/hero-section-video.mp4"
+            type="video/mp4"
+          />
         </video>
       </div>
     </div>
@@ -59,225 +99,565 @@ import IdcCtaBanner from '../components/IdcCtaBanner.astro';
   <!-- ─────────── ABOUT US SECTION ─────────── -->
   <section id="about-us" class="section section--about">
     <div class="about-container">
-      <div class="about__badge" data-aos="fade-down" data-aos-duration="800">WE ARE</div>
-      <h2 class="about__title" data-aos="flip-up" data-aos-delay="150" data-aos-duration="1000">
+      <div class="about__badge" data-aos="fade-down" data-aos-duration="800">
+        WE ARE
+      </div>
+      <h2
+        class="about__title"
+        data-aos="flip-up"
+        data-aos-delay="150"
+        data-aos-duration="1000"
+      >
         <span class="highlight">FISTO</span> TECH PVT LTD
       </h2>
-      <div class="about__divider" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="800">
+      <div
+        class="about__divider"
+        data-aos="zoom-in"
+        data-aos-delay="300"
+        data-aos-duration="800"
+      >
         <svg class="about__star" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+          <path
+            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+          ></path>
         </svg>
       </div>
-      <p class="about__tagline" data-aos="fade-right" data-aos-delay="400" data-aos-duration="1000">
+      <p
+        class="about__tagline"
+        data-aos="fade-right"
+        data-aos-delay="400"
+        data-aos-duration="1000"
+      >
         Creating Interactive <span class="highlight">Digital Experiences</span>
       </p>
-      <p class="about__description" data-aos="fade-up" data-aos-delay="550" data-aos-duration="1000">
-        We transform ideas into engaging digital experiences through Interactive Digital Catalogues. Our focus on innovation and quality helps businesses
-        connect with customers, generate leads, showcase products, and achieve measurable growth.
+      <p
+        class="about__description"
+        data-aos="fade-up"
+        data-aos-delay="550"
+        data-aos-duration="1000"
+      >
+        We transform ideas into engaging digital experiences through Interactive
+        Digital Catalogues. Our focus on innovation and quality helps businesses
+        connect with customers, generate leads, showcase products, and achieve
+        measurable growth.
       </p>
     </div>
   </section>
   <!-- ─────────── IDC BANNER SECTION ─────────── -->
   <section id="first-time-banner" class="section section--first-time">
     <div class="first-time__container">
-      <div class="first-time__left" data-aos="fade-up-right" data-aos-duration="1200">
-        <img src="/images/first-time/1st-text.webp" alt="1st" class="first-time__graphic" />
+      <div
+        class="first-time__left"
+        data-aos="fade-up-right"
+        data-aos-duration="1200"
+      >
+        <img
+          src="/images/first-time/1st-text.webp"
+          alt="1st"
+          class="first-time__graphic"
+        />
         <div class="first-time__content">
           <p class="first-time__badge">
             <!-- 1<sup class="first-time__sup">st</sup> -->
             TIME IN THE DIGITAL WORLD
           </p>
           <hr class="first-time__divider" />
-          <h2 class="first-time__title">3D Interactive<br><span class="first-time__highlight">Digital Catalogue</span>
+          <h2 class="first-time__title">
+            3D Interactive<br /><span class="first-time__highlight"
+              >Digital Catalogue</span
+            >
           </h2>
           <p class="first-time__desc">
-            The Next Generation Interactive Digital Catalogue.<br>Impress your event visitors like never before.
+            The Next Generation Interactive Digital Catalogue.<br />Impress your
+            event visitors like never before.
           </p>
         </div>
       </div>
-      <div class="first-time__right" data-aos="fade-down-left" data-aos-duration="1200" data-aos-delay="200">
-        <img src="/images/first-time/lap-image.webp" alt="Laptop Interactive Catalogue"
-          class="first-time__laptop" />
+      <div
+        class="first-time__right"
+        data-aos="fade-down-left"
+        data-aos-duration="1200"
+        data-aos-delay="200"
+      >
+        <img
+          src="/images/first-time/lap-image.webp"
+          alt="Laptop Interactive Catalogue"
+          class="first-time__laptop"
+        />
       </div>
     </div>
   </section>
   <!-- ─────────── FEATURES SECTION (FOURTH) ─────────── -->
   <section id="features" class="section section--features">
     <div class="features-wrapper">
-      <h2 class="features-header" data-aos="fade-down" data-aos-duration="800">FEATURES</h2>
+      <h2 class="features-header" data-aos="fade-down" data-aos-duration="800">
+        FEATURES
+      </h2>
       <div class="features-layout">
-        <div class="features-diagram" data-aos="zoom-in-up" data-aos-duration="1200" data-aos-delay="200">
-          <img src="/images/features-image-new.webp" alt="Interactive Digital Catalogue Features"
-            class="features-diagram__img" width="1024" height="722" loading="lazy" decoding="async" />
+        <div
+          class="features-diagram"
+          data-aos="zoom-in-up"
+          data-aos-duration="1200"
+          data-aos-delay="200"
+        >
+          <img
+            src="/images/features-image-new.webp"
+            alt="Interactive Digital Catalogue Features"
+            class="features-diagram__img"
+            width="1024"
+            height="722"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
-        <div class="features-footer" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
-          <p>Smarter way. More Impact. One Powerful <span class="highlight">Catalogue.</span></p>
+        <div
+          class="features-footer"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-delay="400"
+        >
+          <p>
+            Smarter way. More Impact. One Powerful <span class="highlight"
+              >Catalogue.</span>
+          </p>
           <ul class="features-highlights" aria-label="Catalogue benefits">
-            <li class="features-highlights__item" data-aos="fade-up" data-aos-delay="0">
+            <li
+              class="features-highlights__item"
+              data-aos="fade-up"
+              data-aos-delay="0"
+            >
               <span class="features-highlights__icon" aria-hidden="true">
-                <svg width="71" height="71" viewBox="0 0 71 71" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg
+                  width="71"
+                  height="71"
+                  viewBox="0 0 71 71"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <g filter="url(#filter_custom_1)">
-                    <rect x="7.56738" y="7.57031" width="55.3008" height="55.3008" rx="27.6504" fill="#FFC506" />
-                    <path d="M22 25h26v18H22z" fill="none" stroke="black" stroke-width="4" stroke-linejoin="round" />
-                    <path d="M35 43v6m-6 0h12M28 31h14M28 36h8" stroke="black" stroke-width="4"
-                      stroke-linecap="round" />
+                    <rect
+                      x="7.56738"
+                      y="7.57031"
+                      width="55.3008"
+                      height="55.3008"
+                      rx="27.6504"
+                      fill="#FFC506"></rect>
+                    <path
+                      d="M22 25h26v18H22z"
+                      fill="none"
+                      stroke="black"
+                      stroke-width="4"
+                      stroke-linejoin="round"></path>
+                    <path
+                      d="M35 43v6m-6 0h12M28 31h14M28 36h8"
+                      stroke="black"
+                      stroke-width="4"
+                      stroke-linecap="round"></path>
                   </g>
                   <defs>
-                    <filter id="filter_custom_1" x="-0.000100613" y="0.00282907" width="70.4357" height="70.4397"
-                      filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                      <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                        result="hardAlpha" />
-                      <feOffset />
-                      <feGaussianBlur stdDeviation="3.78374" />
-                      <feComposite in2="hardAlpha" operator="out" />
-                      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
-                      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_custom_1" />
-                      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_custom_1" result="shape" />
+                    <filter
+                      id="filter_custom_1"
+                      x="-0.000100613"
+                      y="0.00282907"
+                      width="70.4357"
+                      height="70.4397"
+                      filterUnits="userSpaceOnUse"
+                      color-interpolation-filters="sRGB"
+                    >
+                      <feFlood flood-opacity="0" result="BackgroundImageFix"
+                      ></feFlood>
+                      <feColorMatrix
+                        in="SourceAlpha"
+                        type="matrix"
+                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                        result="hardAlpha"></feColorMatrix>
+                      <feOffset></feOffset>
+                      <feGaussianBlur stdDeviation="3.78374"></feGaussianBlur>
+                      <feComposite in2="hardAlpha" operator="out"></feComposite>
+                      <feColorMatrix
+                        type="matrix"
+                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                      ></feColorMatrix>
+                      <feBlend
+                        mode="normal"
+                        in2="BackgroundImageFix"
+                        result="effect1_dropShadow_custom_1"></feBlend>
+                      <feBlend
+                        mode="normal"
+                        in="SourceGraphic"
+                        in2="effect1_dropShadow_custom_1"
+                        result="shape"></feBlend>
                     </filter>
                   </defs>
                 </svg>
               </span>
-              <span class="features-highlights__label">Rich Product Presentation</span>
+              <span class="features-highlights__label"
+                >Rich Product Presentation</span
+              >
             </li>
-            <li class="features-highlights__item" data-aos="fade-up" data-aos-delay="100">
+            <li
+              class="features-highlights__item"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
               <span class="features-highlights__icon" aria-hidden="true">
-                <svg width="71" height="71" viewBox="0 0 71 71" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg
+                  width="71"
+                  height="71"
+                  viewBox="0 0 71 71"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <g filter="url(#filter0_d_1210_491)">
-                    <rect x="7.56738" y="7.57031" width="55.3008" height="55.3008" rx="27.6504" fill="#FFC506" />
+                    <rect
+                      x="7.56738"
+                      y="7.57031"
+                      width="55.3008"
+                      height="55.3008"
+                      rx="27.6504"
+                      fill="#FFC506"></rect>
                     <path
                       d="M39.8247 34.7061L32.5122 29.8311C32.42 29.7688 32.3126 29.7329 32.2015 29.7273C32.0904 29.7217 31.9799 29.7467 31.882 29.7994C31.7841 29.8521 31.7024 29.9307 31.6459 30.0265C31.5895 30.1223 31.5603 30.2318 31.5616 30.343V40.093C31.5616 40.5805 32.0978 40.873 32.5122 40.6049L39.8247 35.7299C40.1903 35.4861 40.1903 34.9742 39.8247 34.7305V34.7061Z"
-                      fill="black" />
+                      fill="black"></path>
                     <path
                       d="M35.2178 52.2812C25.809 52.2812 18.1553 44.6275 18.1553 35.2188C18.1553 25.81 25.809 18.1562 35.2178 18.1562C44.6265 18.1562 52.2803 25.81 52.2803 35.2188C52.2803 44.6275 44.6265 52.2812 35.2178 52.2812ZM35.2178 20.5938C27.1496 20.5938 20.5928 27.1506 20.5928 35.2188C20.5928 43.2869 27.1496 49.8438 35.2178 49.8438C43.2859 49.8438 49.8428 43.2869 49.8428 35.2188C49.8428 27.1506 43.2859 20.5938 35.2178 20.5938Z"
-                      fill="black" />
+                      fill="black"></path>
                   </g>
                   <defs>
-                    <filter id="filter0_d_1210_491" x="-0.000100613" y="0.00282907" width="70.4357" height="70.4397"
-                      filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                      <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                        result="hardAlpha" />
-                      <feOffset />
-                      <feGaussianBlur stdDeviation="3.78374" />
-                      <feComposite in2="hardAlpha" operator="out" />
-                      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
-                      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1210_491" />
-                      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1210_491" result="shape" />
+                    <filter
+                      id="filter0_d_1210_491"
+                      x="-0.000100613"
+                      y="0.00282907"
+                      width="70.4357"
+                      height="70.4397"
+                      filterUnits="userSpaceOnUse"
+                      color-interpolation-filters="sRGB"
+                    >
+                      <feFlood flood-opacity="0" result="BackgroundImageFix"
+                      ></feFlood>
+                      <feColorMatrix
+                        in="SourceAlpha"
+                        type="matrix"
+                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                        result="hardAlpha"></feColorMatrix>
+                      <feOffset></feOffset>
+                      <feGaussianBlur stdDeviation="3.78374"></feGaussianBlur>
+                      <feComposite in2="hardAlpha" operator="out"></feComposite>
+                      <feColorMatrix
+                        type="matrix"
+                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                      ></feColorMatrix>
+                      <feBlend
+                        mode="normal"
+                        in2="BackgroundImageFix"
+                        result="effect1_dropShadow_1210_491"></feBlend>
+                      <feBlend
+                        mode="normal"
+                        in="SourceGraphic"
+                        in2="effect1_dropShadow_1210_491"
+                        result="shape"></feBlend>
                     </filter>
                   </defs>
                 </svg>
               </span>
               <span class="features-highlights__label">Multimedia Content</span>
             </li>
-            <li class="features-highlights__item" data-aos="fade-up" data-aos-delay="200">
+            <li
+              class="features-highlights__item"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
               <span class="features-highlights__icon" aria-hidden="true">
-                <svg width="71" height="71" viewBox="0 0 71 71" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg
+                  width="71"
+                  height="71"
+                  viewBox="0 0 71 71"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <g filter="url(#filter0_d_1210_486)">
-                    <rect x="7.56738" y="7.57031" width="55.3008" height="55.3008" rx="27.6504" fill="#FFC506" />
+                    <rect
+                      x="7.56738"
+                      y="7.57031"
+                      width="55.3008"
+                      height="55.3008"
+                      rx="27.6504"
+                      fill="#FFC506"></rect>
                     <path
                       d="M34.7073 20.2372C35.0434 20.1709 35.3903 20.1709 35.7279 20.2372C36.1149 20.3112 36.4664 20.4947 36.7932 20.6643L36.8749 20.7074L49.6245 27.3058C49.8126 27.4032 49.9704 27.5506 50.0805 27.7317C50.1906 27.9127 50.2489 28.1206 50.2489 28.3325V40.5086C50.2489 40.9449 50.2519 41.4074 50.1055 41.8375C49.9766 42.2122 49.7689 42.5549 49.4965 42.8427C49.1805 43.1726 48.7673 43.3838 48.3819 43.5827L48.2848 43.6336L35.7495 50.1209C35.5851 50.206 35.4027 50.2505 35.2176 50.2505C35.0325 50.2505 34.8501 50.206 34.6857 50.1209L22.1504 43.6336L22.0533 43.5827C21.6679 43.3838 21.2547 43.1726 20.9387 42.8427C20.6663 42.5549 20.4586 42.2122 20.3297 41.8375C20.1833 41.4058 20.1848 40.9433 20.1863 40.5071V28.3325C20.1863 28.1206 20.2446 27.9127 20.3547 27.7317C20.4648 27.5506 20.6226 27.4032 20.8107 27.3058L33.5588 20.7074L33.6405 20.6658C33.9689 20.4947 34.3188 20.3112 34.7073 20.2372ZM35.0557 22.5436C34.9092 22.6127 34.7642 22.6852 34.621 22.7609L23.9141 28.3032L28.2724 30.4369L39.6129 24.7281L35.8127 22.7609C35.6694 22.6852 35.5245 22.6127 35.3779 22.5436L35.2885 22.5066M42.1489 26.0401L30.8793 31.7134L35.2176 33.8347L46.5211 28.3032L42.1489 26.0401ZM34.0614 47.1917V35.8451L29.4363 33.5803V35.122C29.4363 35.4287 29.3145 35.7228 29.0977 35.9396C28.8809 36.1564 28.5868 36.2783 28.2801 36.2783C27.9734 36.2783 27.6793 36.1564 27.4625 35.9396C27.2457 35.7228 27.1239 35.4287 27.1239 35.122V32.4488L22.4988 30.1856V40.3976C22.4988 40.6859 22.4989 40.8508 22.5066 40.9757L22.5204 41.096C22.5404 41.1498 22.5702 41.1995 22.6083 41.2424C22.616 41.2486 22.6407 41.2686 22.707 41.3072C22.8118 41.3719 22.9583 41.4459 23.2126 41.5785L34.0614 47.1917Z"
-                      fill="black" />
+                      fill="black"></path>
                   </g>
                   <defs>
-                    <filter id="filter0_d_1210_486" x="-0.000100613" y="0.00282907" width="70.4357" height="70.4397"
-                      filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                      <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                        result="hardAlpha" />
-                      <feOffset />
-                      <feGaussianBlur stdDeviation="3.78374" />
-                      <feComposite in2="hardAlpha" operator="out" />
-                      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
-                      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1210_486" />
-                      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1210_486" result="shape" />
+                    <filter
+                      id="filter0_d_1210_486"
+                      x="-0.000100613"
+                      y="0.00282907"
+                      width="70.4357"
+                      height="70.4397"
+                      filterUnits="userSpaceOnUse"
+                      color-interpolation-filters="sRGB"
+                    >
+                      <feFlood flood-opacity="0" result="BackgroundImageFix"
+                      ></feFlood>
+                      <feColorMatrix
+                        in="SourceAlpha"
+                        type="matrix"
+                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                        result="hardAlpha"></feColorMatrix>
+                      <feOffset></feOffset>
+                      <feGaussianBlur stdDeviation="3.78374"></feGaussianBlur>
+                      <feComposite in2="hardAlpha" operator="out"></feComposite>
+                      <feColorMatrix
+                        type="matrix"
+                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                      ></feColorMatrix>
+                      <feBlend
+                        mode="normal"
+                        in2="BackgroundImageFix"
+                        result="effect1_dropShadow_1210_486"></feBlend>
+                      <feBlend
+                        mode="normal"
+                        in="SourceGraphic"
+                        in2="effect1_dropShadow_1210_486"
+                        result="shape"></feBlend>
                     </filter>
                   </defs>
                 </svg>
               </span>
-              <span class="features-highlights__label">3D, AR &amp; Product Visualization</span>
+              <span class="features-highlights__label"
+                >3D, AR &amp; Product Visualization</span
+              >
             </li>
-            <li class="features-highlights__item" data-aos="fade-up" data-aos-delay="300">
+            <li
+              class="features-highlights__item"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
               <span class="features-highlights__icon" aria-hidden="true">
-                <svg width="71" height="71" viewBox="0 0 71 71" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg
+                  width="71"
+                  height="71"
+                  viewBox="0 0 71 71"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <g filter="url(#filter0_d_1668_598)">
-                    <rect x="7.56738" y="7.57031" width="55.3008" height="55.3008" rx="27.6504" fill="#FFC506" />
+                    <rect
+                      x="7.56738"
+                      y="7.57031"
+                      width="55.3008"
+                      height="55.3008"
+                      rx="27.6504"
+                      fill="#FFC506"></rect>
                     <path
                       d="M34.7303 44.9688C32.1303 44.8333 29.9365 43.8312 28.149 41.9625C26.3615 40.0938 25.4678 37.8458 25.4678 35.2188C25.4678 32.5104 26.4157 30.2083 28.3115 28.3125C30.2074 26.4167 32.5094 25.4688 35.2178 25.4688C37.8449 25.4688 40.0928 26.3625 41.9615 28.15C43.8303 29.9375 44.8324 32.1312 44.9678 34.7312L41.5553 33.7156C41.2032 32.2531 40.4449 31.055 39.2803 30.1211C38.1157 29.1873 36.7615 28.7198 35.2178 28.7188C33.4303 28.7188 31.9001 29.3552 30.6272 30.6281C29.3542 31.901 28.7178 33.4312 28.7178 35.2188C28.7178 36.7625 29.1852 38.1167 30.1202 39.2812C31.0551 40.4458 32.2532 41.2042 33.7146 41.5562L34.7303 44.9688ZM36.6803 51.3875C36.4365 51.4417 36.1928 51.4688 35.949 51.4688H35.2178C32.9699 51.4688 30.8574 51.0419 28.8803 50.1882C26.9032 49.3346 25.1834 48.177 23.7209 46.7156C22.2584 45.2542 21.1009 43.5344 20.2483 41.5562C19.3957 39.5781 18.9689 37.4656 18.9678 35.2188C18.9667 32.9719 19.3935 30.8594 20.2483 28.8813C21.103 26.9031 22.2606 25.1833 23.7209 23.7219C25.1812 22.2605 26.901 21.1029 28.8803 20.2493C30.8595 19.3956 32.972 18.9688 35.2178 18.9688C37.4635 18.9688 39.576 19.3956 41.5553 20.2493C43.5345 21.1029 45.2543 22.2605 46.7147 23.7219C48.175 25.1833 49.3331 26.9031 50.1889 28.8813C51.0447 30.8594 51.471 32.9719 51.4678 35.2188V35.95C51.4678 36.1938 51.4407 36.4375 51.3865 36.6812L48.2178 35.7063V35.2188C48.2178 31.5896 46.9584 28.5156 44.4396 25.9969C41.9209 23.4781 38.8469 22.2188 35.2178 22.2188C31.5886 22.2188 28.5147 23.4781 25.9959 25.9969C23.4772 28.5156 22.2178 31.5896 22.2178 35.2188C22.2178 38.8479 23.4772 41.9219 25.9959 44.4406C28.5147 46.9594 31.5886 48.2188 35.2178 48.2188H35.7053L36.6803 51.3875ZM49.0709 52.2812L42.124 45.3344L40.0928 51.4688L35.2178 35.2188L51.4678 40.0938L45.3334 42.125L52.2803 49.0719L49.0709 52.2812Z"
-                      fill="black" />
+                      fill="black"></path>
                   </g>
                   <defs>
-                    <filter id="filter0_d_1668_598" x="-0.000100613" y="0.00282907" width="70.4357" height="70.4397"
-                      filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                      <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                        result="hardAlpha" />
-                      <feOffset />
-                      <feGaussianBlur stdDeviation="3.78374" />
-                      <feComposite in2="hardAlpha" operator="out" />
-                      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
-                      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1668_598" />
-                      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1668_598" result="shape" />
+                    <filter
+                      id="filter0_d_1668_598"
+                      x="-0.000100613"
+                      y="0.00282907"
+                      width="70.4357"
+                      height="70.4397"
+                      filterUnits="userSpaceOnUse"
+                      color-interpolation-filters="sRGB"
+                    >
+                      <feFlood flood-opacity="0" result="BackgroundImageFix"
+                      ></feFlood>
+                      <feColorMatrix
+                        in="SourceAlpha"
+                        type="matrix"
+                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                        result="hardAlpha"></feColorMatrix>
+                      <feOffset></feOffset>
+                      <feGaussianBlur stdDeviation="3.78374"></feGaussianBlur>
+                      <feComposite in2="hardAlpha" operator="out"></feComposite>
+                      <feColorMatrix
+                        type="matrix"
+                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                      ></feColorMatrix>
+                      <feBlend
+                        mode="normal"
+                        in2="BackgroundImageFix"
+                        result="effect1_dropShadow_1668_598"></feBlend>
+                      <feBlend
+                        mode="normal"
+                        in="SourceGraphic"
+                        in2="effect1_dropShadow_1668_598"
+                        result="shape"></feBlend>
                     </filter>
                   </defs>
                 </svg>
               </span>
-              <span class="features-highlights__label">Interactive Hotspots</span>
+              <span class="features-highlights__label"
+                >Interactive Hotspots</span
+              >
             </li>
-            <li class="features-highlights__item" data-aos="fade-up" data-aos-delay="400">
+            <li
+              class="features-highlights__item"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
               <span class="features-highlights__icon" aria-hidden="true">
-                <svg width="71" height="71" viewBox="0 0 71 71" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg
+                  width="71"
+                  height="71"
+                  viewBox="0 0 71 71"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <g filter="url(#filter0_d_1210_501)">
-                    <rect x="7.56738" y="7.57031" width="55.3008" height="55.3008" rx="27.6504" fill="#FFC506" />
-                    <path fill-rule="evenodd" clip-rule="evenodd"
+                    <rect
+                      x="7.56738"
+                      y="7.57031"
+                      width="55.3008"
+                      height="55.3008"
+                      rx="27.6504"
+                      fill="#FFC506"></rect>
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
                       d="M43.246 40.7998C45.2204 38.2543 46.1509 35.0523 45.8482 31.8452C45.5455 28.638 44.0324 25.6666 41.6166 23.5355C39.2009 21.4044 36.064 20.2736 32.8442 20.3733C29.6243 20.4729 26.5633 21.7954 24.284 24.0718C22.0026 26.3498 20.6757 29.412 20.5737 32.6343C20.4717 35.8566 21.6022 38.9966 23.7349 41.4143C25.8676 43.832 28.8419 45.3456 32.0518 45.6465C35.2616 45.9474 38.4654 45.0131 41.0103 43.0338L41.0784 43.1051L47.7949 49.8232C47.942 49.9703 48.1166 50.087 48.3088 50.1666C48.501 50.2462 48.707 50.2872 48.9151 50.2872C49.1231 50.2872 49.3291 50.2462 49.5213 50.1666C49.7135 50.087 49.8882 49.9703 50.0353 49.8232C50.1824 49.6761 50.2991 49.5014 50.3787 49.3092C50.4583 49.117 50.4993 48.911 50.4993 48.703C50.4993 48.4949 50.4583 48.2889 50.3787 48.0967C50.2991 47.9045 50.1824 47.7299 50.0353 47.5828L43.3172 40.8663L43.246 40.7998ZM39.959 26.3123C40.8529 27.1918 41.5639 28.2396 42.0509 29.3952C42.5378 30.5509 42.7912 31.7915 42.7963 33.0456C42.8014 34.2996 42.5582 35.5423 42.0806 36.7019C41.6031 37.8615 40.9007 38.915 40.0139 39.8018C39.1271 40.6885 38.0736 41.3909 36.914 41.8685C35.7544 42.3461 34.5118 42.5893 33.2577 42.5842C32.0036 42.5791 30.763 42.3257 29.6073 41.8387C28.4517 41.3518 27.4039 40.6408 26.5244 39.7468C24.7667 37.9604 23.7862 35.5517 23.7965 33.0456C23.8067 30.5394 24.8067 28.1389 26.5789 26.3667C28.351 24.5946 30.7516 23.5945 33.2577 23.5843C35.7638 23.5741 38.1725 24.5546 39.959 26.3123Z"
-                      fill="black" />
+                      fill="black"></path>
                   </g>
                   <defs>
-                    <filter id="filter0_d_1210_501" x="-0.000100613" y="0.00282907" width="70.4357" height="70.4397"
-                      filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                      <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                        result="hardAlpha" />
-                      <feOffset />
-                      <feGaussianBlur stdDeviation="3.78374" />
-                      <feComposite in2="hardAlpha" operator="out" />
-                      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
-                      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1210_501" />
-                      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1210_501" result="shape" />
+                    <filter
+                      id="filter0_d_1210_501"
+                      x="-0.000100613"
+                      y="0.00282907"
+                      width="70.4357"
+                      height="70.4397"
+                      filterUnits="userSpaceOnUse"
+                      color-interpolation-filters="sRGB"
+                    >
+                      <feFlood flood-opacity="0" result="BackgroundImageFix"
+                      ></feFlood>
+                      <feColorMatrix
+                        in="SourceAlpha"
+                        type="matrix"
+                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                        result="hardAlpha"></feColorMatrix>
+                      <feOffset></feOffset>
+                      <feGaussianBlur stdDeviation="3.78374"></feGaussianBlur>
+                      <feComposite in2="hardAlpha" operator="out"></feComposite>
+                      <feColorMatrix
+                        type="matrix"
+                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                      ></feColorMatrix>
+                      <feBlend
+                        mode="normal"
+                        in2="BackgroundImageFix"
+                        result="effect1_dropShadow_1210_501"></feBlend>
+                      <feBlend
+                        mode="normal"
+                        in="SourceGraphic"
+                        in2="effect1_dropShadow_1210_501"
+                        result="shape"></feBlend>
                     </filter>
                   </defs>
                 </svg>
               </span>
-              <span class="features-highlights__label">Search &amp; Discovery</span>
+              <span class="features-highlights__label"
+                >Search &amp; Discovery</span
+              >
             </li>
-            <li class="features-highlights__item" data-aos="fade-up" data-aos-delay="400">
+            <li
+              class="features-highlights__item"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
               <span class="features-highlights__icon" aria-hidden="true">
-                <svg width="71" height="71" viewBox="0 0 71 71" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg
+                  width="71"
+                  height="71"
+                  viewBox="0 0 71 71"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <g filter="url(#filter_custom_2)">
-                    <rect x="7.56738" y="7.57031" width="55.3008" height="55.3008" rx="27.6504" fill="#FFC506" />
-                    <rect x="23" y="23" width="10" height="10" rx="2" fill="black" />
-                    <rect x="38" y="23" width="10" height="10" rx="2" fill="none" stroke="black" stroke-width="3" />
-                    <rect x="23" y="38" width="10" height="10" rx="2" fill="none" stroke="black" stroke-width="3" />
-                    <rect x="38" y="38" width="10" height="10" rx="2" fill="none" stroke="black" stroke-width="3" />
+                    <rect
+                      x="7.56738"
+                      y="7.57031"
+                      width="55.3008"
+                      height="55.3008"
+                      rx="27.6504"
+                      fill="#FFC506"></rect>
+                    <rect
+                      x="23"
+                      y="23"
+                      width="10"
+                      height="10"
+                      rx="2"
+                      fill="black"></rect>
+                    <rect
+                      x="38"
+                      y="23"
+                      width="10"
+                      height="10"
+                      rx="2"
+                      fill="none"
+                      stroke="black"
+                      stroke-width="3"></rect>
+                    <rect
+                      x="23"
+                      y="38"
+                      width="10"
+                      height="10"
+                      rx="2"
+                      fill="none"
+                      stroke="black"
+                      stroke-width="3"></rect>
+                    <rect
+                      x="38"
+                      y="38"
+                      width="10"
+                      height="10"
+                      rx="2"
+                      fill="none"
+                      stroke="black"
+                      stroke-width="3"></rect>
                   </g>
                   <defs>
-                    <filter id="filter_custom_2" x="-0.000100613" y="0.00282907" width="70.4357" height="70.4397"
-                      filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                      <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                        result="hardAlpha" />
-                      <feOffset />
-                      <feGaussianBlur stdDeviation="3.78374" />
-                      <feComposite in2="hardAlpha" operator="out" />
-                      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
-                      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_custom_2" />
-                      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_custom_2" result="shape" />
+                    <filter
+                      id="filter_custom_2"
+                      x="-0.000100613"
+                      y="0.00282907"
+                      width="70.4357"
+                      height="70.4397"
+                      filterUnits="userSpaceOnUse"
+                      color-interpolation-filters="sRGB"
+                    >
+                      <feFlood flood-opacity="0" result="BackgroundImageFix"
+                      ></feFlood>
+                      <feColorMatrix
+                        in="SourceAlpha"
+                        type="matrix"
+                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                        result="hardAlpha"></feColorMatrix>
+                      <feOffset></feOffset>
+                      <feGaussianBlur stdDeviation="3.78374"></feGaussianBlur>
+                      <feComposite in2="hardAlpha" operator="out"></feComposite>
+                      <feColorMatrix
+                        type="matrix"
+                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                      ></feColorMatrix>
+                      <feBlend
+                        mode="normal"
+                        in2="BackgroundImageFix"
+                        result="effect1_dropShadow_custom_2"></feBlend>
+                      <feBlend
+                        mode="normal"
+                        in="SourceGraphic"
+                        in2="effect1_dropShadow_custom_2"
+                        result="shape"></feBlend>
                     </filter>
                   </defs>
                 </svg>
               </span>
-              <span class="features-highlights__label">Product Selections and Slideshows</span>
+              <span class="features-highlights__label"
+                >Product Selections and Slideshows</span
+              >
             </li>
           </ul>
         </div>
@@ -289,9 +669,18 @@ import IdcCtaBanner from '../components/IdcCtaBanner.astro';
     <div class="catalog-embed" data-aos="zoom-in" data-aos-duration="1000">
       <!-- <h2 class="catalog-embed__title">Interactive Digital Catalogue</h2> -->
       <div class="catalog-embed__container">
-        <object data="Fisto_Tech_IDC/index.html" type="text/html" class="catalog-embed__object">
-          <p>Your browser does not support embedding this interactive catalogue. Please <a
-              href="Fisto_Tech_IDC/index.html" target="_blank" class="highlight">click here to view it directly</a>.
+        <object
+          data="Fisto_Tech_IDC/index.html"
+          type="text/html"
+          class="catalog-embed__object"
+        >
+          <p>
+            Your browser does not support embedding this interactive catalogue.
+            Please <a
+              href="Fisto_Tech_IDC/index.html"
+              target="_blank"
+              class="highlight">click here to view it directly</a
+            >.
           </p>
         </object>
       </div>
@@ -299,680 +688,708 @@ import IdcCtaBanner from '../components/IdcCtaBanner.astro';
   </section>
   <ClientMarquee />
   <IdcCtaBanner />
-
 </BaseLayout>
 
 <style>
-:root {
-  --bg: #f2f9fa;
-  --bg-dark: #e4f0f2;
-  --text-primary: #112025;
-  --text-secondary: #1e4550;
-  --text-muted: #2a5f6e;
-  --accent: #0e7490;
-  --accent-light: #22d3ee;
-  --highlight: #e8a817;
-  --highlight-glow: rgba(232, 168, 23, 0.18);
-  --glass-bg: rgba(242, 249, 250, 0.55);
-  --glass-border: rgba(255, 255, 255, 0.45);
-  --glass-shadow: 0 8px 32px rgba(14, 116, 144, 0.08);
-  --navbar-height: 72px;
-  --font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --transition-smooth: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  --section-title-size: clamp(2.5rem, 5vw, 4rem);
-}
-.section--services {
-  /* background: var(--bg);  */
-  /* background: linear-gradient(135deg, #0c2025 0%, #071518 100%); */
-  background: #45614e;
-  min-height: 75vh;
-  padding: 0;
-}
-
-
-/* ── Catalog Embed Styles ───────────────────────── */
-.catalog-embed {
-  width: 100%;
-  /* max-width: 1400px; */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-  /* height: calc(100vh - var(--navbar-height) - 5rem); */
-  height: 100%;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
-.catalog-embed__title {
-  font-size: clamp(1.8rem, 3vw, 2.6rem);
-  font-weight: 700;
-  color: var(--text-primary);
-  text-align: center;
-  letter-spacing: -0.01em;
-  margin-bottom: 0.5rem;
-}
-
-.catalog-embed__container {
-  width: 88%;
-  flex-grow: 1;
-  background: #ffffff;
-
-  overflow: hidden;
-
-}
-
-.catalog-embed__object {
-  width: 100%;
-  height: 100%;
-  min-height: 86.5dvh;
-  border: none;
-  display: block;
-}
-
-
-@media screen and (max-width: 480px) {
-  .catalog-embed__container {
-    scale: 1.15;
+  :root {
+    --bg: #f2f9fa;
+    --bg-dark: #e4f0f2;
+    --text-primary: #112025;
+    --text-secondary: #1e4550;
+    --text-muted: #2a5f6e;
+    --accent: #0e7490;
+    --accent-light: #22d3ee;
+    --highlight: #e8a817;
+    --highlight-glow: rgba(232, 168, 23, 0.18);
+    --glass-bg: rgba(242, 249, 250, 0.55);
+    --glass-border: rgba(255, 255, 255, 0.45);
+    --glass-shadow: 0 8px 32px rgba(14, 116, 144, 0.08);
+    --navbar-height: 72px;
+    --font-family:
+      "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --transition-smooth: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    --section-title-size: clamp(2.5rem, 5vw, 4rem);
   }
-}
+  .section--services {
+    /* background: var(--bg);  */
+    /* background: linear-gradient(135deg, #0c2025 0%, #071518 100%); */
+    background: #45614e;
+    min-height: 75vh;
+    padding: 0;
+  }
 
-.section--first-time {
-  min-height: unset;
-  background: url('/images/first-time/first-time-bg.webp') center center/cover no-repeat;
-  background-color: #0c2025;
-  color: #ffffff;
-  padding: 5rem clamp(1rem, 5vw, 4rem);
-  overflow: hidden;
-}
-.section--features {
-  /* background: linear-gradient(135deg, #0c2025 0%, #071518 100%); */
-  background: url('/images/idc-features-bg.webp') no-repeat center center;
-  background-size: cover;
-  padding: 2.25rem 0rem;
-  min-height: unset;
-}
-/* ── IDC Banner Styles ──────────────────────────── */
-/* ── 1st Time in India Banner ───────────────────── */
-.first-time__container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: clamp(1rem, 3vw, 2rem);
-  max-width: 1400px;
-  width: 100%;
-  margin: 0 auto;
-}
-.first-time__left {
-  display: flex;
-  align-items: flex-start;
-  /* gap: clamp(1rem, 3vw, 2.5rem); */
-  gap: 0;
-  flex: 0 0 auto;
-}
-.first-time__graphic {
-  width: clamp(140px, 17vw, 220px);
-  height: auto;
-  object-fit: contain;
-  flex-shrink: 0;
-  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.6));
-  margin-top: -0.15rem;
-}
-.first-time__content {
-  display: flex;
-  flex-direction: column;
-}
-.first-time__badge {
-  font-size: clamp(1.2rem, 2vw, 1.5rem);
-  font-weight: 500;
-  color: var(--highlight);
-  letter-spacing: 0.05em;
-  margin-bottom: 0.2rem;
-  text-transform: uppercase;
-}
-.first-time__sup {
-  text-transform: lowercase;
-  font-size: 0.7em;
-  vertical-align: super;
-}
-.first-time__title {
-  font-size: clamp(2.25rem, 4.5vw, 4.5rem);
-  font-weight: 700;
-  color: #ffffff;
-  line-height: 1.1;
-  margin-bottom: 1.2rem;
-  white-space: nowrap;
-}
-.first-time__highlight {
-  color: var(--highlight);
-}
-.first-time__divider {
-  width: 250px;
-  height: 2px;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.8) 40%, transparent 100%);
-  border: none;
-  margin-bottom: 1.2rem;
-}
-.first-time__desc {
-  font-size: clamp(1rem, 1.5vw, 1.25rem);
-  color: rgba(255, 255, 255, 0.9);
-  line-height: 1.6;
-  white-space: nowrap;
-}
-.first-time__right {
-  flex: 1 1 auto;
-  display: flex;
-  justify-content: flex-end;
-}
-.first-time__laptop {
-  max-width: 110%;
-  width: 110%;
-  height: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 25px 40px rgba(0, 0, 0, 0.7));
-  transform: scale(1.05) translateX(3%);
-}
-@media screen and (max-width: 991px) {
-  .first-time__laptop {
-    max-width: 100%;
+  /* ── Catalog Embed Styles ───────────────────────── */
+  .catalog-embed {
     width: 100%;
+    /* max-width: 1400px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    /* height: calc(100vh - var(--navbar-height) - 5rem); */
+    height: 100%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }
-}
-/* ── Features Section ───────────────────────────── */
-.features {
-  max-width: 1400px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: clamp(2rem, 5vw, 5rem);
-}
-.features--reversed {
-  flex-direction: row-reverse;
-}
-.features__visual {
-  flex: 1 1 45%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.features__img {
-  width: 100%;
-  max-width: 100%;
-  border-radius: 20px;
-  object-fit: cover;
-  filter: drop-shadow(0 20px 40px rgba(14, 116, 144, 0.12));
-  transition: transform var(--transition-smooth);
-}
-.features__img:hover {
-  transform: scale(1.02) translateY(-2px);
-}
-.features__text {
-  flex: 1 1 55%;
-  max-width: 680px;
-}
-.features__badge {
-  display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 0.75rem;
-}
-.features__title {
-  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-  font-weight: 700;
-  line-height: 1.25;
-  color: #ffffff;
-  margin-bottom: 1rem;
-}
-.features__intro {
-  font-size: clamp(1rem, 1.3vw, 1.15rem);
-  color: #a8d0db;
-  margin-bottom: 2rem;
-}
-.features__list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-.features__item {
-  display: flex;
-  gap: 1.25rem;
-  align-items: center;
-}
-.features__icon {
-  flex-shrink: 0;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(34, 211, 238, 0.1);
-  color: var(--accent-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px;
-  margin-top: 0;
-}
-.features__icon svg {
-  width: 100%;
-  height: 100%;
-}
-.features__item-title {
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: #ffffff;
-  margin-bottom: 0;
-}
-.features__item-desc {
-  font-size: 0.95rem;
-  color: #a8d0db;
-  line-height: 1.5;
-}
-.features--light .features__title {
-  color: #112025;
-}
-.features--light .features__intro {
-  color: #2a5f6e;
-}
-.features--light .features__item-title {
-  color: #112025;
-}
-.features--light .features__icon {
-  background: rgba(14, 116, 144, 0.12);
-  color: #0e7490;
-}
-/* ── IDC Features New Layout ───────────────────── */
-.features-wrapper {
-  max-width: 1400px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 2rem;
-  padding: 0 1rem;
-}
-.features-header {
-  font-size: var(--section-title-size);
-  font-weight: 800;
-  color: var(--highlight);
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-  margin-bottom: 1.35rem;
-  position: relative;
-}
-.features-header::after {
-  content: '';
-  display: block;
-  width: 120px;
-  height: 4px;
-  background: var(--highlight);
-  margin: 10px auto 0;
-  border-radius: 2px;
-}
-.features-layout {
-  width: 100%;
-  display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.95fr);
-  align-items: start;
-  gap: clamp(1.5rem, 3vw, 3.25rem);
-}
-.features-diagram {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  min-width: 0;
-}
-.features-diagram__img {
-  width: 93%;
-  height: auto;
-  object-fit: contain;
-}
-.features-footer {
-  text-align: left;
-  margin-top: 0;
-  min-width: 0;
-}
-.features-footer p {
-  font-size: clamp(1.35rem, 2.6vw, 2.2rem);
-  color: rgba(255, 255, 255, 0.85);
-  font-weight: 400;
-}
-.features-footer p .highlight {
-  font-style: italic;
-  font-weight: 300;
-}
-.features-highlights {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: flex-start;
-  gap: clamp(0.75rem, 1.5vw, 1.5rem);
-  margin-top: clamp(1.5rem, 3vw, 2.5rem);
-  padding: 0;
-  max-width: none;
-  flex-direction: column;
-}
-.features-highlights__item {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-}
-@media screen and (max-width: 480px) {
-  .features-highlights__item {
+
+  .catalog-embed__title {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    text-align: center;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.5rem;
+  }
+
+  .catalog-embed__container {
+    width: 88%;
+    flex-grow: 1;
+    background: #ffffff;
+
+    overflow: hidden;
+  }
+
+  .catalog-embed__object {
+    width: 100%;
+    height: 100%;
+    min-height: 86.5dvh;
+    border: none;
+    display: block;
+  }
+
+  @media screen and (max-width: 480px) {
+    .catalog-embed__container {
+      scale: 1.15;
+    }
+  }
+
+  .section--first-time {
+    min-height: unset;
+    background: url("/images/first-time/first-time-bg.webp") center center/cover
+      no-repeat;
+    background-color: #0c2025;
+    color: #ffffff;
+    padding: 5rem clamp(1rem, 5vw, 4rem);
+    overflow: hidden;
+  }
+  .section--features {
+    /* background: linear-gradient(135deg, #0c2025 0%, #071518 100%); */
+    background: url("/images/idc-features-bg.webp") no-repeat center center;
+    background-size: cover;
+    padding: 2.25rem 0rem;
+    min-height: unset;
+  }
+  /* ── IDC Banner Styles ──────────────────────────── */
+  /* ── 1st Time in India Banner ───────────────────── */
+  .first-time__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(1rem, 3vw, 2rem);
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .first-time__left {
+    display: flex;
     align-items: flex-start;
+    /* gap: clamp(1rem, 3vw, 2.5rem); */
+    gap: 0;
+    flex: 0 0 auto;
   }
-}
-.features-highlights__icon {
-  width: clamp(38px, 4vw, 48px);
-  height: clamp(38px, 4vw, 48px);
-  border-radius: 50%;
-  /* background: #2ecc71; */
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-.features-highlights__icon svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-.features-highlights__label {
-  font-size: clamp(0.9rem, 1.35vw, 1.15rem);
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.92);
-  white-space: normal;
-}
-/* Features: tablet/mobile stacking */
-@media (max-width: 991px) {
+  .first-time__graphic {
+    width: clamp(140px, 17vw, 220px);
+    height: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+    filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.6));
+    margin-top: -0.15rem;
+  }
+  .first-time__content {
+    display: flex;
+    flex-direction: column;
+  }
+  .first-time__badge {
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    font-weight: 500;
+    color: var(--highlight);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.2rem;
+    text-transform: uppercase;
+  }
+  .first-time__sup {
+    text-transform: lowercase;
+    font-size: 0.7em;
+    vertical-align: super;
+  }
+  .first-time__title {
+    font-size: clamp(2.25rem, 4.5vw, 4.5rem);
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 1.2rem;
+    white-space: nowrap;
+  }
+  .first-time__highlight {
+    color: var(--highlight);
+  }
+  .first-time__divider {
+    width: 250px;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.05) 0%,
+      rgba(255, 255, 255, 0.8) 40%,
+      transparent 100%
+    );
+    border: none;
+    margin-bottom: 1.2rem;
+  }
+  .first-time__desc {
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    white-space: nowrap;
+  }
+  .first-time__right {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .first-time__laptop {
+    max-width: 110%;
+    width: 110%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 25px 40px rgba(0, 0, 0, 0.7));
+    transform: scale(1.05) translateX(3%);
+  }
+  @media screen and (max-width: 991px) {
+    .first-time__laptop {
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+  /* ── Features Section ───────────────────────────── */
+  .features {
+    max-width: 1400px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: clamp(2rem, 5vw, 5rem);
+  }
+  .features--reversed {
+    flex-direction: row-reverse;
+  }
+  .features__visual {
+    flex: 1 1 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .features__img {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+    filter: drop-shadow(0 20px 40px rgba(14, 116, 144, 0.12));
+    transition: transform var(--transition-smooth);
+  }
+  .features__img:hover {
+    transform: scale(1.02) translateY(-2px);
+  }
+  .features__text {
+    flex: 1 1 55%;
+    max-width: 680px;
+  }
+  .features__badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+  .features__title {
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1.25;
+    color: #ffffff;
+    margin-bottom: 1rem;
+  }
+  .features__intro {
+    font-size: clamp(1rem, 1.3vw, 1.15rem);
+    color: #a8d0db;
+    margin-bottom: 2rem;
+  }
+  .features__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .features__item {
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+  }
+  .features__icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(34, 211, 238, 0.1);
+    color: var(--accent-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    margin-top: 0;
+  }
+  .features__icon svg {
+    width: 100%;
+    height: 100%;
+  }
+  .features__item-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0;
+  }
+  .features__item-desc {
+    font-size: 0.95rem;
+    color: #a8d0db;
+    line-height: 1.5;
+  }
+  .features--light .features__title {
+    color: #112025;
+  }
+  .features--light .features__intro {
+    color: #2a5f6e;
+  }
+  .features--light .features__item-title {
+    color: #112025;
+  }
+  .features--light .features__icon {
+    background: rgba(14, 116, 144, 0.12);
+    color: #0e7490;
+  }
+  /* ── IDC Features New Layout ───────────────────── */
+  .features-wrapper {
+    max-width: 1400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2rem;
+    padding: 0 1rem;
+  }
+  .features-header {
+    font-size: var(--section-title-size);
+    font-weight: 800;
+    color: var(--highlight);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 1.35rem;
+    position: relative;
+  }
+  .features-header::after {
+    content: "";
+    display: block;
+    width: 120px;
+    height: 4px;
+    background: var(--highlight);
+    margin: 10px auto 0;
+    border-radius: 2px;
+  }
   .features-layout {
-    grid-template-columns: 1fr;
-    gap: 1.75rem;
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.95fr);
+    align-items: start;
+    gap: clamp(1.5rem, 3vw, 3.25rem);
   }
   .features-diagram {
-    justify-content: center;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    min-width: 0;
+  }
+  .features-diagram__img {
+    width: 93%;
+    height: auto;
+    object-fit: contain;
   }
   .features-footer {
-    text-align: center;
+    text-align: left;
+    margin-top: 0;
+    min-width: 0;
+  }
+  .features-footer p {
+    font-size: clamp(1.35rem, 2.6vw, 2.2rem);
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 400;
+  }
+  .features-footer p .highlight {
+    font-style: italic;
+    font-weight: 300;
   }
   .features-highlights {
-    justify-content: center;
-  }
-}
-/* Subtle alternating tint for visual rhythm */
-.section--hero {
-  min-height: 90vh;
-  padding: 0;
-  background: linear-gradient(rgba(255, 255, 255, 0.301), rgba(255, 255, 255, 0.301)), url('/images/hero-background.webp') no-repeat center center;
-  background-size: cover;
-}
-.section--about {
-  /* background: url('/images/about-solutions-bg.webp') center center/cover no-repeat; */
-  background: url('/images/event-app/event-app-bg.webp') center center/cover no-repeat;
-  background-color: #0c2025;
-  padding: 6rem clamp(1.5rem, 4vw, 4rem);
-  min-height: unset;
-  text-align: center;
-  color: #ffffff;
-}
-.about-container {
-  max-width: 95%;
-  margin: 0 auto;
-  text-align: center;
-}
-.about__badge {
-  display: inline-block;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: #ffffff;
-  border: 1.5px solid var(--highlight);
-  padding: 0.45rem 1.35rem;
-  border-radius: 50px;
-  margin-bottom: clamp(1.5rem, 3vw, 2rem);
-}
-.about__title {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  color: #ffffff;
-  margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem);
-  font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: 0.01em;
-}
-.about__title .highlight {
-  color: var(--highlight);
-  -webkit-text-fill-color: var(--highlight);
-}
-.about__divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: clamp(1.5rem, 3vw, 2.25rem) auto;
-  width: min(480px, 72%);
-  max-width: 100%;
-}
-.about__divider::before,
-.about__divider::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-}
-.about__divider::before {
-  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.9));
-}
-.about__divider::after {
-  background: linear-gradient(to left, transparent, rgba(255, 255, 255, 0.9));
-}
-.about__star {
-  flex-shrink: 0;
-  width: 18px;
-  height: 18px;
-  margin: 0 0.75rem;
-  color: var(--highlight);
-  background: none;
-  padding: 0;
-}
-.about__tagline {
-  font-size: clamp(1.35rem, 2.6vw, 2.2rem);
-  color: #ffffff;
-  margin-bottom: clamp(1rem, 2vw, 1.5rem);
-  font-weight: 600;
-  line-height: 1.35;
-}
-.about__tagline .highlight {
-  color: var(--highlight);
-  -webkit-text-fill-color: var(--highlight);
-  font-weight: 600;
-}
-.about__description {
-  font-size: clamp(1.05rem, 1.8vw, 1.35rem);
-  color: rgba(255, 255, 255, 0.88);
-  line-height: 1.65;
-  max-width: 100%;
-  margin: 0 auto;
-  font-weight: 400;
-}
-/* ── Hero ───────────────────────────────────────── */
-.hero {
-  width: 100%;
-  display: flex;
-  align-items: stretch;
-  justify-content: space-between;
-  gap: 0;
-  padding: 0;
-  min-height: 90vh;
-}
-.hero__text {
-  flex: 0 0 35%;
-  max-width: 35%;
-  padding-left: clamp(.5rem, 2vw, 2rem);
-  padding-top: 2rem;
-  padding-bottom: 4rem;
-  align-self: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-@media screen and (min-width: 1800px) {
-  .hero {
-    align-items: self-start;
-  }
-  .hero__text {
-    margin-left: 4%;
-    margin-top: 5.5%;
-  }
-}
-.hero__est {
-  font-size: 0.75rem;
-  line-height: 1;
-  letter-spacing: 0.15em;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  font-family: var(--font-family);
-  font-weight: 500;
-  white-space: nowrap;
-  padding-left: 0.5rem;
-}
-.hero__title {
-  font-size: clamp(2.8rem, 4.5vw, 4.5rem);
-  font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  color: #000000;
-  /* Dark color matching image */
-  margin-bottom: 0.5rem;
-  white-space: nowrap;
-}
-/* Custom Trigger for Continuous Animations */
-[data-aos="trigger-anim"] {
-  opacity: 1; /* purely a trigger, no parent transition */
-}
-/* Base style for words */
-.hero__title .word-anim, .hero__subtitle .word-anim {
-  opacity: 0;
-  display: inline-block;
-  will-change: opacity, transform, filter;
-}
-/* The infinite reveal animation attached to the AOS trigger class */
-[data-aos="trigger-anim"].aos-animate .word-anim {
-  animation: continuousWordReveal 10.5s cubic-bezier(0.25, 1, 0.5, 1) infinite;
-}
-@keyframes continuousWordReveal {
-  0% { opacity: 0; transform: translateY(15px); filter: blur(5px); }
-  5%, 85% { opacity: 1; transform: translateY(0); filter: blur(0); }
-  95%, 100% { opacity: 0; transform: translateY(-15px); filter: blur(5px); }
-}
-.hero__highlight-events {
-  font-family: 'Courgette', cursive, var(--font-family);
-  font-style: italic;
-  font-weight: 500;
-  color: #f6c000;
-  display: inline-block;
-  margin-top: 0.1rem;
-  font-size: 1.1em;
-}
-.hero__divider {
-  width: 100px;
-  height: 4px;
-  background-color: #333;
-  /* Dark gray line */
-  border: none;
-  margin-bottom: 1.2rem;
-  margin-left: 0;
-}
-.hero__subtitle {
-  font-size: clamp(1.2rem, 1.5vw, 1.6rem);
-  font-weight: 600;
-  color: #1e4550;
-  margin-bottom: 1rem;
-}
-.highlight-green {
-  color: #1a4f3b;
-  /* Dark green */
-  font-weight: 700;
-}
-.hero__description {
-  font-size: clamp(1.05rem, 1.1vw, 1.2rem);
-  color: #333;
-  line-height: 1.5;
-  max-width: 580px;
-  font-weight: 400;
-}
-.hero__description strong {
-  font-weight: 700;
-  color: #000;
-}
-.hero__visual {
-  flex: 0 0 65%;
-  max-width: 65%;
-  display: flex;
-  align-items: stretch;
-  justify-content: flex-end;
-  border-radius: 20px 0 0 20px;
-  overflow: hidden;
-  box-shadow: -10px 15px 40px rgba(0,0,0,0.15);
-}
-.hero__video,
-.hero__image {
-  width: 100%;
-  height: 100% !important;
-  object-fit: cover;
-  object-position: right center;
-  transform: scale(1.35);
-  transform-origin: right center;
-  transition: transform var(--transition-smooth);
-}
-@media screen and (max-width: 1351px) {
-  .hero__image {
-    height: 90%;
-  }
-}
-
-@media screen and (max-width: 991px) {
-  .hero {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: clamp(0.75rem, 1.5vw, 1.5rem);
+    margin-top: clamp(1.5rem, 3vw, 2.5rem);
+    padding: 0;
+    max-width: none;
     flex-direction: column;
-    min-height: auto;
   }
-  .hero__visual {
-    flex: 0 0 100%;
-    max-width: 100%;
-    order: -1;
-  }
-  .hero__text {
-    flex: 0 0 100%;
-    max-width: 100%;
-    order: 0;
-    padding: 3rem 1.5rem;
+  .features-highlights__item {
+    display: flex;
     align-items: center;
+    gap: 0.85rem;
+  }
+  @media screen and (max-width: 480px) {
+    .features-highlights__item {
+      align-items: flex-start;
+    }
+  }
+  .features-highlights__icon {
+    width: clamp(38px, 4vw, 48px);
+    height: clamp(38px, 4vw, 48px);
+    border-radius: 50%;
+    /* background: #2ecc71; */
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .features-highlights__icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .features-highlights__label {
+    font-size: clamp(0.9rem, 1.35vw, 1.15rem);
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.92);
+    white-space: normal;
+  }
+  /* Features: tablet/mobile stacking */
+  @media (max-width: 991px) {
+    .features-layout {
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+    }
+    .features-diagram {
+      justify-content: center;
+    }
+    .features-footer {
+      text-align: center;
+    }
+    .features-highlights {
+      justify-content: center;
+    }
+  }
+  /* Subtle alternating tint for visual rhythm */
+  .section--hero {
+    min-height: 90vh;
+    padding: 0;
+    background:
+      linear-gradient(rgba(255, 255, 255, 0.301), rgba(255, 255, 255, 0.301)),
+      url("/images/hero-background.webp") no-repeat center center;
+    background-size: cover;
+  }
+  .section--about {
+    /* background: url('/images/about-solutions-bg.webp') center center/cover no-repeat; */
+    background: url("/images/event-app/event-app-bg.webp") center center/cover
+      no-repeat;
+    background-color: #0c2025;
+    padding: 6rem clamp(1.5rem, 4vw, 4rem);
+    min-height: unset;
+    text-align: center;
+    color: #ffffff;
+  }
+  .about-container {
+    max-width: 95%;
+    margin: 0 auto;
     text-align: center;
   }
-  .hero__text .hero__description {
+  .about__badge {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #ffffff;
+    border: 1.5px solid var(--highlight);
+    padding: 0.45rem 1.35rem;
+    border-radius: 50px;
+    margin-bottom: clamp(1.5rem, 3vw, 2rem);
+  }
+  .about__title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: #ffffff;
+    margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: 0.01em;
+  }
+  .about__title .highlight {
+    color: var(--highlight);
+    -webkit-text-fill-color: var(--highlight);
+  }
+  .about__divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: clamp(1.5rem, 3vw, 2.25rem) auto;
+    width: min(480px, 72%);
     max-width: 100%;
   }
-  .hero__video,
-  .hero__image {
-    height: 45vh !important;
-    transform: scale(1.35);
-    transform-origin: right center;
+  .about__divider::before,
+  .about__divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+  }
+  .about__divider::before {
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(255, 255, 255, 0.9)
+    );
+  }
+  .about__divider::after {
+    background: linear-gradient(to left, transparent, rgba(255, 255, 255, 0.9));
+  }
+  .about__star {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    margin: 0 0.75rem;
+    color: var(--highlight);
+    background: none;
+    padding: 0;
+  }
+  .about__tagline {
+    font-size: clamp(1.35rem, 2.6vw, 2.2rem);
+    color: #ffffff;
+    margin-bottom: clamp(1rem, 2vw, 1.5rem);
+    font-weight: 600;
+    line-height: 1.35;
+  }
+  .about__tagline .highlight {
+    color: var(--highlight);
+    -webkit-text-fill-color: var(--highlight);
+    font-weight: 600;
+  }
+  .about__description {
+    font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+    color: rgba(255, 255, 255, 0.88);
+    line-height: 1.65;
+    max-width: 100%;
+    margin: 0 auto;
+    font-weight: 400;
+  }
+  /* ── Hero ───────────────────────────────────────── */
+  .hero {
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 0;
+    padding: 0;
+    min-height: 90vh;
+  }
+  .hero__text {
+    flex: 0 0 35%;
+    max-width: 35%;
+    padding-left: clamp(0.5rem, 2vw, 2rem);
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  @media screen and (min-width: 1800px) {
+    .hero {
+      align-items: self-start;
+    }
+    .hero__text {
+      margin-left: 4%;
+      margin-top: 5.5%;
+    }
+  }
+  .hero__est {
+    font-size: 0.75rem;
+    line-height: 1;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-family: var(--font-family);
+    font-weight: 500;
+    white-space: nowrap;
+    padding-left: 0.5rem;
+  }
+  .hero__title {
+    font-size: clamp(2.8rem, 4vw, 4rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: #000000;
+    /* Dark color matching image */
+    margin-bottom: 0.5rem;
+    white-space: nowrap;
+  }
+  /* Custom Trigger for Continuous Animations */
+  [data-aos="trigger-anim"] {
+    opacity: 1; /* purely a trigger, no parent transition */
+  }
+  /* Base style for words */
+  .hero__title .word-anim,
+  .hero__subtitle .word-anim {
+    opacity: 0;
+    display: inline-block;
+    will-change: opacity, transform, filter;
+  }
+  /* The infinite reveal animation attached to the AOS trigger class */
+  [data-aos="trigger-anim"].aos-animate .word-anim {
+    animation: continuousWordReveal 10.5s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+  }
+  @keyframes continuousWordReveal {
+    0% {
+      opacity: 0;
+      transform: translateY(15px);
+      filter: blur(5px);
+    }
+    5%,
+    85% {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+    95%,
+    100% {
+      opacity: 0;
+      transform: translateY(-15px);
+      filter: blur(5px);
+    }
+  }
+  .hero__highlight-events {
+    font-family: "Courgette", cursive, var(--font-family);
+    font-style: italic;
+    font-weight: 500;
+    color: #f6c000;
+    display: inline-block;
+    margin-top: 0.1rem;
+    font-size: 1.1em;
+  }
+  .hero__divider {
+    width: 100px;
+    height: 4px;
+    background-color: #333;
+    /* Dark gray line */
+    border: none;
+    margin-bottom: 1.2rem;
+    margin-left: 0;
+  }
+  .hero__subtitle {
+    font-size: clamp(1.2rem, 1.5vw, 1.3rem);
+    font-weight: 600;
+    color: #1e4550;
+    margin-bottom: 1rem;
+  }
+  .highlight-green {
+    color: #1a4f3b;
+    /* Dark green */
+    font-weight: 700;
+  }
+  .hero__description {
+    font-size: clamp(1.05rem, 1.1vw, 1.2rem);
+    color: #333;
+    line-height: 1.5;
+    max-width: 580px;
+    font-weight: 400;
+  }
+  .hero__description strong {
+    font-weight: 700;
+    color: #000;
   }
   .hero__visual {
-    border-radius: 0 0 20px 20px;
+    flex: 0 0 65%;
+    max-width: 65%;
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-end;
+    /* border-radius: 20px 0 0 20px; */
+    overflow: hidden;
+    box-shadow: -10px 15px 40px rgba(0, 0, 0, 0.15);
   }
-}
-@keyframes heroFloat {
-  0%,
-  100% {
-    transform: translateY(0);
+  .hero {
+    overflow: hidden;
   }
-  50% {
-    transform: translateY(-14px);
+
+  .hero__image,
+  .hero__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left center;
+
+    border-radius: 0 !important ;
   }
-}
+  @media screen and (max-width: 1351px) {
+    .hero__image {
+      height: 90%;
+    }
+  }
+
+  @media screen and (max-width: 991px) {
+    .hero {
+      flex-direction: column;
+      min-height: auto;
+    }
+    .hero__visual {
+      flex: 0 0 100%;
+      max-width: 100%;
+      order: -1;
+    }
+    .hero__text {
+      flex: 0 0 100%;
+      max-width: 100%;
+      order: 0;
+      padding: 3rem 1.5rem;
+      align-items: center;
+      text-align: center;
+    }
+    .hero__text .hero__description {
+      max-width: 100%;
+    }
+    .hero__video,
+    .hero__image {
+      height: 45vh !important;
+      transform: scale(1.35);
+      transform-origin: right center;
+    }
+    .hero__visual {
+      border-radius: 0 0 20px 20px;
+    }
+  }
+  @keyframes heroFloat {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-14px);
+    }
+  }
 </style>

@@ -1,362 +1,268 @@
 ---
-const { 
-  image = "/images/services/AR-VR/AR-world-img.webp" 
-} = Astro.props;
+// src/components/ArVrCtaBanner.astro
+const images = [
+  "/images/services/AR-VR/AR-world-img.webp"
+];
 ---
 
-<section class="cta-banner-section">
-  <div class="cta-banner-wrapper">
-    
-    <!-- Right side Image Background -->
-    <div class="cta-image-bg" style={`background-image: url('${image}');`}></div>
-
-    <!-- The S-Curve White Shape (SVG) -->
-    <div class="cta-shape-container">
-     <svg class="cta-shape" viewBox="0 0 1000 300" preserveAspectRatio="none">
-        <defs>
-          <filter id="blob-shadow" x="-20%" y="-20%" width="140%" height="140%">
-            <feDropShadow dx="15" dy="0" stdDeviation="20" flood-color="#000" flood-opacity="0.6"/>
-          </filter>
-        </defs>
-    <path
-        fill="#f4f5f7"
-        filter="url(#blob-shadow)"
-        d="
-        M0,0
-        H520
-        C600,0 620,18 620,40
-        C620,60 610,78 585,92
-        C555,108 555,130 590,145
-        C640,165 650,205 610,235
-        C575,262 510,280 450,300
-        H0
-        Z"
-    />
-</svg>
+<section class="banner-section">
+  <div class="banner-wrapper">
+    <div class="banner-slider">
+      {images.map((src, index) => (
+        <img class={`bg-image slide-${index} ${index === 0 ? 'active' : ''}`} src={src} alt="AR VR MR Immersive Tech" />
+      ))}
     </div>
 
-    <!-- Left Side Content -->
-    <div class="cta-content">
-      <div class="cta-header">
-        <!-- Logo / Icon mark matching the top right of the white area -->
-        <div class="cta-logo-mark">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-8 h-8 text-gold">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5" />
-          </svg>
-        </div>
+    <!-- Layered S-Curve Overlay for the Split Effect -->
+    <svg class="wave-overlay" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <!-- Dark Purple Wave (Bottom layer) -->
+      <path d="M0,0 L58.5,0 C47,40 66,60 48.5,100 L0,100 Z" fill="#2e1065" />
+      <!-- Mid Purple Wave (Middle layer) -->
+      <path d="M0,0 L58.2,0 C45.5,40 64,60 48.2,100 L0,100 Z" fill="#4c1d95" />
+      <!-- Solid White Area (Top layer) -->
+      <path d="M0,0 L58,0 C44,40 62,60 48,100 L0,100 Z" fill="#f8f9fa" />
+    </svg>
+
+    <!-- Left side Content on the White Area -->
+    <div class="content-left">
+      <!-- Top Tagline with Icon -->
+      <div class="top-tagline">
+        <svg class="mini-logo" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+        <span class="tagline-text">Fisto Tech</span>
       </div>
-      
-      <h2 class="cta-title">
-        <div class="cta-line-wrap"><span class="text-dark cta-text-anim">IMMERSIVE</span></div>
-        <div class="cta-line-wrap"><span class="text-dark cta-text-anim">TECH FOR</span><br/></div>
-        <div class="cta-line-wrap"><span class="text-gold cta-text-anim">BUSINESS</span></div>
+      <!-- Main Title -->
+      <h2 class="title">
+        <span class="text-dark">IMMERSIVE TECH</span><br/>
+        <span class="text-dark">SOLUTIONS</span>
       </h2>
       
-      <div class="cta-line-wrap">
-        <p class="cta-desc cta-text-anim">
-          Cutting-edge Virtual and Augmented Reality solutions tailored to redefine user engagement and elevate your brand globally.
-        </p>
-      </div>
+      <!-- Description -->
+      <p class="desc">
+        Empower your business with immersive AR, VR, and MR solutions for training, product visualization, and customer engagement.
+      </p>
       
-      <div class="cta-footer">
-        
-        <a href="#" class="cta-btn">
-          <span>GET A QUOTE</span>
-        </a>
+      <!-- Bottom Icons Row -->
+      <div class="features-row">
+        <div class="feature">
+          <div class="icon-circle">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+          </div>
+          <span>AR<br/>Tech</span>
+        </div>
+        <div class="feature">
+          <div class="icon-circle">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          </div>
+          <span>VR<br/>Immersions</span>
+        </div>
+        <div class="feature">
+          <div class="icon-circle">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          </div>
+          <span>MR<br/>Solutions</span>
+        </div>
       </div>
     </div>
-
-    <!-- Overlapping Circle (Golden/Sand colored) -->
-    <div class="cta-circle-badge">
-      <div class="circle-content">
-        <span class="circle-sub">FULLY</span>
-        <span class="circle-title">CUSTOMIZED</span>
-        <span class="circle-sub">SOLUTIONS</span>
-      </div>
-    </div>
-
-    <!-- Overlapping Pill (Bottom Right) -->
-    <div class="cta-pill-badge">
-      AR • VR • MR • METAVERSE
-    </div>
-
   </div>
 </section>
 
 <style>
-  .cta-banner-section {
-    padding: 40px 20px;
-    width: 100%;
+  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;700;900&family=Montserrat:wght@400;500;600;700&display=swap');
+
+  .banner-section {
+    padding: 50px 20px;
     display: flex;
     justify-content: center;
-    background-color: #ffffff; 
+    background-color: #f1f5f9;
+    width: 100%;
   }
 
-  .cta-banner-wrapper {
+  .banner-wrapper {
     position: relative;
     width: 100%;
     max-width: 1200px;
-    height: 300px; /* Reduced height */
-    background-color: #111;
+    height: 300px;
+    background-color: #f8f9fa;
     border-radius: 12px;
-    /* box-shadow: 0 20px 40px rgba(0,0,0,0.6); */
     overflow: hidden;
-    display: flex;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    font-family: 'Montserrat', sans-serif;
   }
 
-  .cta-image-bg {
+  .banner-slider {
     position: absolute;
     top: 0;
     right: 0;
     width: 60%;
     height: 100%;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
     z-index: 1;
   }
 
-  .cta-shape-container {
+  .bg-image {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+  }
+
+  .bg-image.active {
+    opacity: 1;
+  }
+
+  .wave-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 94%;
+    height: 100%;
     z-index: 2;
     pointer-events: none;
   }
 
-  .cta-shape {
-    width: 100%;
-    height: 100%;
-  }
-
-  .cta-content {
-    position: relative;
-    width: 52%; /* Increased to utilize the wider SVG path space */
+  .content-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 55%;
     height: 100%;
     z-index: 3;
-    padding: 30px 40px; 
+    padding: 40px 50px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
   }
 
-  .cta-header {
-    display: flex;
-    justify-content: flex-end;
-    width: 75%; /* Aligns logo towards the curve */
-  }
-
-  .cta-logo-mark {
-    width: 32px; 
-    height: 32px;
+  .top-tagline {
     display: flex;
     align-items: center;
-    justify-content: center;
-    color: #c99866; 
+    gap: 8px;
+    margin-bottom: 15px;
   }
 
-  .cta-title {
-    font-size: clamp(1.8rem, 2.5vw, 2.5rem); 
+  .mini-logo {
+    color: #1e293b;
+  }
+
+  .tagline-text {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #1e293b;
+    text-transform: uppercase;
+  }
+
+  .title {
+    font-size: clamp(2rem, 3.8vw, 3.2rem);
+    line-height: 1.1;
     font-weight: 900;
-    line-height: 0.95;
-    margin: 0;
-    letter-spacing: -0.02em;
-    font-family: var(--font-primary, system-ui);
+    font-family: 'Oswald', sans-serif;
+    margin: 0 0 12px 0;
+    letter-spacing: 0px;
+    text-transform: uppercase;
   }
 
   .text-dark {
-    color: #2d3748;
+    color: #201a2d;
   }
 
-  .text-gold {
-    color: #c99866;
-  }
-
-  .cta-desc {
-    color: #4a5568;
-    font-size: 0.85rem; 
+  .desc {
+    font-size: 0.85rem;
+    color: #64748b;
     line-height: 1.4;
-    max-width: 90%; /* Let it use more of the narrowed container */
-    margin-top: 10px;
-    margin-bottom: 15px;
+    margin: 0 0 15px 0;
+    max-width: 90%;
     font-weight: 500;
   }
 
-  .cta-footer {
+  .features-row {
     display: flex;
-    align-items: center;
     gap: 25px;
   }
 
-  .cta-contact {
+  .feature {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 10px;
+    text-align: center;
+    gap: 6px;
   }
 
   .icon-circle {
-    width: 32px; 
-    height: 32px;
-    background-color: #c99866;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
+    background-color: #201a2d;
+    color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
   }
 
-  .icon-circle svg {
-    width: 16px;
-    height: 16px;
-    color: white;
-  }
-
-  .contact-text {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .call-us {
-    font-size: 0.7rem;
-    color: #718096;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+  .feature span {
+    font-size: 0.65rem;
     font-weight: 700;
-  }
-
-  .phone-num {
-    font-size: 0.9rem; 
-    font-weight: 800;
-    color: #2d3748;
-  }
-
-  .cta-btn {
-    background-color: #c99866;
-    color: white;
-    padding: 10px 22px; 
-    border-radius: 30px;
-    text-decoration: none;
-    font-size: 0.75rem; 
-    font-weight: 800;
+    color: #1e293b;
+    line-height: 1.3;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .cta-btn:hover {
-    background-color: #b08253;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(201, 152, 102, 0.4);
-  }
-
-  /* Overlapping Badges */
-  .cta-circle-badge {
-    position: absolute;
-    top: 65%; /* Adjusted for the new bottom bump height */
-    left: 62%; /* Perfectly centered over the 650px outward bulge */
-    transform: translate(-50%, -50%);
-    width: 125px; 
-    height: 125px;
-    background-color: #c99866;
-    border-radius: 50%;
-    border: 8px solid #f4f5f7; 
-    z-index: 4;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-  }
-
-  .circle-content {
-    display: flex;
-    flex-direction: column;
-    color: white;
-  }
-
-  .circle-sub {
-    font-size: 0.6rem; /* Smaller */
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    opacity: 0.9;
-  }
-
-  .circle-title {
-    font-size: 0.9rem; /* Smaller */
-    font-weight: 900;
-    margin: 3px 0;
-    line-height: 1;
-  }
-
-  .cta-pill-badge {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    background-color: #c99866;
-    color: white;
-    padding: 8px 20px; /* Reduced */
-    border-radius: 50px;
-    font-size: 0.75rem; /* Smaller */
-    font-weight: 800;
-    letter-spacing: 0.05em;
-    border: 4px solid #f4f5f7; 
-    z-index: 4;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.25);
-  }
-
-  /* Responsive Adjustments */
-  @media (max-width: 992px) {
-    .cta-banner-wrapper {
+  @media (max-width: 900px) {
+    .banner-wrapper {
       height: auto;
-      min-height: 400px;
+      min-height: 600px;
+      display: flex;
       flex-direction: column;
     }
-
-    .cta-shape-container {
-      display: none; 
-    }
-
-    .cta-image-bg {
-      position: relative;
-      width: 100%;
-      height: 200px;
-    }
-
-    .cta-content {
-      width: 100%;
-      height: auto;
-      background-color: #f4f5f7;
-      padding: 30px 20px;
-    }
-
-    .cta-circle-badge {
-      top: 200px;
-      left: 50%;
-    }
-    
-    .cta-header {
+    .wave-overlay {
       display: none;
     }
-  }
-
-  @media (max-width: 768px) {
-    .cta-footer {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 15px;
+    .banner-slider {
+      position: relative;
+      width: 100%;
+      height: 250px;
+      order: 1;
     }
-    
-    .cta-circle-badge {
-      transform: translate(-50%, -50%) scale(0.8);
+    .bg-image {
+      width: 100%;
+      height: 100%;
     }
-    
-    .cta-pill-badge {
-      bottom: auto;
-      top: 15px;
-      right: 10px;
-      font-size: 0.65rem;
-      padding: 6px 12px;
+    .content-left {
+      position: relative;
+      width: 100%;
+      height: auto;
+      padding: 40px 20px;
+      order: 2;
+      align-items: center;
+      text-align: center;
+    }
+    .desc {
+      max-width: 100%;
+    }
+    .features-row {
+      justify-content: center;
+      flex-wrap: wrap;
     }
   }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const sliders = document.querySelectorAll('.banner-slider');
+    sliders.forEach(slider => {
+      const slides = slider.querySelectorAll('.bg-image');
+      if (slides.length <= 1) return;
+      
+      let currentIndex = 0;
+      setInterval(() => {
+        slides[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % slides.length;
+        slides[currentIndex].classList.add('active');
+      }, 3500);
+    });
+  });
+</script>
