@@ -125,11 +125,10 @@ import Preloader from "../components/Preloader.astro";
             if (video.muted) {
               video.muted = false;
               unmutedCount++;
-              
-              // If the video was paused by browser policy, try to play it again
-              if (video.paused) {
-                video.play().catch(e => console.log('Autoplay prevented:', e));
-              }
+            }
+            // Only try to play if it wasn't explicitly paused by a slider
+            if (video.paused && !video.classList.contains('paused-by-slider')) {
+              video.play().catch(e => console.log('Autoplay prevented:', e));
             }
           });
           
