@@ -1,5 +1,5 @@
 .navbar {
-    background: #2d2d2d;
+    background: #ffffff;
     border-radius: 0;
     /* box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8); */
     padding: 0;
@@ -12,6 +12,13 @@
      
     z-index: 1000;
     transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 
@@ -86,10 +93,10 @@ body {
 }
 
 .nav-links a {
-    color: #d0d0d0;
+    color: #333333;
     text-decoration: none;
     font-size: 0.95rem;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 1.2px;
     text-transform: uppercase;
     transition: all 0.3s ease;
@@ -98,8 +105,14 @@ body {
 }
 
 .nav-links a:hover {
-    color: #ffffff;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    color: #2563eb;
+    text-shadow: none;
+}
+
+.nav-links li.active > a,
+.nav-links li.active-parent > a {
+    color: #000000;
+    font-weight: 800;
 }
 
 /* Dropdown Styles */
@@ -129,9 +142,9 @@ body {
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
-    background: #2d2d2d;
+    background: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     list-style: none;
     padding: 0.5rem 0;
     margin: 0.5rem 0 0 0;
@@ -150,7 +163,7 @@ body {
 .dropdown-menu li {
     width: 100%;
     padding: 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid #eaeaea;
 }
 
 .dropdown-menu li:last-child {
@@ -163,11 +176,12 @@ body {
     font-size: 0.85rem;
     letter-spacing: 0.8px;
     white-space: nowrap;
+    color: #000000;
 }
 
 .dropdown-menu a:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: #ffffff;
+    background: #f8f8f8;
+    color: #2563eb;
 }
 
 .nav-actions {
@@ -181,30 +195,30 @@ body {
     width: 42px;
     height: 42px;
     border-radius: 50%;
-    border: 2.5px solid #ffffff;
+    border: 2px solid #333333;
     background: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
-    color: #fff;
+    color: #333333;
 }
 
 .icon-button:hover {
-    background: #ffffff;
+    background: #333333;
     transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .icon-button:hover svg {
-    stroke: #000;
+    stroke: #ffffff;
 }
 
 .icon-button svg {
     width: 22px;
     height: 22px;
-    stroke: #fff;
+    stroke: #333333;
     transition: stroke 0.3s ease;
     vertical-align: middle;
 }
@@ -222,7 +236,7 @@ body {
 .mobile-toggle span {
     width: 28px;
     height: 3px;
-    background: #fff;
+    background: #333333;
     border-radius: 3px;
     transition: all 0.3s ease;
 }
@@ -387,10 +401,4 @@ body {
         font-size: 0.85rem;
     }
 }
-
-/* active */
-.nav-links li.active > a,
-.nav-links li.active-parent > a {
-  color: #ffffff; /* Or whatever style you want */
-  font-weight: bold;
-}
+

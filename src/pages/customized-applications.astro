@@ -4,6 +4,7 @@ import PhoneSimulator from '../components/PhoneSimulator.astro';
 import EventAppSection from '../components/EventAppSection.astro';
 import PatternAppSection from '../components/PatternAppSection.astro';
 import AppCtaBanner from '../components/AppCtaBanner.astro';
+import ClientMarquee from '../components/ClientMarquee.astro';
 import '../styles/service1.css';
 ---
 
@@ -16,6 +17,11 @@ import '../styles/service1.css';
 >
 
   <section class="app-dev-section">
+    <!-- Desktop View Toggle Button -->
+    <button class="desktop-view-btn" id="desktopViewToggle">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      <span class="desktop-btn-text">Desktop View</span>
+    </button>
     <div class="app-dev-container">
       
       <!-- Left side: Text & App Selector -->
@@ -96,12 +102,90 @@ import '../styles/service1.css';
     <video class="app-video" src="/images/services/Application/Pattern-app-video.mp4" autoplay loop muted playsinline></video>
   </section>
 
+  <!-- Client Section -->
+  <ClientMarquee />
+
   <!-- Pre-Footer CTA -->
   <AppCtaBanner />
 
 </BaseLayout>
 
 <style>
+/* Desktop View Button */
+.desktop-view-btn {
+  position: absolute;
+  top: 100px;
+  right: 40px;
+  z-index: 100;
+  padding: 12px 24px;
+  background: #0f172a;
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.4);
+  animation: pulse-border-dark 2s infinite;
+  transition: all 0.3s ease;
+}
+.desktop-view-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.6);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+.desktop-view-btn.mobile-mode-active {
+  background: #000;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  animation: pulse-border-dark 2s infinite;
+}
+@keyframes pulse-border-dark {
+  0% { box-shadow: 0 0 0 0 rgba(15, 23, 42, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(15, 23, 42, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(15, 23, 42, 0); }
+}
+@media (max-width: 1024px) {
+  .desktop-view-btn {
+    top: 80px;
+    right: 20px;
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 768px) {
+  .desktop-view-btn {
+    display: none;
+  }
+}
+
+:global(.phone-frame.desktop-mode) {
+  width: 800px !important;
+  height: 500px !important;
+  border-radius: 12px !important;
+  border-width: 12px !important;
+  border-bottom-width: 24px !important;
+  transform: translateX(-40px) !important;
+}
+:global(.phone-frame.desktop-mode .phone-notch) {
+  display: none !important;
+}
+@media (max-width: 1400px) {
+  :global(.phone-frame.desktop-mode) {
+    width: 650px !important;
+    height: 420px !important;
+    transform: translateX(-20px) !important;
+  }
+}
+@media (max-width: 1200px) {
+  :global(.phone-frame.desktop-mode) {
+    width: 500px !important;
+    height: 350px !important;
+    transform: translateX(0) !important;
+  }
+}
+
 .app-dev-section {
   background-color: #eef2ff; /* Solid Pastel base */
   background-image: 
@@ -136,8 +220,8 @@ import '../styles/service1.css';
   position: absolute;
   top: 10%; right: 10%;
   width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.3) 0%, transparent 60%);
-  filter: blur(40px);
+  /* background: radial-gradient(circle, rgba(56, 189, 248, 0.3) 0%, transparent 60%); */
+  /* filter: blur(40px); */
   z-index: 0;
   pointer-events: none;
 }
@@ -440,29 +524,19 @@ import '../styles/service1.css';
 /* App Video Section */
 .app-video-section {
   width: 100%;
+  height: 100vh;
   margin: 0;
   padding: 0;
   display: flex;
   background-color: #000;
+  overflow: hidden;
 }
 
 .app-video {
   width: 100%;
-  height: auto;
+  height: 100vh;
+  object-fit: cover;
   display: block;
-}
-
-@media (min-width: 1024px) {
-  .app-video-section {
-    height: 100vh;
-    overflow: hidden;
-  }
-  
-  .app-video {
-    width: 100%;
-    height: 100vh;
-    object-fit: cover;
-  }
 }
 </style>
 
@@ -597,5 +671,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Start initial autoplay
   setTimeout(startAutoplay, 1000);
+
+  // Desktop View Toggle Logic
+  const toggleBtn = document.getElementById('desktopViewToggle');
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+      const phoneFrame = document.getElementById('mainPhoneFrame');
+      if (phoneFrame) {
+        phoneFrame.classList.toggle('desktop-mode');
+        if (phoneFrame.classList.contains('desktop-mode')) {
+          toggleBtn.classList.add('mobile-mode-active');
+          toggleBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> <span class="desktop-btn-text">Mobile View</span>`;
+        } else {
+          toggleBtn.classList.remove('mobile-mode-active');
+          toggleBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> <span class="desktop-btn-text">Desktop View</span>`;
+        }
+      }
+    });
+  }
 });
 </script>

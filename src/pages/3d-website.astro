@@ -1,7 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import GalleryModal from '../components/GalleryModal.astro';
+import Web3dBenefits from '../components/Web3dBenefits.astro';
 import Web3dCtaBanner from '../components/Web3dCtaBanner.astro';
+import ClientMarquee from '../components/ClientMarquee.astro';
 import '../styles/service1.css';
 
 // Placeholder data for the gallery modal
@@ -14,11 +16,9 @@ const galleryItems = [
 ];
 
 const tabs = [
-  { id: "manufacturing", label: "Manufacturing", url: "https://example.com/3d/manufacturing" },
-  { id: "healthcare", label: "Healthcare", url: "https://example.com/3d/healthcare" },
-  { id: "real-estate", label: "Real Estate", url: "https://example.com/3d/realestate" },
-  { id: "retail", label: "Retail", url: "https://example.com/3d/retail" },
-  { id: "education", label: "Education", url: "https://example.com/3d/education" }
+  { id: "beverage", label: "Beverage", url: "https://beverage-1.vercel.app/" },
+  { id: "container", label: "Container", url: "https://cafe-1-khaki.vercel.app/" },
+  { id: "food", label: "Food", url: "https://zippy-rolypoly-da7b33.netlify.app/" }
 ];
 ---
 
@@ -31,17 +31,15 @@ const tabs = [
 >
 
   <!-- Hero Section -->
-  <section class="hero-3d">
-    <div class="hero-3d__content">
-      <h1 class="hero-3d__title">Immersive 3D <br/> <span class="highlight">Web Experiences</span></h1>
-      <p class="hero-3d__desc">
-        Step into the future of the web. We build high-performance, interactive 3D environments 
-        tailored for your industry to engage your audience like never before.
-      </p>
-    </div>
-    <div class="hero-3d__graphic">
-      <!-- Placeholder for a stunning 3D graphic or video -->
-      <img src="https://placehold.co/800x600/0c2025/22d3ee?text=3D+Hero+Graphic" alt="3D Experience Graphic" class="hero-3d__image" />
+  <section class="hero-3d-wild" id="wildHeroContainer">
+    <div class="wild-hero-content">
+      <div class="wild-text-wrapper">
+        <div class="wild-text left-text" id="wildTextLeft">3D WEB</div>
+        <div class="wild-text right-text" id="wildTextRight">&nbsp;SITE</div>
+      </div>
+      <div class="wild-video-container" id="wildVideoContainer">
+        <video src="/videos/interactive-3d-website-demos.mp4" autoplay loop muted playsinline class="wild-video"></video>
+      </div>
     </div>
   </section>
 
@@ -91,8 +89,14 @@ const tabs = [
 
   </section>
 
+  <!-- Benefits Section -->
+  <Web3dBenefits />
+
   <!-- Gallery Popup Modal -->
   <GalleryModal items={galleryItems} />
+
+  <!-- Client Section -->
+  <ClientMarquee />
 
   <!-- Pre-Footer CTA -->
   <Web3dCtaBanner />
@@ -100,86 +104,77 @@ const tabs = [
 </BaseLayout>
 
 <style>
-/* --- Hero Section --- */
-.hero-3d {
+/* --- Split Text Hero Section --- */
+.hero-3d-wild {
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(180deg, #ffffff 0%, #e0e5ec 100%);
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 6rem 5% 4rem;
-  background: linear-gradient(135deg, #071518 0%, #0c2025 100%);
-  min-height: 70vh;
-  gap: 3rem;
-  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.wild-hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
   width: 100%;
+  height: 100%;
 }
 
-@media (min-width: 1024px) {
-  .hero-3d {
-    flex-direction: row;
-    justify-content: space-between;
-    text-align: left;
-    min-height: 100vh;
-    height: 100vh;
-    gap: 2rem;
-  }
-}
-
-.hero-3d__content {
-  flex: 1;
+.wild-text-wrapper {
+  position: absolute;
   width: 100%;
-  max-width: 600px;
-  color: #fff;
-  z-index: 2;
-}
-
-@media (min-width: 1024px) {
-  .hero-3d__content {
-    padding-right: 2rem;
-  }
-}
-
-.hero-3d__title {
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
-  font-weight: 700;
-  line-height: 1.1;
-  margin-bottom: 1.5rem;
-}
-
-.highlight {
-  color: #22d3ee;
-  background: -webkit-linear-gradient(0deg, #22d3ee, #e8a817);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.hero-3d__desc {
-  font-size: 1.25rem;
-  color: #a3b8bc;
-  line-height: 1.6;
-}
-
-.hero-3d__graphic {
-  flex: 1;
-  width: 100%;
-  max-width: 700px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  z-index: 10;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-.hero-3d__image {
-  width: 100%;
-  height: auto;
-  border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-  animation: float 6s ease-in-out infinite;
+.wild-text {
+  font-size: clamp(4rem, 10vw, 12rem);
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  color: #1a1a1a;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  white-space: pre;
+  position: relative;
 }
 
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-  100% { transform: translateY(0px); }
+.left-text {
+  transform: translateX(0);
+}
+
+.right-text {
+  transform: translateX(0);
+}
+
+.wild-video-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 0px; /* Starts hidden */
+  height: clamp(250px, 50vh, 600px);
+  border-radius: 500px;
+  overflow: hidden;
+  z-index: 5;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+
+.wild-video {
+  width: 100vw;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* --- Interactive Demo Section --- */
@@ -203,16 +198,15 @@ const tabs = [
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  margin-bottom: 3rem;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 @media (min-width: 768px) {
   .demo-tabs__header {
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    position: relative;
   }
 }
 
@@ -220,6 +214,7 @@ const tabs = [
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+  justify-content: center;
 }
 
 .demo-tab__btn {
@@ -243,7 +238,14 @@ const tabs = [
   background: #22d3ee;
   border-color: #22d3ee;
   color: #040e1b;
-  box-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
+  box-shadow: 0 8px 20px rgba(34, 211, 238, 0.4);
+}
+
+@media (min-width: 768px) {
+  .demo-tabs__view-more {
+    position: absolute;
+    right: 0;
+  }
 }
 
 .demo-tabs__view-more {
@@ -378,5 +380,33 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 500);
     });
   });
+
+  // Split-text Hero GSAP Animation
+  const heroContainer = document.getElementById('wildHeroContainer');
+  const leftText = document.getElementById('wildTextLeft');
+  const rightText = document.getElementById('wildTextRight');
+  const videoContainer = document.getElementById('wildVideoContainer');
+
+  if (heroContainer && leftText && rightText && videoContainer) {
+    const gsap = (window as any).gsap;
+    const ScrollTrigger = (window as any).ScrollTrigger;
+    
+    if (gsap && ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: heroContainer,
+          start: "top top",
+          end: "+=150%",
+          scrub: 1,
+          pin: true
+        }
+      });
+
+      tl.to(leftText, { x: "-60vw", ease: "power1.inOut" }, 0)
+        .to(rightText, { x: "60vw", ease: "power1.inOut" }, 0)
+        .to(videoContainer, { width: "100vw", height: "100vh", borderRadius: "0px", ease: "power1.inOut" }, 0);
+    }
+  }
 });
 </script>

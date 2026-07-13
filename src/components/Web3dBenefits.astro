@@ -1,0 +1,316 @@
+---
+// Web3dBenefits.astro
+---
+
+<section class="benefits-section">
+  <!-- Floating shapes removed as per user request -->
+
+  <div class="benefits-container">
+    
+    <!-- Section Header -->
+    <div class="benefits-header" data-aos="fade-up">
+      <h2 class="benefits-main-title">Why Choose <span class="highlight-cyan">3D Websites?</span></h2>
+      <p class="benefits-main-subtitle">Discover how immersive web technologies can transform your digital presence, captivate your audience, and drive real business results.</p>
+    </div>
+    
+    <!-- Row 1 -->
+    <div class="benefit-row row-left benefit-anim">
+      <div class="benefit-text">
+        <h3 class="benefit-title">Interactive 3D Visual Experiences</h3>
+        <p class="benefit-desc">Create engaging websites with interactive 3D objects, animations, and environments that allow users to explore your brand in an innovative way.</p>
+      </div>
+      <div class="benefit-number-container">
+        <div class="benefit-number" style="background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80');">01</div>
+      </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="benefit-row row-right benefit-anim">
+      <div class="benefit-number-container mobile-flip">
+        <div class="benefit-number" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80');">02</div>
+      </div>
+      <div class="benefit-text">
+        <h3 class="benefit-title">Realistic 3D Product Visualization</h3>
+        <p class="benefit-desc">Showcase your products with detailed 3D models that allow customers to view, rotate, and interact with products from different perspectives.</p>
+      </div>
+    </div>
+
+    <!-- Row 3 -->
+    <div class="benefit-row row-left benefit-anim">
+      <div class="benefit-text">
+        <h3 class="benefit-title">Immersive Website Animations</h3>
+        <p class="benefit-desc">Enhance user experience with smooth transitions, motion effects, and interactive animations that make your website more engaging.</p>
+      </div>
+      <div class="benefit-number-container">
+        <div class="benefit-number" style="background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80');">03</div>
+      </div>
+    </div>
+
+    <!-- Row 4 -->
+    <div class="benefit-row row-right benefit-anim">
+      <div class="benefit-number-container mobile-flip">
+        <div class="benefit-number" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80');">04</div>
+      </div>
+      <div class="benefit-text">
+        <h3 class="benefit-title">Responsive 3D Website Design</h3>
+        <p class="benefit-desc">Our 3D websites are optimized for desktops, tablets, and mobile devices to deliver seamless performance across all screen sizes.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.benefits-section {
+  padding: 8rem 5%;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Parallax Ingredients */
+.parallax-ingredients {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ingredient {
+  position: absolute;
+  font-size: 5rem;
+  opacity: 0.6; /* Fully visible */
+  filter: drop-shadow(0 20px 20px rgba(0,0,0,0.15));
+}
+
+.ingredient.cyan { color: #22d3ee; }
+.ingredient.dark { color: #040e1b; opacity: 0.2; } /* Dark is a bit too strong at 0.6 */
+.ingredient.yellow { color: #ffcb05; }
+
+/* Position and depth of field blur */
+.i-1 { top: 5%; left: 8%; font-size: 8rem; filter: blur(2px); }
+.i-2 { top: 12%; right: 10%; font-size: 6rem; }
+.i-3 { top: 25%; left: 15%; font-size: 4rem; filter: blur(1px); }
+.i-4 { top: 38%; right: 8%; font-size: 7rem; filter: blur(3px); }
+.i-5 { top: 52%; left: 10%; font-size: 9rem; }
+.i-6 { top: 65%; right: 12%; font-size: 5.5rem; filter: blur(1px); }
+.i-7 { top: 78%; left: 20%; font-size: 6rem; }
+.i-8 { top: 92%; right: 15%; font-size: 8rem; filter: blur(2px); }
+.i-9 { top: 8%; left: 40%; font-size: 3.5rem; filter: blur(1px); }
+.i-10 { top: 22%; right: 35%; font-size: 5.5rem; }
+.i-11 { top: 35%; left: 30%; font-size: 4.5rem; filter: blur(2px); }
+.i-12 { top: 48%; right: 20%; font-size: 7.5rem; filter: blur(1px); }
+.i-13 { top: 62%; left: 45%; font-size: 6rem; }
+.i-14 { top: 75%; right: 40%; font-size: 4.5rem; filter: blur(3px); }
+.i-15 { top: 88%; left: 35%; font-size: 5.5rem; filter: blur(1px); }
+.i-16 { top: 95%; left: 25%; font-size: 6.5rem; filter: blur(2px); }
+.i-17 { top: 3%; right: 25%; font-size: 4rem; filter: blur(1px); }
+.i-18 { top: 18%; left: 25%; font-size: 7rem; }
+.i-19 { top: 32%; right: 45%; font-size: 5rem; filter: blur(3px); }
+.i-20 { top: 45%; left: 40%; font-size: 4rem; }
+.i-21 { top: 58%; right: 25%; font-size: 6.5rem; filter: blur(1px); }
+.i-22 { top: 72%; left: 28%; font-size: 5rem; }
+.i-23 { top: 82%; right: 30%; font-size: 4.5rem; filter: blur(2px); }
+.i-24 { top: 98%; right: 5%; font-size: 7rem; filter: blur(1px); }
+.i-25 { top: 2%; left: 55%; font-size: 4rem; filter: blur(3px); }
+.i-26 { top: 12%; right: 55%; font-size: 6.5rem; }
+.i-27 { top: 28%; left: 65%; font-size: 5rem; filter: blur(1px); }
+.i-28 { top: 42%; right: 60%; font-size: 8rem; filter: blur(2px); }
+.i-29 { top: 55%; left: 55%; font-size: 4.5rem; filter: blur(4px); }
+.i-30 { top: 68%; right: 50%; font-size: 6rem; filter: blur(1px); }
+.i-31 { top: 78%; left: 60%; font-size: 7rem; }
+.i-32 { top: 92%; right: 55%; font-size: 5.5rem; filter: blur(3px); }
+.i-33 { top: 8%; left: 75%; font-size: 7.5rem; filter: blur(2px); }
+.i-34 { top: 22%; right: 70%; font-size: 4rem; }
+.i-35 { top: 38%; left: 80%; font-size: 6.5rem; filter: blur(1px); }
+.i-36 { top: 52%; right: 75%; font-size: 5rem; filter: blur(3px); }
+.i-37 { top: 65%; left: 70%; font-size: 8.5rem; filter: blur(2px); }
+.i-38 { top: 82%; right: 65%; font-size: 4.5rem; }
+.i-39 { top: 96%; left: 85%; font-size: 6rem; filter: blur(4px); }
+.i-40 { top: 50%; left: 50%; font-size: 7rem; filter: blur(1px); }
+
+.benefits-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  position: relative;
+  z-index: 1; /* Ensure content is above parallax ingredients */
+}
+
+/* Section Header */
+.benefits-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.benefits-main-title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 900;
+  color: #040e1b;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.highlight-cyan {
+  color: #22d3ee;
+}
+
+.benefits-main-subtitle {
+  font-size: 1.25rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.benefit-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  padding-bottom: 5rem;
+}
+.benefit-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .benefit-row {
+    flex-direction: row;
+    gap: 4rem;
+    justify-content: space-between;
+  }
+}
+
+.benefit-text {
+  flex: 1;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .row-left .benefit-text { 
+    text-align: left; 
+    padding-right: 2rem;
+  }
+  .row-right .benefit-text { 
+    text-align: left; 
+    padding-left: 2rem;
+  }
+}
+
+.benefit-title {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: #111;
+  letter-spacing: -0.02em;
+}
+
+.benefit-desc {
+  font-size: 1.15rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.benefit-number-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15));
+}
+
+@media (max-width: 767px) {
+  /* On mobile, ensure the image is always below the text for consistency, even for right-aligned rows */
+  .mobile-flip {
+    order: 2;
+  }
+}
+
+.benefit-number {
+  font-size: clamp(10rem, 25vw, 22rem);
+  font-weight: 900;
+  line-height: 1;
+  padding: 0 10px;
+  letter-spacing: 0.05em; /* Added gap between numbers */
+  font-family: 'Inter', sans-serif;
+  
+  /* Masking the image inside the text */
+  background-color: #333; /* Fallback */
+  background-size: cover;
+  background-position: center;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  display: inline-block;
+}
+
+/* Base states for independent GSAP animations */
+.benefit-row .benefit-text,
+.benefit-row .benefit-number-container {
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+/* Initial positions based on layout side */
+.benefit-row.row-left .benefit-text { transform: translateX(-60px); }
+.benefit-row.row-left .benefit-number-container { transform: translateX(60px); }
+
+.benefit-row.row-right .benefit-number-container { transform: translateX(-60px); }
+.benefit-row.row-right .benefit-text { transform: translateX(60px); }
+
+@media (max-width: 767px) {
+  /* On mobile, slide everything from the bottom up instead of sides to prevent overflow issues */
+  .benefit-row .benefit-text,
+  .benefit-row .benefit-number-container {
+    transform: translateY(40px) !important; 
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const gsap = (window as any).gsap;
+  const ScrollTrigger = (window as any).ScrollTrigger;
+
+  if (gsap && ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const rows = document.querySelectorAll('.benefit-row');
+    rows.forEach((row, i) => {
+      const text = row.querySelector('.benefit-text');
+      const number = row.querySelector('.benefit-number-container');
+      
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: row,
+          start: "top 85%", 
+          toggleActions: "play none none reverse"
+        }
+      });
+
+      // Animate text and number with a slight stagger
+      tl.to([text, number], {
+        x: 0,
+        y: 0,
+        opacity: 1,
+        duration: 1.2,
+        ease: "power3.out",
+        stagger: 0.2 // Stagger the two elements
+      });
+    });
+
+    // Parallax Ingredients animation removed
+  }
+});
+</script>

@@ -82,8 +82,8 @@ const steps = [
       <div class="process-left-content">
         <div class="process-header">
           <h2 class="process-main-title">
-            <div class="animated-heading-sweep">Features of Our</div>
-            <div class="animated-heading-sweep">AR, VR & MR Solutions</div>
+            <div style="color: #000000;">Features of Our</div>
+            <div style="color: #ff7800;">AR, VR & MR Solutions</div>
           </h2>
         </div>
 
@@ -157,7 +157,10 @@ const steps = [
     display: flex;
     flex-direction: column;
     padding: 2rem 5%;
-    background-color: #ffffff;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.65)), url('/images/services/AR-VR/background-image.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     height: 60vh;
     position: relative; /* For curve separator */
   }
@@ -260,8 +263,8 @@ const steps = [
   }
 
   .process-item.active .process-title {
-    color: #000;
-    font-weight: 500;
+    color: #77107d;
+    font-weight: 700;
   }
 
   .process-item-body {

@@ -4,10 +4,16 @@
     margin: 5rem auto;
 }
 
+body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+}
+
 .container h1 {
     text-align: center;
     font-size: 40px;
     margin-bottom: 1rem;
+    color: #000000;
 }
 
 @media screen and (max-width: 1199px) {
@@ -47,7 +53,7 @@
     text-align: center;
     font-size: 20px;
     margin-bottom: 10px;
-    color: #ffffff;
+    color: #333333;
     line-height: 1.6;
 }
 

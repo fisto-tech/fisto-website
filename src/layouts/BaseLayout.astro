@@ -114,8 +114,53 @@ import Preloader from "../components/Preloader.astro";
     <script
       src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"
       is:inline></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" is:inline></script>
+    {current !== "home" && (
+      <script>
+        // Global Audio Unmute on First Interaction
+        document.addEventListener('click', function unmuteVideos() {
+          const videos = document.querySelectorAll('video');
+          let unmutedCount = 0;
+          
+          videos.forEach(video => {
+            if (video.muted) {
+              video.muted = false;
+              unmutedCount++;
+              
+              // If the video was paused by browser policy, try to play it again
+              if (video.paused) {
+                video.play().catch(e => console.log('Autoplay prevented:', e));
+              }
+            }
+          });
+          
+          if (unmutedCount > 0) {
+            console.log(`Audio enabled for ${unmutedCount} videos on first interaction.`);
+          }
+        }, { once: true }); // Only runs on the very first click
+      </script>
+    )}
 
+    <script>
+      // Pause videos when scrolled out of view to stop audio, play when in view
+      const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const video = entry.target;
+          if (entry.isIntersecting) {
+            if (!video.classList.contains('paused-by-slider')) {
+              video.play().catch(e => console.log('Autoplay prevented:', e));
+            }
+          } else {
+            video.pause();
+          }
+        });
+      }, { threshold: 0.1 }); // 10% visibility threshold
+
+      document.querySelectorAll('video').forEach(video => {
+        videoObserver.observe(video);
+      });
+    </script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" is:inline></script>
     <script src="/js/nav.js" is:inline></script>
     <script src="/js/main.js" is:inline></script>
   </body>

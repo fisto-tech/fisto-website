@@ -81,10 +81,10 @@ setTimeout(() => {
 }, 8000);
 
  document.addEventListener('DOMContentLoaded', function () {
-      AOS.init({ duration: 1000 });
+      if (typeof AOS !== 'undefined') AOS.init({ duration: 1000 });
     });
     window.addEventListener('load', function () {
-      AOS.refresh();
+      if (typeof AOS !== 'undefined') AOS.refresh();
     });
 
     gsap.registerPlugin(ScrollTrigger);

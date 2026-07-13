@@ -126,7 +126,7 @@ footer .foot-con {
 
 .contact-flex {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   gap: 0.75rem;
 }
 
@@ -135,6 +135,10 @@ footer .foot-con {
   white-space: nowrap;
   margin: 0;
   font-weight: 500;
+  flex: 0 0 140px;
+  text-align: left;
+  display: flex;
+  align-items: center;
 }
 
 .contact-flex p {
@@ -406,6 +410,8 @@ p i.fa-address-book {
   .contact-flex > p:first-child {
     white-space: normal;
     margin-bottom: 0.25rem;
+    flex: none;
+    text-align: center;
   }
 
   .copyright {
